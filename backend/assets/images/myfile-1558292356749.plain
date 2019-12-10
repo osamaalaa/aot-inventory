@@ -1,0 +1,15 @@
+-XX:MinHeapFreeRatio=20
+-XX:MaxHeapFreeRatio=40
+-Xms128m
+-Xmx1000m
+-Dsoapui.properties=soapui.properties
+-Dsoapui.home=/Applications/SoapUI-5.5.0.app/Contents/Resources/app/bin
+-Dsoapui.ext.libraries=/Applications/SoapUI-5.5.0.app/Contents/Resources/app/bin/ext
+-Dsoapui.ext.listeners=/Applications/SoapUI-5.5.0.app/Contents/Resources/app/bin/listeners
+-Dsoapui.ext.actions=/Applications/SoapUI-5.5.0.app/Contents/Resources/app/bin/actions
+-Dwsi.dir=/Applications/SoapUI-5.5.0.app/Contents/Resources/app/wsi-test-tools
+-Djava.library.path=/Applications/SoapUI-5.5.0.app/Contents/Resources/app/bin
+-Djava.util.Arrays.useLegacyMergeSort=true
+-splash:SoapUI-Spashscreen.png
+-Dswing.crossplatformlaf=apple.laf.AquaLookAndFeel
+-Dapple.eawt.quitStrategy=CLOSE_ALL_WINDOWS

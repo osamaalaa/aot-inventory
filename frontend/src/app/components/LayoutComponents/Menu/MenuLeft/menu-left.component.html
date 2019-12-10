@@ -1,0 +1,71 @@
+<nz-content class="main-content">
+<div class="logo">
+  <div class="logoContainer">
+    <!-- <img *ngIf="!isMenuCollapsed" src="assets/images/logo-2.png" alt="" />
+    <img *ngIf="isMenuCollapsed" src="assets/images/logo-2.png" alt="" /> -->
+    <nz-spin [nzSpinning]="spinning">
+      <div *ngIf="!spinning">
+        <nz-avatar [nzSize]="48" nzIcon="user" [nzSize]="'large'" class="user-avatar" [nzSrc]="img_url"></nz-avatar>
+      </div>
+    </nz-spin>
+    <!-- <nz-avatar [nzSize]="48" nzIcon="user" class="user-avatar"></nz-avatar> -->
+    <p>{{"WELCOME" | translate }}</p>
+    <p class="user-name-print" *ngIf="EN_NAME">{{lang == 'ar' ? AR_NAME : EN_NAME}} ({{EMPLOYEE_EMAIL}})</p>
+  </div>
+</div>
+<div [ngClass]="isLightTheme ? 'navigation light' : 'navigation'">
+  <perfect-scrollbar [ngClass]="isMobileView ? 'scrollbarMobile' : 'scrollbarDesktop'">
+    <ul nz-menu [nzTheme]="isLightTheme ? 'light' : 'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isMenuCollapsed" class="left-menu-ul">
+      <ng-container *ngTemplateOutlet="menuTpl; context: {$implicit: menuDataActivated, level: 0}"></ng-container>
+      <ng-template #menuTpl let-menuDataActivated let-level="level">
+        <ng-container *ngFor="let item of menuDataActivated">
+          <ng-template #tooltipTpl>
+            {{ item.title | translate }}
+            <span *ngIf="item.pro" class="badge badge-primary badge-collapsed-hidden ml-2">{{"SETUP" | translate }}</span>
+          </ng-template>
+          <li
+            nz-menu-item (click)="toggleSettings()" *ngIf="item.key === 'settings'"
+            nz-tooltip nzPlacement="right" [nzTitle]="isMenuCollapsed && level === 0 ? tooltipTpl : ''"
+          >
+            <span>
+              <span class="title">{{item.title | translate}}</span>
+              <i *ngIf="item.icon" [ngClass]="[item.icon, 'icon']"></i>
+            </span>
+          </li>
+          <li
+            nz-menu-item *ngIf="item.url && item.target"
+            nz-tooltip nzPlacement="right" [nzTitle]="isMenuCollapsed && level === 0 ? tooltipTpl : ''"
+          >
+            <a href={{item.url}} target={{item.target}}>
+              <span class="title">{{item.title | translate}}</span>
+              <i *ngIf="item.icon" [ngClass]="[item.icon, 'icon']"></i>
+              <span *ngIf="item.pro" class="badge badge-primary badge-collapsed-hidden ml-2">{{"SETUP" | translate }}</span>
+            </a>
+          </li>
+          <li nz-menu-divider *ngIf="item.divider"></li>
+          <li
+            nz-menu-item *ngIf="!item.children && item.url && !item.target" routerLink={{item.url}} [nzSelected]="item.selected" [nzDisabled]="item.disabled"
+            nz-tooltip nzPlacement="right" [nzTitle]="isMenuCollapsed && level === 0 ? tooltipTpl : ''"
+          >
+            <span [ngStyle]="{'padding-left.px': isMenuCollapsed ? '0' : level * 24}">
+              <span class="title">{{item.title | translate}}</span>
+              <i *ngIf="item.icon" [ngClass]="[item.icon, 'icon']"></i>
+              <span *ngIf="item.pro" class="badge badge-primary badge-collapsed-hidden ml-2">{{"SETUP" | translate }}</span>
+            </span>
+          </li>
+          <li nz-submenu *ngIf="item.children" [nzOpen]="item.open && !isMenuCollapsed">
+            <span title [ngStyle]="{'padding-left.px': isMenuCollapsed ? '0' : level * 24}">
+              <span class="title">{{item.title | translate}}</span>
+              <i *ngIf="item.icon" [ngClass]="[item.icon, 'icon']"></i>
+            </span>
+            <ul class="left-menu-ul">
+              <ng-container *ngTemplateOutlet="menuTpl; context: {$implicit: item.children, level: level + 1}"></ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ng-template>
+    </ul>
+  </perfect-scrollbar>
+</div>
+</nz-content>
+

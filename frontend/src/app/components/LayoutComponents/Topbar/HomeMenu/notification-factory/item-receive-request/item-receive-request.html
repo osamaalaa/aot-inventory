@@ -1,0 +1,25 @@
+<i class="icon icmn-star-full"></i>
+<div class="inner">
+  <div class="title">
+    <cui-time-card class="pull-right" [date]="notificationData.CREATED_DATE"></cui-time-card>
+    <a  href="javascript: void(0);"
+      (click)="openDspDocument(notificationData.REQUEST_ITEM_RECEIVE_ID,$event)">
+      <span>{{"ITEM_RECEIVE_REQUEST" | translate}}-{{notificationData.REQUEST_ID}}</span>
+    </a>
+  </div>
+  <!-- <div class="descr">
+    Failed to get available update data. To ensure the proper functioning of your
+    application, update now.
+  </div> -->
+  <div class="descr">
+    <nz-button-group>
+      <button nzSize="small" [disabled]="notificationData.rejectLoading" [nzLoading]="notificationData.acceptLoading" nz-button nzType="primary"
+        (click)="whenApproveClicked(notificationData,$event)"><i nz-icon nzType="check-circle" nzTheme="fill"></i>
+        {{"APPROVE" | translate}}</button>
+      <button nzSize="small" [disabled]="notificationData.acceptLoading" [nzLoading]="notificationData.rejectLoading" nz-button nzType="danger"
+        (click)="whenRejectClicked(notificationData,$event)"><i nz-icon nzType="close-circle" nzTheme="fill"></i> {{"REJECT" | translate}}
+      </button>
+    </nz-button-group>
+  </div>
+</div>
+

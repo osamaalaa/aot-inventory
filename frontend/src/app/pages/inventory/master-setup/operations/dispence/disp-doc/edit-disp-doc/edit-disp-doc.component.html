@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"EDIT_DIPENCE_DOCUMENT" | translate }}</strong>
+        <div class="pull-right">
+          <button nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="!readOnly"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button>
+          <button nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="operationMasterService.getItems().length > 0 && !readOnly && !dispDocData.WF_REQUEST_ID">{{"SUBMIT_REQ" | translate }}</button>
+            <button nz-button nzType="primary" [routerLink]="['..']">{{"LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <app-disp-doc-form #formComp [readOnly]="readOnly" [formData]="dispDocData">
+    </app-disp-doc-form>
+    <div>
+      <app-disp-doc-items-table [readOnly]="readOnly" [dispenceItems]="dispenceItems"
+        [DOCUMENT_ID]="DOCUMENT_ID">
+      </app-disp-doc-items-table>
+    </div>
+  </div>
+
+</div>
+

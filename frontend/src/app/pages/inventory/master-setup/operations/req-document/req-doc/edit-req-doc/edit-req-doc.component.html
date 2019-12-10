@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+          <!-- <strong *ngIf="isItemReturnRequest">{{"ITEM_RETURN_REQUEST" | translate }}</strong> -->
+        <strong *ngIf="isItemLostRequest">{{"LOST_REQUEST_DETAIL" | translate }}</strong>
+        <strong *ngIf="isEmployeeCustodyRequest">{{"CUSTODY_REQUEST" | translate }}</strong>
+        <strong *ngIf="isReturnRequest">{{"RETURN_REQUEST" | translate }}</strong>
+        <strong *ngIf="isRequestItems">{{"REQUEST_ITEMS" | translate }}</strong>
+        <strong *ngIf="isItemReturnRequest">{{"RETURN_STORE_ITEMS_REQUEST" | translate }}</strong>
+
+        <div class="pull-right">
+          <button nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="!readOnly"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button>
+          <button nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="operationMasterService.getItems().length > 0 && !readOnly && !reqDocData.WF_REQUEST_ID">{{"SUBMIT_REQ" | translate }}</button>
+            <button nz-button nzType="primary" [routerLink]="['..']">{{"REQ_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <app-req-doc-form #formComp  [readOnly]="readOnly" [formData]="reqDocData">
+    </app-req-doc-form>
+    <div>
+      <app-req-doc-items-table
+      [isItemReturnRequest]="isItemReturnRequest"
+      [isItemLostRequest]="isItemLostRequest"
+      [isEmployeeCustodyRequest]="isEmployeeCustodyRequest"
+      [isReturnRequest]="isReturnRequest"
+      [isRequestItems]="isRequestItems"
+      [shouldValidateBalance]="!isReturnRequest" [readOnly]="readOnly" [reqDocItems]="reqDocItems"
+        [DOCUMENT_ID]="DOCUMENT_ID">
+      </app-req-doc-items-table>
+      <app-req-committee *ngIf="isItemLostRequest"  [DOCUMENT_ID]="DOCUMENT_ID"></app-req-committee>
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong
+        *ngIf="!isRequestItems && !isItemLostRequest && !isReturnRequest && !isItemReturnRequest && !isEmployeeCustodyRequest">{{"REQUEST_DOCUMENT" | translate }}</strong>
+      <strong *ngIf="isRequestItems">{{"ITEMS_REQUEST_DOCUMENT" | translate }}</strong>
+      <strong *ngIf="isReturnRequest">{{"RETURN_REQUESTS" | translate }}</strong>
+      <strong *ngIf="isItemReturnRequest">{{"ITEM_RETURN_REQUEST" | translate }}</strong>
+      <strong *ngIf="isItemLostRequest">{{"ITEM_LOST_REQUEST" | translate }}</strong>
+      <strong *ngIf="isEmployeeCustodyRequest">{{"CUSTODY_REQUESTS" | translate }}</strong>
+      <button class="float-right" nzType="primary" nz-button
+        [routerLink]="['..']">{{"OPERATIONS" | translate }}</button>
+
+    </div>
+    <div class="utils__titleDescription">
+      <div *ngIf="!isRequestItems && !isItemLostRequest">{{"REQUEST_DOCUMENT" | translate }}</div>
+      <div *ngIf="isRequestItems">{{"ITEMS_REQUEST_DOCUMENT" | translate }}</div>
+      <div *ngIf="isItemLostRequest">{{"ITEM_LOST_REQUEST" | translate }}</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate }}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+          <div class="cui-product-details-controls pull-right">
+            <button [routerLink]="['add']" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="plus"
+                nzTheme="outline"></i></button>
+
+          </div>
+        </div>
+        <nz-table nzBordered #itemsDataTable [nzData]="reqDocModelService.displayData" class="utils__scrollTable"
+          nzShowSizeChanger nzShowTotal [nzLoading]="isDataLoading">
+          <thead (nzSortChange)="sortData($event)" nzSingleSort>
+            <tr>
+              <th nzShowSort nzSortKey="DOCUMENT_ID" class="text-center" nzLeft="0px">{{"DOCUMENT_ID" | translate }}
+              </th>
+              <th class="text-center" nzShowSort nzSortKey="INVENTORY_PERIODS_EN_NAME">
+                {{"INVENTORY_PERIODS" | translate }}</th>
+              <th class="text-center" nzShowSort nzSortKey="DOCUMENT_NO">{{"DOCUMENT_NO" | translate }}</th>
+              <th class="text-center" nzShowSort nzSortKey="STATUS_NAME">{{"STATUS" | translate }}</th>
+
+              <th class="text-center">{{"ACTIONS" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+              <tr>
+                <td class="text-center">{{item.DOCUMENT_ID | translatenumber}}</td>
+                <td *ngIf="lang == 'en'" class="text-center">{{item.INVENTORY_PERIODS_EN_NAME}}</td>
+                <td *ngIf="lang == 'ar'" class="text-center">{{item.INVENTORY_PERIODS_AR_NAME}}</td>
+                <td class="text-center">{{item.DOCUMENT_NO}}</td>
+                <td class="text-center">{{item.STATUS_NAME}}</td>
+
+                <td class="text-center">
+                  <button nz-button class="mr-1" nzSize="small" [routerLink]="[item.DOCUMENT_ID]"><i nz-icon type="edit"
+                      theme="outline"></i>{{"EDIT" | translate }}</button>
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>

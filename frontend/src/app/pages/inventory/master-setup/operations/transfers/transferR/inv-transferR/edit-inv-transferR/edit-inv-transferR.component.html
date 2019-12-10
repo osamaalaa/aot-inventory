@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"EDIT_TRANSFER" | translate }}</strong>
+        <div class="pull-right">
+          <!-- <button class="margin-button" nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="!readOnly"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button> -->
+          <button class="margin-button" nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="operationMasterService.getItems().length > 0 && !readOnly && !invtransferRFormData.WF_REQUEST_ID">{{"SUBMIT_REQ" | translate }}</button>
+          <button class="margin-button" nz-button nzType="primary" [routerLink]="['..']">{{"TRANSFER_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+      <div nz-row >
+          <div nz-col>
+              <nz-descriptions *ngIf="tranferData"  nzBordered [nzSize]="'default'" >
+                  <nz-descriptions-item *ngIf="!isCustodyTransfer" [nzTitle]="'FROM_STORE' | translate">
+                    {{tranferData.STORE_AR_NAME}}
+                  </nz-descriptions-item>
+                  <nz-descriptions-item *ngIf="!isCustodyTransfer" [nzTitle]="'TO_STORE' | translate">
+                    {{tranferData.TRANSFER_AR_NAME}}
+                  </nz-descriptions-item>
+                  <nz-descriptions-item *ngIf="isCustodyTransfer" [nzTitle]="'FROM_EMPLOYEE' | translate">
+                    {{tranferData.STORE_AR_NAME}}
+                  </nz-descriptions-item>
+                  <nz-descriptions-item *ngIf="isCustodyTransfer" [nzTitle]="'TO_EMPLOYEE' | translate">
+                    {{tranferData.TRANSFER_AR_NAME}}
+                  </nz-descriptions-item>
+                  <nz-descriptions-item [nzTitle]="'DOCUMENT_NO' | translate">{{tranferData.DOCUMENT_NO}}</nz-descriptions-item>
+                  <nz-descriptions-item [nzTitle]="'REQUEST_DATE' | translate">{{tranferData.TRANSFER_DATE | date}}</nz-descriptions-item>
+                  <nz-descriptions-item [nzTitle]="'INVENTORY_PERIOD' | translate">{{tranferData.INVENTORY_PERIODS_EN_NAME}}</nz-descriptions-item>
+                  <nz-descriptions-item [nzTitle]="'NOTES' | translate">{{tranferData.NOTES}}</nz-descriptions-item>
+                </nz-descriptions>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col style="margin-bottom: 2em;margin-top: 5em;">
+              <app-inv-transferR-items-table [readOnly]="readOnly" [invTransferItems]="invTransferItems"
+        [INV_TRANSFER_R_ID]="INV_TRANSFER_R_ID">
+      </app-inv-transferR-items-table>
+          </div>
+        </div>
+  </div>
+</div>
+

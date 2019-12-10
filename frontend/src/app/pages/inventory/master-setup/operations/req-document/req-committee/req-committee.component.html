@@ -1,0 +1,36 @@
+<nz-table #editRowTable nzBordered [nzData]="dataList" [nzTitle]="header" >
+  <thead>
+    <tr>
+      <th >{{"EMPLOYEE_NAME" | translate }}</th>
+      <th *ngIf="!readOnly">{{"ACTION" | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-data [ngForOf]="editRowTable.data">
+      <tr class="editable-row">
+        <td>{{ data.EMPLOYEE_NAME }}</td>
+        <td *ngIf="!readOnly">
+          <div class="editable-row-operations">
+            <nz-button-group>
+              <!-- <button nz-button (click)="updateData(data)" nzType="primary"><i nz-icon nzType="edit"
+                  nzTheme="outline"></i></button> -->
+              <!-- <button nz-popconfirm nzTitle="Are you sure to delete this Item ?"
+                (nzOnConfirm)="deleteData(data)" nz-button nzType="danger"><i nz-icon
+                  nzType="delete" nzTheme="fill"></i></button> -->
+            </nz-button-group>
+          </div>
+        </td>
+    </ng-template>
+  </tbody>
+</nz-table>
+<ng-template #header>
+  <div class="row">
+    <div class="col-md-10">
+      <h4>{{"COMMITEE_MEMBERS" | translate }}</h4>
+    </div>
+    <div class="col-md-2 ">
+      <button *ngIf="!readOnly" class="pull-right" [nzSize]="'small'" (click)="addCommiteeMember()" nz-button nzType="primary"><i
+          nz-icon nzType="plus" nzTheme="outline"></i>{{"MEMBERS" | translate }}</button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,109 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="storeLocationForm" (ngSubmit)="submitForm()" role="form">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-6">
+              <nz-form-item>
+                  <nz-form-label nzFor="title">{{"STORE_LOCATION" | translate }}<span class="red-color">*</span></nz-form-label>
+                  <nz-form-control>
+                    <input maxlength="25" nz-input name="STORES_LOCATIONS_CODE" type="text" id="STORES_LOCATIONS_CODE" placeholder="{{'STORE_LOCATION'| translate }}"
+                      formControlName="STORES_LOCATIONS_CODE">
+                    <div *ngFor="let validation of validation_messages.STORES_LOCATIONS_CODE">
+                      <nz-form-explain class="red-color"
+                        *ngIf="STORES_LOCATIONS_CODE.hasError(validation.type) && (STORES_LOCATIONS_CODE.dirty || STORES_LOCATIONS_CODE.touched)">
+                       {{validation.message | translatecui}}
+                      </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item>
+          </div>
+          <div class="col-lg-6">
+              <nz-form-item>
+                  <nz-form-label nzFor="title">{{"ARABIC_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+                  <nz-form-control>
+                    <input maxlength="250" nz-input name="AR_NAME" type="text" id="AR_NAME" placeholder="{{'ARABIC_NAME'| translate }}"
+                      formControlName="AR_NAME">
+                    <div *ngFor="let validation of validation_messages.AR_NAME">
+                      <nz-form-explain class="red-color"
+                        *ngIf="AR_NAME.hasError(validation.type) && (AR_NAME.dirty || AR_NAME.touched)">
+                       {{validation.message | translatecui}}
+                      </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+              <nz-form-item>
+                  <nz-form-label nzFor="title">{{"ENGLISH_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+                  <nz-form-control>
+                    <input maxlength="250" nz-input name="EN_NAME" type="text" id="EN_NAME" placeholder="{{'ENGLISH_NAME'| translate }}"
+                      formControlName="EN_NAME">
+                    <div *ngFor="let validation of validation_messages.EN_NAME">
+                      <nz-form-explain class="red-color"
+                        *ngIf="EN_NAME.hasError(validation.type) && (EN_NAME.dirty || EN_NAME.touched)">
+                       {{validation.message | translatecui}}
+                      </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item>
+          </div>
+          <div class="col-lg-6">
+              <nz-form-item>
+                  <nz-form-label nzFor="title">{{"LOCATION_LAN" | translate }}<span class="red-color">*</span></nz-form-label>
+                  <nz-form-control>
+                    <input maxlength="25" nz-input name="LOCATION_LAN" type="text" id="LOCATION_LAN" placeholder="{{'LOCATION_LAN'| translate }}"
+                      formControlName="LOCATION_LAN">
+                    <div *ngFor="let validation of validation_messages.LOCATION_LAN">
+                      <nz-form-explain class="red-color"
+                        *ngIf="LOCATION_LAN.hasError(validation.type) && (LOCATION_LAN.dirty || LOCATION_LAN.touched)">
+                       {{validation.message | translatecui}}
+                      </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+              <nz-form-item>
+                  <nz-form-label nzFor="title">{{"LOCATION_ROW" | translate }}<span class="red-color">*</span></nz-form-label>
+                  <nz-form-control>
+                    <input maxlength="25" nz-input name="LOCATION_ROW" type="text" id="LOCATION_ROW" placeholder="{{'LOCATION_ROW'| translate }}"
+                      formControlName="LOCATION_ROW">
+                    <div *ngFor="let validation of validation_messages.LOCATION_ROW">
+                      <nz-form-explain class="red-color"
+                        *ngIf="LOCATION_ROW.hasError(validation.type) && (LOCATION_ROW.dirty || LOCATION_ROW.touched)">
+                       {{validation.message | translatecui}}
+                      </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item>
+          </div>
+          <div class="col-lg-6">
+              <nz-form-item>
+                  <nz-form-label nzFor="title">{{"LOCATION_COLUMN" | translate }}<span class="red-color">*</span></nz-form-label>
+                  <nz-form-control>
+                    <input maxlength="25" nz-input name="LOCATION_COLUMN" type="text" id="LOCATION_COLUMN" placeholder="{{'LOCATION_COLUMN'| translate }}"
+                      formControlName="LOCATION_COLUMN">
+                    <div *ngFor="let validation of validation_messages.LOCATION_COLUMN">
+                      <nz-form-explain class="red-color"
+                        *ngIf="LOCATION_COLUMN.hasError(validation.type) && (LOCATION_COLUMN.dirty || LOCATION_COLUMN.touched)">
+                       {{validation.message | translatecui}}
+                      </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-actions">
+            <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+            <button nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+

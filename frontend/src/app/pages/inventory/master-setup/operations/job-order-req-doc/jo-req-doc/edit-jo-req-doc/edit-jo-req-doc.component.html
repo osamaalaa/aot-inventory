@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"JOB_ORDER_REQUEST" | translate }}</strong>
+        <div class="pull-right">
+          <!-- <button nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="!readOnly"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button> -->
+          <button nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="operationMasterService.getItems().length > 0 && !readOnly && !reqDocData.WF_REQUEST_ID">{{"SUBMIT_REQ" | translate }}</button>
+            <button nz-button nzType="primary" [routerLink]="['..']">{{"REQ_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <!-- <app-jo-req-doc-form #formComp [STORES_ID]="STORES_ID" [readOnly]="readOnly" [formData]="reqDocData">
+    </app-jo-req-doc-form> -->
+
+    <div nz-row >
+      <div nz-col>
+        <app-job-order-view [jobOrderId]="jobOrderId" [data]="reqDocData"></app-job-order-view>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col style="margin-bottom: 2em;margin-top: 5em;">
+        <app-jo-req-doc-items-table [readOnly]="readOnly" [reqDocItems]="reqDocItems"
+        [DOCUMENT_ID]="DOCUMENT_ID">
+      </app-jo-req-doc-items-table>
+      </div>
+    </div>
+  </div>
+
+</div>
+

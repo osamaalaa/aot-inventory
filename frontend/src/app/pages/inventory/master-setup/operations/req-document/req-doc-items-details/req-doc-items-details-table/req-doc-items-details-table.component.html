@@ -1,0 +1,72 @@
+<nz-table #detailsTable [nzData]="dataList" nzSize="small" [nzShowPagination]="false" [nzTitle]="header">
+  <thead>
+    <tr>
+      <th>{{"BATCH_NO" | translate }}</th>
+      <th>{{"EXP_DATE" | translate }}</th>
+      <th>{{"SERIAL_NO" | translate }}</th>
+      <th>{{"UNIT_QTY" | translate }}</th>
+      <th>{{"DEFAULT_UNIT_QTY" | translate }}</th>
+      <th>{{"BASE_UNIT_QTY" | translate }}</th>
+      <!-- <th>{{"ITEM_COST" | translate }}</th>
+      <th>{{"TOTAL_COST" | translate }}</th>
+      <th>{{"ITEM_PRICE" | translate }}</th>
+      <th>{{"TOTAL_PRICE" | translate }}</th> -->
+
+      <th *ngIf="!readOnly">{{"ACTION" | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of detailsTable.data">
+      <td>
+        {{ data.BATCH_NUMBER }}
+      </td>
+      <td>
+        {{ data.EXPIRY_DATE | date }}
+      </td>
+      <td>
+        {{ data.SERIAL_NUMBER }}
+      </td>
+      <td>
+        {{ data.UNIT_QUANTITY }}
+      </td>
+      <td>
+        {{ data.DEFAULT_UNIT_QUANTITY }}
+      </td>
+      <td>
+        {{ data.BASE_UNIT_QUANTITY }}
+      </td>
+      <!-- <td>
+        {{ data.ITEM_COST }}
+      </td>
+      <td>
+        {{ data.TOTAL_COST }}
+      </td>
+      <td>
+        {{ data.ITEM_PRICE }}
+      </td>
+      <td>
+        {{ data.TOTAL_PRICE }}
+      </td> -->
+      <td *ngIf="!readOnly">
+        <div class="editable-row-operations">
+          <nz-button-group>
+            <button nz-button (click)="onEditClick.emit(data)" nzType="primary"><i nz-icon nzType="edit"
+                nzTheme="outline"></i></button>
+            <!-- <button nz-popconfirm nzTitle="Are you sure to delete this Item ?" (nzOnConfirm)="onDeleteClick.emit(data)"
+              nz-button nzType="danger"><i nz-icon nzType="delete" nzTheme="fill"></i></button> -->
+          </nz-button-group>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<ng-template #header let-data="nzData">
+  <div class="row">
+    <div class="col-md-10">
+      <h6>{{"ITEMS_DETAILS" | translate }}</h6>
+    </div>
+    <div class="col-md-2 ">
+      <ng-content selector=".details-table-button"></ng-content>
+    </div>
+  </div>
+</ng-template>

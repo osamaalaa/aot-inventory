@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"PHYSICAL_INVENTORY_BALANCE" | translate }}</strong>
+        <div class="pull-right">
+          <button [disabled]="savingForm" [nzLoading]="workFlowLoading" *ngIf="!workFlowInitiateDone" class="but-class"
+            nz-button nzType="primary" (click)="onSaveAndSubmit()">{{"SEND_FOR_APPROVAL_STOCK_TAKING" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+
+    <nz-descriptions nzBordered [nzSize]="'default'">
+      <nz-descriptions-item nzTitle="{{'STORE_NAME' | translate}}">
+        {{formData.STORE_EN_NAME}}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{'INVENTORY_PERIOD' | translate}}">{{formData.INVENTORY_PERIODS_EN_NAME}}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{'PYSICAL_INVENTORY_DATE' | translate}}">{{formData.DOCUMENT_DATE | date}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{'PYSICAL_INV_DOCUMENT_NO' | translate}}">{{formData.DOCUMENT_NO}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{'NOTES' | translate}}">{{formData.NOTES}}</nz-descriptions-item>
+    </nz-descriptions>
+    <div style="margin-bottom: 2em;margin-top: 5em;">
+      <app-inv-stocktaking-bal-u-table [readOnly]="workFlowInitiateDone" [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID">
+      </app-inv-stocktaking-bal-u-table>
+    </div>
+
+  </div>
+</div>
+

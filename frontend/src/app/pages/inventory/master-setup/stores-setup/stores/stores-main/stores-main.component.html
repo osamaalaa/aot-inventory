@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-xl-6 col-lg-12">
+    <div class="card cui-profile-header">
+      <div class="card-body text-center">
+        <br>
+        <br>
+        <nz-button-group>
+
+          <!-- <nz-upload [nzBeforeUpload]="beforeUpload" nzListType="picture-card" [(nzFileList)]="fileList"
+              [nzShowButton]="fileList.length < 3" [nzShowUploadList]="showUploadList" [nzCustomRequest]="uploadImage">
+              <i nz-icon nzType="plus"></i>
+              <div class="ant-upload-text">{{"UPLOAD" | translate }}</div>
+            </nz-upload> -->
+          <!-- <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+              (nzOnCancel)="previewVisible = false">
+              <ng-template #modalContent>
+                <img [src]="previewImage" />
+              </ng-template>
+            </nz-modal> -->
+        </nz-button-group>
+        <br>
+        <!-- <div *ngIf="lastTransDate === 'Never Used'">
+            <p class="text-white mt-2">Last activity, {{lastTransDate}}</p>
+          </div> -->
+
+        <!-- <div  *ngIf="lastTransDate !== 'Never Used'">
+            <p class="text-white mt-2">Last activity, {{lastTransDate | date}}</p>
+          </div> -->
+        <!-- <p class="text-white mt-2">
+            <cui-donut type="success" [name]="status"></cui-donut>
+          </p> -->
+      </div>
+    </div>
+    <div class="card">
+      <!-- <div class="card-header">
+          <div class="utils__title">
+            <strong>{{"MONTHLY_UTILIZATION" | translate }}</strong>
+          </div>
+          <div class="utils__titleDescription">
+            Item Utilization Figures over months
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-12" *ngFor="let p of yearlyst">
+              <cui-progress-group name="{{p.MONTH}}" description="{{p.MONTH}}" progress="{{p.Number_Of_Transactions_PER}}" status="active"></cui-progress-group>
+            </div>
+          </div>
+        </div> -->
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="utils__title">
+          <strong>{{"WEEK_REVENUE_STATISTICS,_BILLIONS" | translate }}</strong>
+        </div>
+        <cui-donut type="primary" name="Nuts"></cui-donut>
+        <cui-donut type="success" name="Apples"></cui-donut>
+        <cui-donut color="yellow" name="Peaches"></cui-donut>
+      </div>
+      <div class="card-body">
+        <!-- <x-chartist class="ct-chart height-300" [data]="weekChartData" type="Line" [options]="weekChartOptions">
+            </x-chartist> -->
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-6 col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="mb-3 text-black">
+          <strong>{{"ACTIONS" | translate }}</strong>
+        </h5>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="cui-profile-actions">
+              <button [routerLink]="['stores-item-group']" nz-button style="width: 100%; display: block">{{"STORES_ITEMS_CATEGORIES" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <!-- <button [routerLink]="['stores-item-group-no']"  nz-button style="width: 100%; display: block">{{"STORES_ITEMS_GROUP_NO" | translate }}</button> -->
+              <button [routerLink]="['stores-items']" nz-button style="width: 100%; display: block">{{"STORES_ITEMS" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <button [routerLink]="['stores-items-no']" nz-button style="width: 100%; display: block">{{"STORES_ITEMS_NO" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <!-- <button [routerLink]="['stores-document-types']" nz-button style="width: 100%; display: block">{{"DOCUMENT_TYPES" | translate }}</button> -->
+              <button [routerLink]="['stores-locations']" nz-button style="width: 100%; display: block">{{"STORES_LOCATION" | translate }} <i class="anticon anticon-right-circle"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="utils__title">
+          <strong>{{"ITEM_INFO" | translate }}</strong>
+        </div>
+        <div class="utils__titleDescription">
+          {{"Provide some details about Item & utilization .." | translate}}
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <!-- <div class="col-lg-6">
+              <cui-slider-card title="BALANCE" value="{{itemBalance}}" title2="BALANCE" value2="{{itemBalance}}"></cui-slider-card>
+            </div>
+            <div class="col-lg-6">
+              <cui-slider-card title="BALANCE" value="{{itemBalance}}" title2="BALANCE" value2="{{itemBalance}}"></cui-slider-card>
+            </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="utils__title">
+          <strong>{{"ITEM_STATISTICS" | translate }}</strong>
+        </div>
+        <div class="utils__titleDescription">
+          Statistics about the Item ..
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <cui-info-card form="stats" icon="database" type="primary"></cui-info-card>
+            <cui-info-card form="stats" icon="users" type="empty"></cui-info-card>
+          </div>
+          <div class="col-lg-6">
+            <cui-info-card form="stats" icon="bullhorn" type="success"></cui-info-card>
+            <cui-info-card form="stats" icon="price-tags" type="empty"></cui-info-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

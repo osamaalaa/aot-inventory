@@ -1,0 +1,84 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong>{{"TRANSACTIONS" | translate}}</strong>
+      <button class="float-right" nzType="primary" nz-button [routerLink]="['..']">{{"OPERATIONS" | translate}}</button>
+
+    </div>
+    <div class="utils__titleDescription">
+      {{"TRANSACTIONS" | translate}}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate}}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="input search text" (change)="searchItems()"
+                [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+        </div>
+        <nz-table #nestedTable [nzData]="transactionModelService.displayData" nzShowSizeChanger
+          [nzLoading]="isDataLoading">
+          <thead>
+            <tr>
+              <th nzShowExpand ></th>
+              <th>{{"STORE_NAME" | translate}}</th>
+              <th>{{"DOCUMENT_NAME" | translate}}</th>
+              <th>{{"INVENTORY_PERIOD" | translate}}</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-data [ngForOf]="nestedTable.data">
+              <tr >
+                <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.INV_TRANSACTIONS_ID]" (nzExpandChange)="expandParentRow($event,data.INV_TRANSACTIONS_ID)"></td>
+                <td *ngIf="lang == 'en'">{{ data.STORE_EN_NAME || data.STORE_AR_NAME }}</td>
+                <td *ngIf="lang == 'ar'">{{ data.STORE_AR_NAME }}</td>
+                <td *ngIf="lang == 'en'">{{ data.DOCUMENT_EN_NAME || data.DOCUMENT_AR_NAME }}</td>
+                <td *ngIf="lang == 'ar'">{{ data.DOCUMENT_AR_NAME }}</td>
+                <td *ngIf="lang == 'en'">{{ data.INVENTORY_PERIODS_EN_NAME }}</td>
+                <td *ngIf="lang == 'ar'">{{ data.INVENTORY_PERIODS_AR_NAME }}</td>
+              </tr>
+              <tr [nzExpand]="mapOfExpandData[data.INV_TRANSACTIONS_ID]">
+                <td></td>
+                <td colspan="7">
+                  <nz-table #innerTable [nzData]="cacheData[data.INV_TRANSACTIONS_ID]" nzSize="middle" [nzShowPagination]="false">
+                    <thead>
+                      <tr>
+                        <th>{{"ITEM_NAME" | translate}}</th>
+                        <th>{{"CURRENT_BALANCE" | translate}}</th>
+                        <th>{{"UNIT_QUANTITY" | translate}}</th>
+                        <th>{{"QTY_ON_HAND" | translate}}</th>
+                        <th>{{"UNITS_NAME" | translate}}</th>
+                      </tr>
+                    </thead>
+          <tbody>
+            <tr *ngFor="let data of innerTable.data">
+              <td *ngIf="lang == 'en'">{{ data.ITEM_EN_NAME }}</td>
+              <td *ngIf="lang == 'ar'">{{ data.ITEM_AR_NAME }}</td>
+              <td>{{ data.CURRENT_BALANCE }}</td>
+              <td>{{ data.UNIT_QUANTITY }}</td>
+              <td>{{ data.QTY_ON_HAND }}</td>
+              <td>{{ data.UNITS_NAME }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+        </td>
+        </tr>
+        </ng-template>
+        </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>

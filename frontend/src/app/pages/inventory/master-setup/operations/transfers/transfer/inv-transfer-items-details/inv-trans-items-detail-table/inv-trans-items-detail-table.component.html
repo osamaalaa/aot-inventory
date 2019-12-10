@@ -1,0 +1,58 @@
+<nz-table #detailsTable [nzData]="dataList" nzSize="small" [nzShowPagination]="false" [nzTitle]="header">
+    <thead>
+    <tr>
+      <!-- <th>{{"ARRANGEMENT_NO" | translate }}</th> -->
+      <th>{{"BATCH_NO" | translate }}</th>
+      <th>{{"SERIAL_NO" | translate }}</th>
+      <th>{{"UNIT_QTY" | translate }}</th>
+      <th>{{"DEFAULT_UNIT_QTY" | translate }}</th>
+      <th>{{"BASE_UNIT_QTY" | translate }}</th>
+      <th *ngIf="!readOnly">{{"ACTION" | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of detailsTable.data">
+      <td>
+        {{ data.BATCH_NUMBER }}
+      </td>
+      <td>
+        {{ data.SERIAL_NUMBER }}
+      </td>
+      <td>
+        {{ data.UNIT_QUANTITY }}
+      </td>
+      <td>
+        {{ data.DEFAULT_UNIT_QUANTITY }}
+      </td>
+      <td>
+        {{ data.BASE_UNIT_QUANTITY }}
+      </td>
+      <!-- <td>
+{{ data.NOTES }}
+</td> -->
+      <td *ngIf="!readOnly">
+        <div class="editable-row-operations">
+          <nz-button-group>
+            <button [disabled]="readOnly" nz-button nzType="primary"
+            (click)="onEditClick.emit(data)"><i nz-icon nzType="edit"
+                nzTheme="outline"></i></button>
+            <!-- <button [disabled]="readOnly" nz-button nzType="danger" nz-popconfirm
+              nzTitle="Are you sure to delete this Detail ?"
+              (nzOnConfirm)="onDeleteClick.emit(data)"><i nz-icon nzType="delete"
+                nzTheme="fill"></i></button> -->
+          </nz-button-group>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<ng-template #header let-data="nzData">
+    <div class="row">
+       <div class="col-md-10">
+          <h6>{{"ITEMS_DETAILS" | translate }}</h6>
+       </div>
+       <div class="col-md-2 ">
+        <ng-content selector=".details-table-button"></ng-content>
+       </div>
+    </div>
+  </ng-template>

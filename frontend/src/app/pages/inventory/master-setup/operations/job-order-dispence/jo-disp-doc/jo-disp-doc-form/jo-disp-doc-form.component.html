@@ -1,0 +1,221 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="form" role="form">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="STORES_ID">{{"STORE" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-tree-select  [nzNodes]="storeList" nzShowSearch
+                nzPlaceHolder="{{'PLEASE_SELECT' | translate }}" formControlName="STORES_ID">
+              </nz-tree-select>
+              <div *ngFor="let validation of validation_messages.STORES_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="STORES_ID.hasError(validation.type) && (STORES_ID.dirty || STORES_ID.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="BASE_DOCUMENT_ID">{{"BASE_DOCUMENT" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_BASE_DOCUMENT' | translate }}" formControlName="BASE_DOCUMENT_ID">
+                <nz-option *ngFor="let item of baseDocumentId" [nzValue]="item.BASE_DOCUMENT_ID"
+                  [nzLabel]="item.SUBSIDARIE_EN_NAME">
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.BASE_DOCUMENT_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="BASE_DOCUMENT_ID.hasError(validation.type) && (BASE_DOCUMENT_ID.dirty || BASE_DOCUMENT_ID.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+
+
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"INVENTORY_PERIOD" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_INVENTORY_PERIOD' | translate }}" formControlName="INVENTORY_PERIODS_ID">
+                <nz-option *ngFor="let item of inverntoryPeriodsList" [nzValue]="item.INVENTORY_PERIODS_ID"
+                  [nzLabel]="item.EN_NAME">
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.INVENTORY_PERIODS_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="INVENTORY_PERIODS_ID.hasError(validation.type) && (INVENTORY_PERIODS_ID.dirty || INVENTORY_PERIODS_ID.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"DOCUMENT_DATE" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <cui-datepicker nzFormat="dd-MMM-yyyy" nzPlaceHolder="{{'START_DATE' | translate }}" formControlName="DOCUMENT_DATE">
+                </cui-datepicker>
+              <div *ngFor="let validation of validation_messages.DOCUMENT_DATE">
+                <nz-form-explain class="red-color"
+                  *ngIf="DOCUMENT_DATE.hasError(validation.type) && (DOCUMENT_DATE.dirty || DOCUMENT_DATE.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"DOCUMENT_NO" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input maxlength="25" nz-input name="DOCUMENT_NO" type="text" id="DOCUMENT_NO" placeholder="{{'DOCUMENT_NO'| translate }}"
+                formControlName="DOCUMENT_NO">
+              <div *ngFor="let validation of validation_messages.DOCUMENT_NO">
+                <nz-form-explain class="red-color"
+                  *ngIf="DOCUMENT_NO.hasError(validation.type) && (DOCUMENT_NO.dirty || DOCUMENT_NO.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="BASE_DOCUMENT_TYPE_ID">{{"BASE_DOCUMENT_TYPE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_BASE_DOCUMENT_TYPE' | translate }}" formControlName="BASE_DOCUMENT_TYPE_ID">
+                <nz-option *ngFor="let item of documentTypeList" [nzValue]="item.DOCUMENT_TYPE_ID"
+                  [nzLabel]="item.AR_NAME">
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.BASE_DOCUMENT_TYPE_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="BASE_DOCUMENT_TYPE_ID.hasError(validation.type) && (BASE_DOCUMENT_TYPE_ID.dirty || BASE_DOCUMENT_TYPE_ID.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"DISPENSE_DATE" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <cui-datepicker nzFormat="dd-MMM-yyyy" nzPlaceHolder="{{'START_DATE' | translate }}" formControlName="DSP_DATE">
+                </cui-datepicker>
+              <div *ngFor="let validation of validation_messages.DSP_DATE">
+                <nz-form-explain class="red-color"
+                  *ngIf="DSP_DATE.hasError(validation.type) && (DSP_DATE.dirty || DSP_DATE.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="DOCUMENT_TYPE_ID">{{"DOCUMENT_TYPE" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select nzShowSearch [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_DOCUMENT_TYPE' | translate }}" name="DOCUMENT_TYPE_ID" formControlName="DOCUMENT_TYPE_ID">
+                <nz-option *ngFor="let doctype of Documnettypelist" [nzValue]="doctype.DOCUMENT_TYPE_ID"
+                  [nzLabel]="doctype.AR_NAME"></nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.DOCUMENT_TYPE_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="DOCUMENT_TYPE_ID.hasError(validation.type) && (DOCUMENT_TYPE_ID.dirty || DOCUMENT_TYPE_ID.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"DELIVERY_DATE" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <cui-datepicker nzFormat="dd-MMM-yyyy" nzPlaceHolder="{{'DELIVERY_DATE' | translate }}" formControlName="DELIVERY_DATE">
+                </cui-datepicker>
+              <div *ngFor="let validation of validation_messages.DELIVERY_DATE">
+                <nz-form-explain class="red-color"
+                  *ngIf="DELIVERY_DATE.hasError(validation.type) && (DELIVERY_DATE.dirty || DELIVERY_DATE.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="DELIVERED_BY">{{"DELIVERED_BY" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input maxlength="250" nz-input name="DELIVERED_BY" type="text" id="DELIVERED_BY"
+                placeholder="{{'CHOOSE_DELIVERED_BY'| translate }}" formControlName="DELIVERED_BY">
+              <div *ngFor="let validation of validation_messages.DELIVERED_BY">
+                <nz-form-explain class="red-color"
+                  *ngIf="DELIVERED_BY.hasError(validation.type) && (DELIVERED_BY.dirty || DELIVERED_BY.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="DELIVERED_TO">{{"DELIVERED_TO" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input maxlength="250" nz-input name="DELIVERED_TO" type="text" id="DELIVERED_TO"
+                placeholder="{{'CHOOSE_DELIVERED_TO'| translate }}" formControlName="DELIVERED_TO">
+              <div *ngFor="let validation of validation_messages.DELIVERED_TO">
+                <nz-form-explain class="red-color"
+                  *ngIf="DELIVERED_TO.hasError(validation.type) && (DELIVERED_TO.dirty || DELIVERED_TO.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"NOTES" | translate }}</nz-form-label>
+            <nz-form-control>
+              <textarea maxlength="1024" rows="3" nz-input id="NOTES" formControlName="NOTES"
+                placeholder="{{'NOTES'| translate }}"></textarea>
+            </nz-form-control>
+            <div *ngFor="let validation of validation_messages.NOTES">
+              <nz-form-explain class="red-color"
+                *ngIf="NOTES.hasError(validation.type) && (NOTES.dirty || NOTES.touched)">
+               {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

@@ -1,0 +1,76 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="itemAliasForm" (ngSubmit)="submitForm()" role="form">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="ITEM_CODE">{{"ITEM_CODE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <input nz-input name="ITEM_CODE" type="text" id="ITEM_CODE" placeholder="{{'ITEM_CODE'| translate }}"
+                formControlName="ITEM_CODE">
+              <div *ngFor="let validation of validation_messages.ITEM_CODE">
+                <nz-form-explain class="red-color"
+                  *ngIf="ITEM_CODE.hasError(validation.type) && (ITEM_CODE.dirty || ITEM_CODE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="ALIASES_TYPE_ID">{{"ALIAS_TYPE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-select nzShowSearch [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_ALIAS_TYPE' | translate }}" formControlName="ALIASES_TYPE_ID">
+                <nz-option *ngFor="let aliasType of aliasTypeList" [nzValue]="aliasType.LOOKUP_DETAIL_ID"
+                  [nzLabel]="lang == 'ar' ? aliasType.PRIMARY_NAME : aliasType.SECONDARY_NAME"></nz-option>
+
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.ALIASES_TYPE_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="ALIASES_TYPE_ID.hasError(validation.type) && (ALIASES_TYPE_ID.dirty || ALIASES_TYPE_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="DEFAULT_ALIASES">{{"DEFAULT_ALIASES" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <label nz-checkbox formControlName="DEFAULT_ALIASES">{{"DEFAULT_ALIAS" | translate }}</label>
+              <div *ngFor="let validation of validation_messages.DEFAULT_ALIASES">
+                <nz-form-explain class="red-color"
+                  *ngIf="DEFAULT_ALIASES.hasError(validation.type) && (DEFAULT_ALIASES.dirty || DEFAULT_ALIASES.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-actions">
+            <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+            <button nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- <div class="footer-button">
+  <button type="button" (click)="cancel()" class="ant-btn" style="margin-right: 8px;"><span>{{"CANCEL" | translate }}</span></button>
+  <button type="submit" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>{{"SAVE" | translate }}</span></button>
+</div> -->

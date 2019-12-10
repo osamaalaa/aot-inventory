@@ -1,0 +1,106 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="itemSupplierForm" (ngSubmit)="submitForm()" role="form">
+  <h4 class="text-black mb-3">
+    <strong>{{"MAIN_INFO" | translate }}</strong>
+  </h4>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <!-- <div class="col-lg-6">
+                <nz-form-item>
+                  <nz-form-label nzFor="title">{{"ITEM_SUPPLIER_ID" | translate }}</nz-form-label>
+                  <nz-form-control>
+                    <input nz-input name="ITEMS_SUPPLIERS_ID" type="text" id="ITEMS_SUPPLIERS_ID" placeholder="{{'ITEM_SUPPLIER_ID'| translate }}" formControlName="ITEMS_SUPPLIERS_ID">
+                    <div *ngFor="let validation of validation_messages.ITEMS_SUPPLIERS_ID">
+                        <nz-form-explain *ngIf="ITEMS_SUPPLIERS_ID.hasError(validation.type) && (ITEMS_SUPPLIERS_ID.dirty || ITEMS_SUPPLIERS_ID.touched)">
+                            {{validation.message | translatecui}}
+                        </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item >
+            </div> -->
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="SUPPLIER_ID">{{"SUPPLIER" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-select style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_SUPPLIERS' | translate }}"
+                formControlName="SUPPLIER_ID">
+                <nz-option *ngFor="let Supplier of Supplierlist" [nzValue]="Supplier.SUPPLIER_ID"
+                  [nzLabel]="lang == 'ar' ? Supplier.AR_NAME : Supplier.EN_NAME">
+
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.SUPPLIER_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="SUPPLIER_ID.hasError(validation.type) && (SUPPLIER_ID.dirty || SUPPLIER_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"SUPPLIER_ITEM_CODE" | translate }}</nz-form-label>
+            <nz-form-control>
+              <input nz-input name="SUPPLIER_ITEM_CODE" type="text" id="SUPPLIER_ITEM_CODE"
+                placeholder="{{'SUPPLIER_ITEM_CODE'| translate }}" formControlName="SUPPLIER_ITEM_CODE">
+              <div *ngFor="let validation of validation_messages.SUPPLIER_ITEM_CODE">
+                <nz-form-explain
+                  *ngIf="SUPPLIER_ITEM_CODE.hasError(validation.type) && (SUPPLIER_ITEM_CODE.dirty || SUPPLIER_ITEM_CODE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"ITEM_COST" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="ITEM_COST"
+                nzPlaceHolder="{{'ITEM_COST' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.ITEM_COST">
+                <nz-form-explain class="red-color"
+                  *ngIf="ITEM_COST.hasError(validation.type) && (ITEM_COST.dirty || ITEM_COST.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="UNITS_ID">{{"UNIT" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_UNIT' | translate }}" formControlName="UNITS_ID">
+                <nz-option *ngFor="let unit of unitList" [nzValue]="unit.LOOKUP_DETAIL_ID"
+                  [nzLabel]="lang == 'ar' ? unit.PRIMARY_NAME : unit.SECONDARY_NAME">
+
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.UNITS_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="UNITS_ID.hasError(validation.type) && (UNITS_ID.dirty || UNITS_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="form-actions">
+          <button type="submit" nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+          <button type="button" nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

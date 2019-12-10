@@ -1,0 +1,86 @@
+<!-- <div class="title login-heading">
+  <h1>
+    <strong>{{"WELCOME_TO_AOT" | translate }}</strong>
+  </h1>
+  <p>
+    Enterprise Ver 1.1.
+    <br />
+    For assistance, please contact us - <strong>{{"SUPPORT@AOT.COM.SA" | translate }}</strong> /
+    <strong>{{"AOT" | translate }}</strong>
+  </p>
+</div> -->
+<div class="block login-form">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="inner">
+        <div class="form">
+          <h4 class="text-uppercase">
+            <strong>{{"LOG_IN" | translate }}</strong>
+          </h4>
+          <br />
+          <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="submitForm()" role="form">
+            <nz-form-item>
+              <nz-form-label nzFor="email">{{"USER_NAME" | translate }}</nz-form-label>
+              <nz-form-control>
+                <nz-input-group [nzPrefix]="prefixUser">
+                  <input nz-input id="email" formControlName="email" placeholder="{{'USERNAME'| translate }}">
+                </nz-input-group>
+                <!-- <nz-form-explain *ngIf="email.errors || email.dirty">
+                  Please input your User Name
+                </nz-form-explain> -->
+
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label nzFor="password">{{"PASSWORD" | translate }}</nz-form-label>
+              <nz-form-control>
+                <nz-input-group [nzPrefix]="prefixLock">
+                  <input type="password" nz-input id="password" placeholder="{{'PASSWORD'| translate }}" formControlName="password">
+                </nz-input-group>
+                <!-- <nz-form-explain *ngIf="password.dirty && password.errors">
+                  Please input your Password
+                </nz-form-explain> -->
+              </nz-form-control>
+            </nz-form-item>
+            <div>
+              <label nz-checkbox>
+                {{"REMEMBER_ME" | translate}}
+              </label>
+              <!-- <a href routerLink="/user/forgot" class="login-form-forgot pull-right utils__link--blue utils__link--underlined">{{"FORGOT_PASSWORD" | translate }}</a> -->
+            </div>
+            <div class="form-actions">
+              <button nz-button nzType="primary" class="width-150 mr-3">
+                {{"SIGN_IN" | translate}}
+              </button>
+              <!-- <span class="register-link">
+                <a href="javascript: void(0);" class="utils__link--blue utils__link--underlined">{{"REGISTER" | translate }}</a>
+                if you don&#39;t have an account
+              </span> -->
+            </div>
+            <!-- <div class="form-group">
+              <p>{{"USE_ANOTHER_SERVICE_TO_SIGN_IN" | translate }}</p>
+              <div class="mt-2">
+                <a href="javascript: void(0);" class="btn btn-icon mr-2" disabled>
+                  <i class="icmn-facebook"></i>
+                </a>
+                <a href="javascript: void(0);" class="btn btn-icon mr-2" disabled>
+                  <i class="icmn-google"></i>
+                </a>
+                <a href="javascript: void(0);" class="btn btn-icon mr-2" disabled>
+                  <i class="icmn-windows"></i>
+                </a>
+                <a href="javascript: void(0);" class="btn btn-icon mr-2" disabled>
+                  <i class="icmn-twitter"></i>
+                </a>
+              </div>
+            </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
+<ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+
+

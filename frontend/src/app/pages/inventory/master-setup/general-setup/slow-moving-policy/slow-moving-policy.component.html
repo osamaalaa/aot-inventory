@@ -1,0 +1,155 @@
+
+
+
+<div class="card">
+    <div class="card-header">
+      <div class="utils__title">
+        <strong>{{"SLOW_MOVING_POLICY_SETUP" | translate }}</strong>
+      </div>
+      <div class="utils__titleDescription">
+        {{"SLOW_MOVING_POLICY_SETUP" | translate }}
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="partition">
+              <div class="cui-product-details-controls pull-right">
+                  <!-- <nz-dropdown>
+                    <a nz-dropdown>
+                      Actions <i nz-icon type="down"></i>
+                    </a>
+                    <ul nz-menu nzSelectable>
+                      <li nz-menu-item [routerLink]="['add']">
+                        <i nz-icon nzType="plus" nzTheme="outline"></i> New Slow Moving Policy
+                      </li>
+                    </ul>
+                  </nz-dropdown> -->
+                  <button [routerLink]="['add']" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="plus" nzTheme="outline"></i></button>
+
+                </div>
+               <br/>
+            <div class="partitionHead">
+              <span class="partitionName">{{"SEARCH" | translate }}</span>
+            </div>
+            <div class="input-group">
+              <nz-input-group [nzSuffix]="suffixIconSearch">
+                <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                  [(ngModel)]="searchText">
+              </nz-input-group>
+              <ng-template #suffixIconSearch>
+                <i nz-icon type="search"></i>
+              </ng-template>
+            </div>
+            <br />
+
+          </div>
+          <nz-table #itemsDataTable  [nzData]="slowMovingPolicyService.displayData"  class="utils__scrollTable" nzShowSizeChanger nzShowTotal [nzLoading]="isDataLoading">
+              <thead (nzSortChange)="sortData($event)" nzSingleSort>
+                <tr>
+                  <!-- <th class="text-center" nzShowCheckbox></th> -->
+                  <th class="text-center" nzShowSort nzSortKey="SLOW_POLICY_ID">
+                    {{'SLOW_POLICY_ID' | translate}} 
+                  </th>
+                  <!-- <th class="text-center" nzShowSort nzSortKey="EN_NAME">
+                   Name
+                  </th> -->
+                  <th *ngIf="lang == 'en'" class="text-center" nzShowSort nzSortKey="EN_DESCRIPTION">
+                   {{'DESCRIPTION' | translate}}
+                  </th>
+                  <th *ngIf="lang == 'ar'" class="text-center" nzShowSort nzSortKey="AR_DESCRIPTION">
+                   {{'DESCRIPTION' | translate}}
+                  </th>
+
+                  <th class="text-center" nzShowSort nzSortKey="SLOW_MOVING_POLICY_TYPE">
+                     {{'SLOW_MOVING_POLICY_TYPE' | translate}}
+                  </th>
+                  <th class="text-center" nzShowSort nzSortKey="SLOW_MOVING_MINIMUM_VALUE">
+                     {{'SLOW_MOVING_MINIMUM_VALUE' | translate}}
+                  </th>
+                  <th class="text-center" nzShowSort nzSortKey="SLOW_MOVING_POLICY_DAYS">
+                  {{'SLOW_MOVING_MINIMUM_DAYS' | translate}}
+                  </th>
+
+
+                  <th class="text-center">{{"ACTIONS" | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+                  <tr>
+                    <!--
+                      <td class="text-center" nzShowExpand [(nzExpand)]="mapOfExpandData[item.ITEMS_ID]"></td>
+                      -->
+                    <!-- <td nzShowCheckbox (nzCheckedChange)="refreshStatus()"></td> -->
+
+                    <td class="text-center">{{item.SLOW_POLICY_ID | translatenumber}}</td>
+                        <!-- <td class="text-center">{{item.EN_NAME}}</td> -->
+
+                                            <td  *ngIf="lang == 'en'" class="text-center">
+                                            {{item.EN_DESCRIPTION}}
+
+                                            </td>
+                                            <td  *ngIf="lang == 'ar'" class="text-center">
+                                            {{item.AR_DESCRIPTION}}
+
+                                            </td>
+
+                      <td class="text-center">{{item.SLOW_MOVING_POLICY_TYPE}}</td>
+                        <td class="text-center">{{item.SLOW_MOVING_MINIMUM_VALUE}}</td>
+                          <td class="text-center">{{item.SLOW_MOVING_POLICY_DAYS}}</td>
+
+
+
+
+
+
+                  <!--  <td class="text-center">{{item.EN_DESCRIPTION}}</td>-->
+
+
+                    <td class="text-center">
+                      <button nz-button class="mr-1" nzSize="small" [routerLink]="[item.SLOW_POLICY_ID]"><i nz-icon type="edit" theme="outline"></i>
+                        {{"EDIT" | translate }}</button>
+                      <button nz-popconfirm nzTitle="Are you sure to delete this Slow Moving Policy ?" (nzOnConfirm)="deleteSmovingPolicy(item.SLOW_POLICY_ID)"  nz-button class="mr-1" nzSize="small"><i nz-icon type="delete" theme="outline"></i>
+                        {{"REMOVE" | translate }}</button>
+                    </td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </nz-table>
+          <!-- <nz-table #itemsDataTable [nzData]="itemGroupModelService.displayData" class="utils__scrollTable" [nzShowPagination]="true">
+              <thead (nzSortChange)="sort($event)" nzSingleSort>
+                <tr>
+                  <th class="text-center" nzShowCheckbox></th>
+                  <th nzShowSort nzSortKey="ITEMS_GROUP_ID">{{"ITEM_GROUP_ID" | translate }}</th>
+                  <th nzShowSort nzSortKey="ITEMS_GROUP_CODE">{{"GROUP_CODE" | translate }}</th>
+                  <th nzShowSort nzSortKey="AR_NAME">{{"ARABIC_NAME" | translate }}</th>
+                  <th nzShowSort nzSortKey="EN_NAME">{{"ENGLISH_NAME" | translate }}</th>
+                  <th>{{"ACTION" | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+                      <tr *ngFor="let item of itemsgroupdate">
+                          <td nzShowCheckbox (nzCheckedChange)="refreshStatus()"></td>
+                        <td>{{item.ITEMS_GROUP_ID}}</td>
+                        <td>{{item.ITEMS_GROUP_CODE}}</td>
+                        <td>{{item.AR_NAME}}</td>
+                        <td>{{item.EN_NAME}}</td>
+                        <td class="text-center">
+                            <button nz-button class="mr-1" nzSize="small" [routerLink]="[item.ITEMS_ALIASES_ID]"><i nz-icon type="edit" theme="outline"></i>
+                              View</button>
+                            <button nz-popconfirm nzTitle="Are you sure to delete this Item Alias ?" (nzOnConfirm)="deleteItemAlias(item.ITEMS_ALIASES_ID)"  nz-button class="mr-1" nzSize="small"><i nz-icon type="delete" theme="outline"></i>
+                              Remove</button>
+                          </td>
+                      </tr>
+                    </ng-template>
+
+              </tbody>
+            </nz-table> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+

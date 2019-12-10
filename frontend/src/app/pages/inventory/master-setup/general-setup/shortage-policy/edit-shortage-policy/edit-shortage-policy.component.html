@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-header">
+      <div class="utils__title">
+        <div><strong>{{"EDIT_SHORTAGE_POLICY" | translate }}</strong></div>
+      </div>
+    </div>
+    <div class="card-body">
+        <app-shortage-policy-form    [formData]="EditshortagepolicyData"  (onSubmit)="updateShortagePolicy($event)" (onCancel)="navigateToList()"></app-shortage-policy-form >
+  </div>
+  </div>
+

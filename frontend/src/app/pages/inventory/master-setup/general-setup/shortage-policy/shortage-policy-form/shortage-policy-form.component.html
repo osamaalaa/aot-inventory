@@ -1,0 +1,121 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="ShortagePolicyForm" (ngSubmit)="submitForm()" role="form">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="EN_NAME">{{"ENGLISH_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input nz-input name="EN_NAME" type="text" id="EN_NAME" placeholder="{{'ENGLISH_NAME'| translate }}"
+                formControlName="EN_NAME">
+              <div *ngFor="let validation of validation_messages.EN_NAME">
+                <nz-form-explain class="red-color"
+                  *ngIf="EN_NAME.hasError(validation.type) && (EN_NAME.dirty || EN_NAME.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+
+          <nz-form-item>
+            <nz-form-label nzFor="AR_NAME">{{"ARABIC_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input nz-input name="AR_NAME" type="text" id="AR_NAME" placeholder="{{'ARABIC_NAME'| translate }}"
+                formControlName="AR_NAME">
+              <div *ngFor="let validation of validation_messages.AR_NAME">
+                <nz-form-explain class="red-color"
+                  *ngIf="AR_NAME.hasError(validation.type) && (AR_NAME.dirty || AR_NAME.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-6">
+            <nz-form-item>
+              <nz-form-label nzFor="MIN_QUANTITY">{{"MIN_QUANTITY" | translate }}</nz-form-label>
+              <nz-form-control>
+                <nz-input-number class="width-100"  formControlName="MIN_QUANTITY" nzPlaceHolder="{{'MIN_QUANTITY' | translate }}" [nzMin]="0"
+                  [nzStep]="0.1">
+                </nz-input-number>
+  
+                <div *ngFor="let validation of validation_messages.MIN_QUANTITY">
+                  <nz-form-explain class="red-color"
+                    *ngIf="MIN_QUANTITY.hasError(validation.type) && (MIN_QUANTITY.dirty || MIN_QUANTITY.touched)">
+                    {{validation.message | translatecui}}
+                  </nz-form-explain>
+                </div>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="col-lg-6">
+            <nz-form-item>
+              <nz-form-label nzFor="MAX_QUANTITY">{{"MAX_QUANTITY" | translate }}</nz-form-label>
+              <nz-form-control>
+                <nz-input-number class="width-100"  formControlName="MAX_QUANTITY" nzPlaceHolder="{{'MAX_QUANTITY' | translate }}" [nzMin]="0"
+                  [nzStep]="0.1">
+                </nz-input-number>
+  
+                <div *ngFor="let validation of validation_messages.MAX_QUANTITY">
+                  <nz-form-explain class="red-color"
+                    *ngIf="MAX_QUANTITY.hasError(validation.type) && (MAX_QUANTITY.dirty || MAX_QUANTITY.touched)">
+                    {{validation.message | translatecui}}
+                  </nz-form-explain>
+                </div>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+      </div>
+       <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <p style="margin-top: 7%;">
+              <label nz-checkbox formControlName="SHORTAGE_POLICY_TYPE">{{"SHORTAGE_POLICY_TYPE" | translate }}</label>
+            </p>
+          </nz-form-item>
+        </div>
+
+        <div class="col-lg-6">
+          <nz-form-item>
+            <p style="margin-top: 7%;">
+              <label nz-checkbox formControlName="SHORTAGE_POLICY_VALUE_TYPE">{{"SHORTAGE_POLICY_VALUE_TYPE" | translate }}</label>
+            </p>
+          </nz-form-item>
+
+        </div>
+      </div> 
+       <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="SHORTAGE_POLICY_VALUE">{{"SHORTAGE_POLICY_VALUE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="SHORTAGE_POLICY_VALUE"
+                nzPlaceHolder="{{'SHORTAGE_POLICY_VALUE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+              <div *ngFor="let validation of validation_messages.SHORTAGE_POLICY_VALUE">
+                <nz-form-explain class="red-color"
+                  *ngIf="SHORTAGE_POLICY_VALUE.hasError(validation.type) && (SHORTAGE_POLICY_VALUE.dirty || SHORTAGE_POLICY_VALUE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+        </div>
+      </div> 
+      <div class="col-lg-12">
+        <div class="form-actions">
+          <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+          <button nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

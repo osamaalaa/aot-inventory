@@ -1,0 +1,162 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="TaxSchemeDetailsForm" (ngSubmit)="submitForm()" role="form">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="EN_DESCRIPTION">{{"ENGLISH_DESCRIPTION" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <textarea maxlength="250" rows="3" nz-input id="EN_DESCRIPTION" formControlName="EN_DESCRIPTION"
+                placeholder="{{'ENGLISH_DESCRIPTION'| translate }}"></textarea>
+              <div *ngFor="let validation of validation_messages.EN_DESCRIPTION">
+                <nz-form-explain class="red-color"
+                  *ngIf="EN_DESCRIPTION.hasError(validation.type) && (EN_DESCRIPTION.dirty || EN_DESCRIPTION.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="AR_DESCRIPTION">{{"ARABIC_DESCRIPTION" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <textarea maxlength="250" rows="3" nz-input id="AR_DESCRIPTION" formControlName="AR_DESCRIPTION"
+                placeholder="{{'ARABIC_DESCRIPTION'| translate }}"></textarea>
+              <div *ngFor="let validation of validation_messages.AR_DESCRIPTION">
+                <nz-form-explain class="red-color"
+                  *ngIf="AR_DESCRIPTION.hasError(validation.type) && (AR_DESCRIPTION.dirty || AR_DESCRIPTION.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="TAX_TAXABLE">{{"TAX_TAXABLE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="TAX_TAXABLE"
+                nzPlaceHolder="{{'TAX_TAXABLE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+              <div *ngFor="let validation of validation_messages.TAX_TAXABLE">
+                <nz-form-explain class="red-color"
+                  *ngIf="TAX_TAXABLE.hasError(validation.type) && (TAX_TAXABLE.dirty || TAX_TAXABLE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="AUTO_CALC">{{"AUTO_CALC" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-input-number class="width-100" formControlName="AUTO_CALC" nzPlaceHolder="{{'AUTO_CALC' | translate }}"
+              [nzMin]="0" [nzStep]="1"></nz-input-number>
+            <nz-form-control>
+              <div *ngFor="let validation of validation_messages.AUTO_CALC">
+                <nz-form-explain class="red-color"
+                  *ngIf="AUTO_CALC.hasError(validation.type) && (AUTO_CALC.dirty || AUTO_CALC.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="MANDOTARY_TAX">{{"MANDOTARY_TAX" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="MANDATORY_TAX"
+                nzPlaceHolder="{{'MANDOTARY_TAX' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+              <div *ngFor="let validation of validation_messages.MANDOTARY_TAX">
+                <nz-form-explain class="red-color"
+                  *ngIf="MANDATORY_TAX.hasError(validation.type) && (MANDATORY_TAX.dirty || MANDATORY_TAX.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="USER_CHANGABLE">{{"USER_CHANGABLE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-input-number class="width-100" formControlName="USER_CHANGEABLE"
+              nzPlaceHolder="{{'USER_CHANGABLE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+            <nz-form-control>
+              <div *ngFor="let validation of validation_messages.USER_CHANGABLE">
+                <nz-form-explain class="red-color"
+                  *ngIf="USER_CHANGEABLE.hasError(validation.type) && (USER_CHANGEABLE.dirty || USER_CHANGEABLE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="TAX_VALUE_TYPE">{{"TAX_VALUE_TYPE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="TAX_VALUE_TYPE"
+                nzPlaceHolder="{{'TAX_VALUE_TYPE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+              <div *ngFor="let validation of validation_messages.TAX_VALUE_TYPE">
+                <nz-form-explain class="red-color"
+                  *ngIf="TAX_VALUE_TYPE.hasError(validation.type) && (TAX_VALUE_TYPE.dirty || TAX_VALUE_TYPE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="TAX_VALUE_TYPE_VALUE">{{"TAX_VALUE_TYPE_VALUE" | translate }}<span
+                class="red-color">*</span></nz-form-label>
+            <nz-input-number class="width-100" formControlName="TAX_VALUE_TYPE_VALUE"
+              nzPlaceHolder="{{'TAX_VALUE_TYPE_VALUE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+            <nz-form-control>
+              <div *ngFor="let validation of validation_messages.TAX_VALUE_TYPE_VALUE">
+                <nz-form-explain class="red-color"
+                  *ngIf="TAX_VALUE_TYPE_VALUE.hasError(validation.type) && (TAX_VALUE_TYPE_VALUE.dirty || TAX_VALUE_TYPE_VALUE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="CHARTS_OF_ACCOUNTS">{{"CHART_OF_ACCOUNTS" | translate }}</nz-form-label>
+            <nz-form-control>
+              <nz-tree-select [nzNodes]="chartsOfAccountList" nzShowSearch
+                nzPlaceHolder="{{'CHART_OF_ACCOUNTS' | translate }}" formControlName="CHART_OF_ACCOUNTS_ID">
+              </nz-tree-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-actions">
+            <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+            <button type="button" nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,44 @@
+<!-- <form nz-form [formGroup]="form" (ngSubmit)="submitForm()"> -->
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzFor="EMPLOYEE_ID">{{"EMPLOYEE" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch       nzMode="multiple"
+          [nzLoading]="isfetchingLookup" style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_EMPLOYEE' | translate }}"
+            [(ngModel)]="selectedEmployeeList">
+            <nz-option *ngFor="let emp of employeeList" [nzValue]="emp"
+            [nzLabel]="emp.FIRST_NAME + ' ' + emp.SECOND_NAME + ' ' + emp.LAST_NAME "></nz-option>
+          </nz-select>
+          <!-- <div *ngFor="let validation of validation_messages.EMPLOYEE_ID">
+            <nz-form-explain class="red-color"
+              *ngIf="EMPLOYEE_ID.hasError(validation.type) && (EMPLOYEE_ID.dirty || EMPLOYEE_ID.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <!-- <div nz-row nzGutter="8">
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"NOTES" | translate }}</nz-form-label>
+        <nz-form-control>
+          <textarea maxlength="1024" rows="3" nz-input id="NOTES" formControlName="NOTES"
+            placeholder="{{'NOTES'| translate }}"></textarea>
+        </nz-form-control>
+        <div *ngFor="let validation of validation_messages.NOTES">
+          <nz-form-explain class="red-color" *ngIf="NOTES.hasError(validation.type) && (NOTES.dirty || NOTES.touched)">
+            {{validation.message | translatecui}}
+          </nz-form-explain>
+        </div>
+      </nz-form-item>
+    </div>
+  </div> -->
+<!-- </form> -->
+<div class="footer-button">
+  <button type="button" (click)="cancel()" class="ant-btn" style="margin-right: 8px;"><span>{{"CANCEL" | translate }}</span></button>
+  <button type="submit" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>{{"SAVE" | translate }}</span></button>
+</div>
+

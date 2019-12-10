@@ -1,0 +1,30 @@
+<nz-table nzBordered #itemsDataTable [nzData]="itemsList" class="utils__scrollTable" nzShowSizeChanger
+nzShowTotal >
+<thead  nzSingleSort>
+  <tr>
+    <th [nzWidth]="'150px'" nzShowSort nzSortKey="ITEM_CODE" class="text-center">{{"ITEM_CODE" | translate }}
+    </th>
+    <th class="text-center">{{"ITEM_NAME" | translate }}</th>
+    <th class="text-center">{{"OPEN_BALANCE" | translate }}</th>
+    <th class="text-center">{{"CURRENT_BALANCE" | translate }}</th>
+    <th class="text-center">{{"QTY_ON_HAND" | translate }}</th>
+    <th class="text-center">{{"QTY_RESERVED" | translate }}</th>
+    <th class="text-center" nzSortKey="STORE_EN_NAME">{{"STORE_NAME" | translate }}</th>
+  </tr>
+</thead>
+<tbody>
+  <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+    <tr>
+      <td class="text-center">{{item.ITEM_CODE}}</td>
+      <td *ngIf="lang == 'en'" class="text-center">{{item.ITEM_EN_NAME}}</td>
+      <td *ngIf="lang == 'ar'" class="text-center">{{item.ITEM_AR_NAME}}</td>
+      <td class="text-center">{{item.OPEN_BALANCE}}</td>
+      <td class="text-center">{{item.CURRENT_BALANCE}}</td>
+      <td class="text-center">{{item.QTY_ON_HAND}}</td>
+      <td class="text-center">{{item.QTY_RESERVED}}</td>
+      <td *ngIf="lang == 'en'" class="text-center">{{item.STORE_EN_NAME}}</td>
+      <td *ngIf="lang == 'ar'" class="text-center">{{item.STORE_AR_NAME}}</td>
+    </tr>
+  </ng-template>
+</tbody>
+</nz-table>

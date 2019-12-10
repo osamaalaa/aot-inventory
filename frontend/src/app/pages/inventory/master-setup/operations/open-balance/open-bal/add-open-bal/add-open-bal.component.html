@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"INV_OPEN_BALANCE_SETUP" | translate }}</strong>
+        <div class="pull-right">
+          <button class="but-class" nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="currentStep==0"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button>
+          <button class="but-class" nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="currentStep==1 && operationMasterService.getItems().length > 0 && !workFlowInitiateDone">{{"SUBMIT_REQ" | translate }}</button>
+          <button nz-button nzType="primary"  [routerLink]="['..']">{{"OPEN_BAL_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <nz-steps [nzCurrent]="currentStep">
+      <nz-step [nzTitle]="'OPEN_BALANCE' | translate" [nzIcon]="loadingStep ? 'loading' : ''"></nz-step>
+      <nz-step [nzTitle]="'ITEMS' | translate"></nz-step>
+    </nz-steps>
+
+    <!--    STEP-1    -->
+    <app-open-balance-form #formComp *ngIf="currentStep==0" >
+    </app-open-balance-form>
+
+    <!--    STEP-2 -->
+    <div *ngIf="currentStep==1">
+      <app-open-bal-items-table [readOnly]="workFlowInitiateDone" [INV_OPEN_BALANCE_ID]="INV_OPEN_BALANCE_ID">
+      </app-open-bal-items-table>
+    </div>
+  </div>
+</div>
+

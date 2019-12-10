@@ -1,0 +1,98 @@
+<nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'" (nzVisibleChange)="badgeCountIncrease()">
+  <!-- <a nz-dropdown class="dropdown">
+
+
+    <nz-spin [nzSpinning]="spinning">
+      <div *ngIf="!spinning">
+        <nz-avatar nzIcon="user" [nzSize]="'large'" class="avatar" [nzSrc]="img_url"></nz-avatar>
+      </div>
+    </nz-spin>
+
+
+  </a> -->
+  <a nz-dropdown class="dropdown">
+    <strong>
+      <span *ngIf="lang == 'en'">
+          {{EN_NAME}}
+      </span>
+      <span *ngIf="lang == 'ar'">
+          {{AR_NAME || EN_NAME}}
+      </span>
+    </strong>
+    <!-- {{lang == 'en' ? userName : arabicName}} -->
+  </a>
+  <ul nz-menu class="profile-list">
+    <li nz-menu-item>
+      <a routerLink="/basic/profile">
+        <i class="menuIcon icmn-user"></i>
+        {{"USER_PROFILE" | translate}}
+      </a>
+    </li>
+    <li nz-menu-divider></li>
+    <li nz-menu-item>
+      <a routerLink="/dashboard/beta">
+        <i class="menuIcon icmn-home"></i>
+        {{"HOME" | translate}}
+      </a>
+    </li>
+    <li nz-menu-divider></li>
+    <li nz-menu-item>
+      <a href="javascript: void(0);" (click)="logout()">
+        <i class="menuIcon icmn-exit"></i>
+        {{"LOGOUT" | translate}}
+      </a>
+    </li>
+  </ul>
+  <!-- <ul nz-menu class="profile-list">
+    <li nz-menu-item>
+      <strong>{{"HELLO" | translate}}, {{lang == 'en' ? userName : arabicName}}</strong>
+      <div>
+        <strong class="mr-1">
+          {{"EMPLOYEE_ID" | translate}}:
+        </strong>
+        {{employee}}
+      </div>
+      <div>
+        <strong>
+          {{"ROLE" | translate}}:
+        </strong>
+        {{position}}
+      </div>
+    </li>
+    <li nz-menu-divider></li>
+    <li nz-menu-item>
+      <div>
+        <strong>
+          {{"EMAIL" | translate}}:
+        </strong>
+        {{email}}
+        <br />
+        <strong>
+          {{"PHONE" | translate}}:
+        </strong>
+        {{phone}}
+      </div>
+    </li>
+    <li nz-menu-divider></li>
+    <li nz-menu-item>
+      <a routerLink="/basic/profile">
+        <i class="menuIcon icmn-user"></i>
+        {{"USER_PROFILE" | translate}}
+      </a>
+    </li>
+    <li nz-menu-divider></li>
+    <li nz-menu-item>
+      <a routerLink="/dashboard/beta">
+        <i class="menuIcon icmn-home"></i>
+        {{"HOME" | translate}}
+      </a>
+    </li>
+    <li nz-menu-divider></li>
+    <li nz-menu-item>
+      <a href="javascript: void(0);" (click)="logout()">
+        <i class="menuIcon icmn-exit"></i>
+        {{"LOGOUT" | translate}}
+      </a>
+    </li>
+  </ul> -->
+</nz-dropdown>

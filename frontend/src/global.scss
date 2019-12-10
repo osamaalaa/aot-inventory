@@ -1,0 +1,276 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap-css-only/css/bootstrap.min.css';
+@import 'assets/styles/Antd/antd.cleanui';
+@import 'assets/styles/Bootstrap/bootstrap.cleanui';
+@import 'assets/styles/CleanUI/cleanui';
+@import 'assets/styles/Nprogress/nprogress.cleanui';
+@import 'assets/styles/Chartist/chartist.cleanui';
+.red-color {
+  color: red;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+nz-date-picker ::ng-deep .ant-calendar-picker {
+  width: 100% !important;
+}
+
+
+/************************TABLE CSS**********************************/
+
+@import "src/assets/styles/mixins.scss";
+.search-box {
+  padding: 8px;
+}
+
+.search-box input {
+  width: 188px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.search-box button {
+  width: 90px;
+}
+
+.search-button {
+  margin-right: 8px;
+}
+
+.partition {
+  margin-bottom: rem(40);
+}
+
+.partitionHead {
+  position: relative;
+  margin-bottom: rem(10);
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: calc(50% - 1px);
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba($black, 0.1);
+  }
+}
+
+.partitionName {
+  font-size: rem(15);
+  font-weight: bold;
+  margin-bottom: rem(5);
+  position: relative;
+  background-color: $white;
+  padding-right: rem(10);
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.cui-product-list-thumbnail {
+  display: inline-block;
+  width: 4.28rem;
+  height: 4.28rem;
+  border: 1px solid #e4e9f0;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+  text-align: center;
+  img {
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.float-right {
+  float: right;
+}
+
+
+/****************************TABLE css end*************************************/
+
+.footer-button {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  border-top: 1px solid rgb(232, 232, 232);
+  padding: 10px 16px;
+  text-align: right;
+  left: 0px;
+  background: #fff;
+}
+
+.margin-button {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+
+//green theme
+.anticon {
+  color: #169F85;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background: #419479;
+  border-color: #169F85;
+}
+
+.anticon-delete {
+  color: #fb434a
+}
+
+button {
+  .anticon-plus,
+  .anticon-check-circle,
+  .anticon-search,
+  .anticon-loading {
+    color: $white;
+  }
+  .anticon-close-circle {
+    color: #fb434a
+  }
+  &:hover {
+    .anticon-close-circle {
+      color: $white;
+    }
+  }
+}
+
+.ant-btn-icon-only {
+  .anticon-edit {
+    color: $white;
+  }
+}
+
+.ant-dropdown-menu-item>a {
+  &:hover {
+    color: #1ABB9C;
+  }
+}
+
+.ant-menu-submenu-arrow {
+  &:after,
+  &:before {
+    background-image: inherit;
+  }
+}
+
+.ant-table,
+.ant-tabs-nav-container {
+  font-size: 14px !important;
+}
+
+.ant-table-thead>tr>th {
+  color: $white;
+}
+
+.ant-table-title {
+  color: $white;
+  background-color: #1F473A !important;
+}
+
+.ant-table-small {
+  .ant-table-body {
+    margin: 0px 0px!important;
+  }
+  .ant-table-title {
+    padding: 8px 4px;
+  }
+  .ant-table-thead>tr>th {
+    color: $white;
+    background-color: #2A604E !important;
+    padding: 8px!important;
+  }
+  .ant-table-header-column {
+    font-size: 12px;
+    letter-spacing: .5px;
+  }
+  h6 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+}
+
+.ant-table-thead>tr>th.ant-table-column-has-actions.ant-table-column-has-sorters:hover {
+  color: $white;
+  background-color: #1ABB9C !important;
+}
+
+// scroll top button
+body .ant-back-top-content {
+  background: #1F473A !important;
+}
+
+body .ant-back-top-content:hover {
+  background: #169F85 !important;
+}
+
+.badge {
+  padding: .5em .4em;
+  background-color: #2A604E !important;
+}
+
+//bootstrap custom
+.btn-outline-default {
+  color: #26B99A !important;
+  border-color: #26B99A !important;
+  &:hover,
+  &:focus {
+    color: $white !important;
+    border-color: #169F85!important;
+    background-color: #169F85!important;
+  }
+}
+
+.utils__title {
+  color: #169F85;
+}
+
+.ant-select-tree {
+  max-height: 400px;
+}
+
+.ant-steps-item {
+  margin-bottom: 10px;
+}
+
+.cui-profile-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @media (max-width: 767px) {
+    display: block;
+  }
+  .ant-btn:last-child {
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+  .ant-btn:first-child {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+  }
+  .ant-btn-default {
+    text-align: left !important;
+    max-width: 48%;
+    margin: 10px 10px 10px 0;
+    border-color: #169F85;
+    i {
+      transition: 0.3s;
+    }
+    @media (max-width: 767px) {
+      max-width: 100%;
+    }
+    &:hover {
+      i {
+        padding-right: 10px;
+        //transition: 0.3s;
+      }
+    }
+  }
+}

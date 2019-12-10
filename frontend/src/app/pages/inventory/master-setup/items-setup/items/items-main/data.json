@@ -1,0 +1,248 @@
+{
+  "taskTableData": [
+    {
+      "name": "Mark Stevenson",
+      "username": "@mdo",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "name": "Jacob Hoffman",
+      "username": "@fat",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "name": "Larry Page",
+      "username": "@twitter",
+      "checked": false,
+      "disabled": false
+    },
+    {
+      "name": "Mark Stevenson",
+      "username": "@mdo",
+      "checked": false,
+      "disabled": false
+    }
+  ],
+  "rangeSlider": {
+    "first": 34,
+    "second": [
+      18,
+      67
+    ]
+  },
+  "weekChartData": {
+    "labels": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri"
+    ],
+    "series": [
+      [
+        5,
+        2,
+        4,
+        2,
+        5
+      ],
+      [
+        3,
+        1,
+        5,
+        4,
+        2
+      ],
+      [
+        0,
+        4,
+        3,
+        5,
+        1
+      ]
+    ]
+  },
+  "monthChartData": {
+    "labels": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "series": [
+      [
+        5,
+        4,
+        3,
+        7,
+        5,
+        10,
+        3,
+        4,
+        8,
+        10,
+        6,
+        8
+      ],
+      [
+        3,
+        2,
+        9,
+        5,
+        4,
+        6,
+        4,
+        6,
+        7,
+        8,
+        7,
+        4
+      ]
+    ]
+  },
+  "databaseTable": [
+    {
+      "key": "1",
+      "name": "Damon",
+      "position": "5516 Adolfo Green",
+      "office": "Littelhaven",
+      "age": 18,
+      "date": "2014/06/13",
+      "salary": 553.536
+    },
+    {
+      "key": "2",
+      "name": "Miracle",
+      "position": "176 Hirthe Squares",
+      "office": "Ryleetown",
+      "age": 35,
+      "date": "2013/09/27",
+      "salary": 784.802
+    },
+    {
+      "key": "3",
+      "name": "Torrey",
+      "position": "1995 Richie Neck",
+      "office": "West Sedrickstad",
+      "age": 15,
+      "date": "2014/09/12",
+      "salary": 344.302
+    }
+  ],
+  "calendarData": {
+    "eight": [
+      {
+        "type": "warning",
+        "content": "This is warning event."
+      },
+      {
+        "type": "success",
+        "content": "This is usual event."
+      }
+    ],
+    "ten": [
+      {
+        "type": "warning",
+        "content": "This is warning event."
+      },
+      {
+        "type": "success",
+        "content": "This is usual event."
+      },
+      {
+        "type": "error",
+        "content": "This is error event."
+      }
+    ],
+    "eleven": [
+      {
+        "type": "warning",
+        "content": "This is warning event"
+      },
+      {
+        "type": "success",
+        "content": "This is very long usual event........"
+      },
+      {
+        "type": "error",
+        "content": "This is error event 1."
+      },
+      {
+        "type": "error",
+        "content": "This is error event 2."
+      },
+      {
+        "type": "error",
+        "content": "This is error event 3."
+      },
+      {
+        "type": "error",
+        "content": "This is error event 4."
+      }
+    ]
+  },
+  
+    "name": "Artour Scott",
+    "nickname": "@arteezy",
+    "photo": "assets/images/avatars/1.jpg",
+    "background": "assets/images/photos/4.jpeg",
+    "post": "Founder / CEO",
+    "postsCount": "17",
+    "followersCount": "154",
+    "lastActivity": "13 May 2016 7:26PM",
+    "status": "Offline",
+    "skills": [{
+      "name": "Managment",
+      "value": 73
+    }, {
+      "name": "Investing",
+      "value": 85
+    }, {
+      "name": "Programming",
+      "value": 78
+    }, {
+      "name": "Leading",
+      "value": 95
+    }, {
+      "name": "Learning",
+      "value": 54
+    }],
+    "coursesEnd": "Digital Ocean, Nokia",
+    "adress": "New York, US",
+    "profSkills": ["HTML", "CSS", "JavaScript"],
+    "lastCompanies": "Microsoft, Soft Mailstorm",
+    "personal": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    "posts": [{
+      "avatar": "assets/images/avatars/4.jpg",
+      "name": "John Blake",
+      "date": "10 May 2016 11:03AM",
+      "content": "<div><img class=\"wallImg\" src=\"assets/images/photos/4.jpeg\" /><img class=\"wallImg\" src=\"assets/images/photos/3.jpeg\" /><img class=\"wallImg\" src=\"assets/images/photos/2.jpeg\" /><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br />Ipsum is simply dummy lorem</p></div>",
+      "likesCount": 21,
+      "commentsCount": 2,
+      "comments": [{
+        "avatar": "assets/images/avatars/1.jpg",
+        "name": "Donald Trump",
+        "date": "11 May 2016 18:13AM",
+        "content": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Ipsum is simply dummy lorem</p>",
+        "likesCount": 26
+      }, {
+        "avatar": "assets/images/avatars/4.jpg",
+        "name": "Blackford May",
+        "date": "11 May 2016 19:21AM",
+        "content": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Ipsum is simply dummy lorem</p>",
+        "likesCount": 26
+      }]
+    }]
+  
+  
+}

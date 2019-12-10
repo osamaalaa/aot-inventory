@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong *ngIf="isCustodyTransfer">{{"CUSTODY_TRANSFER_BWT_EMP" | translate }}</strong>
+        <strong *ngIf="!isCustodyTransfer">{{"NEW_TRANSFER_NORMAL" | translate }}</strong>
+        <div class="pull-right">
+          <button class="but-class margin-button" nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="currentStep==0"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button>
+          <button class="but-class margin-button" nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="currentStep==1 && operationMasterService.getItems().length > 0 && !workFlowInitiateDone">{{"SUBMIT_REQ" | translate }}</button>
+          <button class="margin-button" nz-button nzType="primary"  [routerLink]="['..']">{{"TRANSFER_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <nz-steps [nzCurrent]="currentStep">
+      <nz-step [nzTitle]="(isCustodyTransfer ? 'CUSTORY_TRANSFER_REQUEST' : 'TRANSFER') | translate" [nzIcon]="loadingStep ? 'loading' : ''"></nz-step>
+      <nz-step [nzTitle]="'ITEMS' | translate"></nz-step>
+    </nz-steps>
+
+    <!--    STEP-1    -->
+    <app-inv-transfer-form #formComp *ngIf="currentStep==0" >
+    </app-inv-transfer-form>
+
+    <!--    STEP-2 -->
+    <div *ngIf="currentStep==1">
+      <app-inv-transfer-items-table [isCustodyTransfer]="isCustodyTransfer" [readOnly]="workFlowInitiateDone" [INV_TRANSFER_ID]="INV_TRANSFER_ID">
+      </app-inv-transfer-items-table>
+    </div>
+  </div>
+</div>
+

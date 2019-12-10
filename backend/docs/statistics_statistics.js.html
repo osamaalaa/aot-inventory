@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Inventory Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+</head>
+
+<body>
+        <div id="stickyNavbarOverlay"></div>
+        <div class="top-navbar">
+            <div class="container">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                            
+                    
+                         
+                            <h1 class="navbar-item">Inventory Documentation</h1>
+                        
+                        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                     
+                    
+                    
+                </nav>
+            </div>
+        </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>statistics.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>require('module-alias/register');
+              require('module-alias/register');
+let express = require('express');
+let router = express.Router();
+let servicePool = require('@lib/servicePool');
+let statements = require('./statisticssql');
+let bodyconverter = require('@conv/bodyConverter');
+let businessPool = require("@lib/businessPool");
+<div id="getItemLastTranactionDate">
+router.get('/getItemLastTranactionDate/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getItemLastTranactionDate.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getLastTransactionWarehouse">
+router.get('/getLastTransactionWarehouse/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getLastTransactionWarehouse.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getTotalBalance">
+router.get('/getTotalBalance/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTotalBalance.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getTopFiveSuppliers">
+router.get('/getTopFiveSuppliers/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveSuppliers.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getTotalNoOfTransactionInLastWeek">
+router.get('/getTotalNoOfTransactionInLastWeek/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTotalNoOfTransactionInLastWeek.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getTotalNoOfTransactionInLastMonth">
+router.get('/getTotalNoOfTransactionInLastMonth/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTotalNoOfTransactionInLastMonth.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getTotalNoOfTransactionInLastYear">
+router.get('/getTotalNoOfTransactionInLastYear/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTotalNoOfTransactionInLastYear.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getMonthlyTransactionsOfCurrentYear">
+router.get('/getMonthlyTransactionsOfCurrentYear/:ITEMS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getMonthlyTransactionsOfCurrentYear.statment, {
+            ITEMS_ID: req.params.ITEMS_ID
+        });
+});
+</div>
+<div id="getTransactionsNoInLastDay">
+router.get('/getTransactionsNoInLastDay/:CREATED_BY', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTransactionsNoInLastDay.statment, {
+            CREATED_BY: req.params.CREATED_BY
+        });
+});
+</div>
+<div id="getTransactionsNoInLastWeek">
+router.get('/getTransactionsNoInLastWeek/:CREATED_BY', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTransactionsNoInLastWeek.statment, {
+            CREATED_BY: req.params.CREATED_BY
+        });
+});
+</div>
+<div id="getTransactionsNoInLastMonth">
+router.get('/getTransactionsNoInLastMonth/:CREATED_BY', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTransactionsNoInLastMonth.statment, {
+            CREATED_BY: req.params.CREATED_BY
+        });
+});
+</div>
+<div id="getTopFiveItemsTransLastDay">
+router.get('/getTopFiveItemsTransLastDay', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveItemsTransLastDay.statment,
+        []);
+});
+</div>
+<div id="getTopFiveItemsTransLastWeek">
+router.get('/getTopFiveItemsTransLastWeek', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveItemsTransLastWeek.statment,
+        []);
+});
+</div>
+<div id="getTopFiveItemsTransLastMonth">
+router.get('/getTopFiveItemsTransLastMonth', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveItemsTransLastMonth.statment,
+        []);
+});
+</div>
+<div id="getLastTransactionDateByUser">
+router.get('/getLastTransactionDateByUser/:CREATED_BY', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getLastTransactionDateByUser.statment, {
+            CREATED_BY: req.params.CREATED_BY
+        });
+});
+</div>
+<div id="getTopFiveUsersTransLastDay">
+router.get('/getTopFiveUsersTransLastDay', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveUsersTransLastDay.statment,
+        []);
+});
+</div>
+<div id="getTopFiveUsersTransLastWeek">
+router.get('/getTopFiveUsersTransLastWeek', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveUsersTransLastWeek.statment,
+        []);
+});
+</div>
+<div id="getTopFiveUsersTransLastMonth">
+router.get('/getTopFiveUsersTransLastMonth', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveUsersTransLastMonth.statment,
+        []);
+});
+</div>
+<div id="getlastFiveTransactions">
+router.get('/getlastFiveTransactions', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getlastFiveTransactions.statment,
+        []);
+});
+</div>
+<div id="getTopFiveStoreHouses">
+router.get('/getTopFiveStoreHouses', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getTopFiveStoreHouses.statment,
+        []);
+});
+</div>
+<div id="getitemSuppliers">
+router.get('/getitemSuppliers', (req, res) => {
+    let getSupplierStatement = statements.getitemSuppliers.statment;
+    let getSupplierbinding = [];
+
+    let totalCostStatement = statements.getsAllCosts.statment;
+    let totalCostBinding = [];
+
+    if(req.query.ITEMS_ID){
+        getSupplierStatement = getSupplierStatement + ` and ITEMS_ID = :ITEMS_ID`;
+        getSupplierbinding = {'ITEMS_ID':Number(req.query.ITEMS_ID) }
+        
+        totalCostStatement = totalCostStatement + ` and ITEMS_ID = :ITEMS_ID`;
+        totalCostBinding = {'ITEMS_ID':Number(req.query.ITEMS_ID) }
+    }
+    businessPool(req,
+        res,
+        getSupplierStatement,
+        getSupplierbinding).then(suppliers => {
+            businessPool(req,res,totalCostStatement,totalCostBinding).then( allcosts => {
+                res.status(200).json({
+                    status: 200,
+                    suppliers: suppliers.rows,
+                    allcosts: allcosts.rows,
+                    message: "succeded"
+                  })
+            }).catch( error => console.log("error"));
+        }).catch( error => { 
+            console.log("error");
+        });
+});
+</div>
+<div id="getinvperiodsSById">
+router.get('/getinvperiodsSById/:INVENTORY_PERIODS_ID', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getinvperiodsSById.statment,
+        {INVENTORY_PERIODS_ID: req.params.INVENTORY_PERIODS_ID});
+});
+
+router.get('/getinvperiodsS', (req, res) => {
+    servicePool(req,
+        res,
+        statements.getinvperiodsS.statment,
+        []);
+});
+</div>
+
+
+
+//---------------------------------------------------------
+module.exports = router;
+
+
+
+
+              
+              
+
+
+
+
+              
+
+
+
+
+
+
+
+                </code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Documentation generated by back-end development team</p>
+            
+        </div>
+    </footer>
+    
+    <script> prettyPrint(); </script>
+    <script src="scripts/app.min.js"></script>
+    <script src="scripts/linenumber.js"> </script>
+    </body>
+    </html>

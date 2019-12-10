@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+          <strong *ngIf="isCustodyTransfer">{{"CUSTORY_TRANSFER_REQUEST" | translate }}</strong>
+          <strong *ngIf="!isCustodyTransfer">{{"NEW_TRANSFER_NORMAL" | translate }}</strong>
+          <div class="pull-right">
+          <button class="margin-button" nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="!readOnly"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button>
+          <button class="margin-button" nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="operationMasterService.getItems().length > 0 && !readOnly && !invtransFormData.WF_REQUEST_ID">{{"SUBMIT_REQ" | translate }}</button>
+          <button class="margin-button" nz-button nzType="primary" [routerLink]="['..']">{{"TRANSFER_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <app-inv-transfer-form #formComp [readOnly]="readOnly" [formData]="invtransFormData">
+    </app-inv-transfer-form>
+    <div>
+      <app-inv-transfer-items-table [isCustodyTransfer]="isCustodyTransfer" [readOnly]="readOnly" [invTransferItems]="invTransferItems"
+        [INV_TRANSFER_ID]="INV_TRANSFER_ID">
+      </app-inv-transfer-items-table>
+    </div>
+  </div>
+</div>
+

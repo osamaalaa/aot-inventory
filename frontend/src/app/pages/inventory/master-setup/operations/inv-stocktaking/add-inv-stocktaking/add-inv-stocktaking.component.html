@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"PYSICAL_INV_DOCUMENT" | translate }}</strong>
+        <div class="pull-right">
+          <button [nzLoading]="savingForm"  *ngIf="!workFlowInitiateDone && !INV_STOCKTAKING_ID" class="but-class" nz-button nzType="primary" (click)="submitForm()">{{"ADD" | translate }}</button>
+          <button [disabled]="savingForm" [nzLoading]="workFlowLoading" *ngIf="INV_STOCKTAKING_ID && !workFlowInitiateDone" class="but-class" nz-button nzType="primary" (click)="onSaveAndExit()">{{"SAVE_AND_EXIT" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <app-inv-stocktaking-form #formComp>
+    </app-inv-stocktaking-form>
+
+    <div class="row" *ngIf="INV_STOCKTAKING_ID">
+      <div class="col-lg-6">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"PHYSICAL_ENTRY" | translate }}</nz-form-label>
+          <nz-form-control> 
+              <nz-switch [ngModelOptions]="{standalone: true}" [(ngModel)]="physicalEntry" (ngModelChange)="onPhysicalEntryChange($event)"></nz-switch>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="5" *ngIf="INV_STOCKTAKING_ID">
+      <div nz-col [nzSpan]="12">
+          <app-inv-stocktaking-items-table [readOnly]="workFlowInitiateDone" [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID"></app-inv-stocktaking-items-table>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <app-inv-stocktaking-committee-table [readOnly]="workFlowInitiateDone" [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID"></app-inv-stocktaking-committee-table>
+      </div>
+    </div>
+
+ 
+  </div>
+</div>

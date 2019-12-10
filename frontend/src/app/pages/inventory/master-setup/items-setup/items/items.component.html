@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong>{{"ITEMS_DEFINITON_SETUP" | translate }}</strong>
+    </div>
+    <div class="utils__titleDescription">
+      {{"ITEMS_DEFINITON_SETUP" | translate }}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate }}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+          <div class="cui-product-details-controls pull-right">
+            <!-- <nz-dropdown>
+              <a nz-dropdown>
+                Actions <i nz-icon type="down"></i>
+              </a>
+              <ul nz-menu nzSelectable>
+                <li nz-menu-item (click)="openAddItemForm()">
+                  <i nz-icon nzType="plus" nzTheme="outline"></i> New Item
+                </li>
+              </ul>
+            </nz-dropdown> -->
+            <button (click)="openAddItemForm()" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="plus"
+                nzTheme="outline"></i></button>
+          </div>
+        </div>
+        <dynamic-table [primaryKeyName]="'ITEMS_ID'" [nzShowPagination]="true" [nzShowSizeChanger]="true"
+          [nzTitle]="nzTitle" [searchText]="searchText" (onRowClick)="onRowClick($event)" #tablePro
+          [columnDefs]="headers" [apiPath]="apiPath" [actionTemRef]="actionButton">
+        </dynamic-table>
+        <ng-template #actionButton let-rowData="data">
+          <button nzSize="small" nz-button class="mr-1" [routerLink]="rowData.ITEMS_ID"><i nz-icon nzType="eye"
+              nzTheme="outline"></i>{{"VIEW" | translate }}</button>
+          <button (nzOnConfirm)="deleteItem(rowData.ITEMS_ID)" nz-popconfirm
+            nzTitle="Are you sure to delete this Item ?" nz-button class="mr-1" s nzSize="small"><i nz-icon
+              type="delete" theme="outline"></i>
+            {{"REMOVE" | translate }}</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

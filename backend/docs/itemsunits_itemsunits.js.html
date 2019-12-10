@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Inventory Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+</head>
+
+<body>
+        <div id="stickyNavbarOverlay"></div>
+        <div class="top-navbar">
+            <div class="container">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                            
+                    
+                         
+                            <h1 class="navbar-item">Inventory Documentation</h1>
+                        
+                        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                     
+                    
+                    
+                </nav>
+            </div>
+        </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>itemsunits.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>require('module-alias/register');
+                require("module-alias/register");
+let express = require("express");
+let router = express.Router();
+let servicePool = require('@lib/servicePool');
+let statements = require("./itemsunitssql");
+let bodyconverter = require("@conv/bodyConverter");
+let checkdataexists = require("@vals/dataexists");
+let validateitemUnits = require('@lib/validatestructure');
+
+<div id="getallitemUnits">
+router.get("/itemsUnits/getallitemUnits", function(req, res) {
+  let statement = statements.getallitemUnits.statement;
+  let binding = [];
+  if(req.query.ITEMS_ID){
+      statement = statement + ` and ITEMS_ID = :ITEMS_ID`;
+      binding = {'ITEMS_ID':Number(req.query.ITEMS_ID) }
+  }
+  servicePool(req, res, statement, binding);
+});
+</div>
+//----------------------------------------------------------------
+<div id="getoneitemUnits">
+router.get('/itemsUnits/getoneitemUnits/:ITEMS_UNITS_ID', function (req, res) {
+  servicePool(req, res, statements.getoneitemUnits.statment, {'ITEMS_UNITS_ID' :req.params.ITEMS_UNITS_ID});
+});
+</div>
+//--------------------------------------------------------------------
+<div id="insertnewitemUnits">
+router.post('/itemsUnits/insertnewitemUnits',checkdataexists, validateitemUnits.validateitemsUnitsStructure ,(req,res)=>{
+    bodyconverter.bodyconverter(req,res,req.body,statements.insertnewitemUnits.returns).then(convertedbody=>{
+      servicePool(req,res,statements.insertnewitemUnits.statement,convertedbody);
+    }).catch(error => { res.status(400).json(error); });
+});
+</div>
+//---------------------------------------------
+<div id="deleteItemUnits">
+router.post('/itemsUnits/deleteItemUnits',checkdataexists , (req,res) => {
+  servicePool(
+    req,
+    res,
+    statements.deleteItemUnits.statement,
+    { "DELETED_BY" : req.body.DELETED_BY, "ITEMS_UNITS_ID" : req.body.ITEMS_UNITS_ID});
+
+
+});
+</div>
+router.post("/itemsUnits/updateitemUnits/:items_units_id", checkdataexists, (req, res) => {
+  servicePool(
+    req,
+    res,
+    validateitemUnits.composeupdatestatement(
+      "items_units",
+      req.body,
+      "items_units_id = " + req.params.items_units_id),
+    []
+  );
+});
+
+
+module.exports = router;
+
+                
+
+
+
+
+
+                </code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Documentation generated by back-end development team</p>
+            
+        </div>
+    </footer>
+    
+    <script> prettyPrint(); </script>
+    <script src="scripts/app.min.js"></script>
+    <script src="scripts/linenumber.js"> </script>
+    </body>
+    </html>

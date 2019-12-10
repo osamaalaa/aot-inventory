@@ -1,0 +1,107 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong>{{"TAX_SCHEME_SETUP" | translate }}</strong>
+    </div>
+    <div class="utils__titleDescription">
+      {{"TAX_SCHEME_SETUP" | translate }}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate }}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+
+       
+        </div>
+        <button nz-button class="mr-1" nzSize="small" [routerLink]="['../..']"><i nz-icon type="caret-left" theme="outline"></i>
+          Back to Tax schemes</button>
+        <nz-table #itemsDataTable [nzData]="taxSchemeDetailsModelService.displayTemplateData" class="utils__scrollTable" nzShowSizeChanger nzShowTotal [nzLoading]="isDataLoading">
+          <thead (nzSortChange)="sortData($event)" nzSingleSort>
+            <tr>
+              <!--
+                  <th class="text-center"></th>
+                  -->
+              <!-- <th class="text-center" nzShowCheckbox ></th> -->
+              <th class="text-center" nzShowSort nzSortKey="TAX_SCHEME_DETAIL_ID">
+                TAX SCHEME ID
+              </th>
+              <th class="text-center" nzShowSort nzSortKey="EN_DESCRIPTION" nzCustomFilter>
+                English Description
+
+                <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" [nzClickHide]="false" nzTableFilter #dropdown>
+                  <i nz-icon type="search" class="ant-table-filter-icon"
+                    [class.ant-table-filter-open]="dropdown.nzVisible" nz-dropdown></i>
+                  <div class="search-box">
+                    <input type="text" nz-input placeholder="{{'SEARCH_NAME'| translate }}" [(ngModel)]="searchValue" />
+                    <button nz-button nzSize="small" nzType="primary" (click)="searchName()" class="search-button">
+                      {{"SEARCH" | translate }}
+                    </button>
+                    <button nz-button nzSize="small" (click)="reset()">{{"RESET" | translate }}</button>
+                  </div>
+                </nz-dropdown>
+              </th>
+              <th class="text-center" nzShowSort nzSortKey="AR_DESCRIPTION">{{"ARABIC_DESCRIPTION" | translate }}</th>
+              <th class="text-center" nzShowSort nzSortKey="TAX_TAXABLE">{{"TAX_TAXABLE" | translate }}</th>
+              <th class="text-center" nzShowSort nzSortKey="AUTO_CALC">AUTO CALC
+
+              </th>
+              <th class="text-center">         
+                 <button nz-button nzType="default" [routerLink]="['add']">
+                   <i nz-icon nzType="plus" nzTheme="outline"></i>{{"ADD_TAX_SCHEME_DETAILS" | translate }}</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+              <tr>
+                <!--
+                  <td class="text-center" nzShowExpand [(nzExpand)]="mapOfExpandData[item.ITEMS_ID]"></td>
+                  -->
+                <!-- <td nzShowCheckbox (nzCheckedChange)="refreshStatus()"></td> -->
+
+                <td class="text-center">{{item.TAX_SCHEME_DETAIL_ID}}</td>
+                <td class="text-center">
+                  <a class="utils__link--underlined">{{item.EN_DESCRIPTION}}</a>
+
+                </td>
+                <td class="text-center">{{item.AR_DESCRIPTION}}</td>
+                <td class="text-center">{{item.TAX_TAXABLE}}</td>
+                <td class="text-center">{{item.AUTO_CALC}}</td>
+                <td class="text-center">
+                  <button nz-button class="mr-1" nzSize="small" [routerLink]="['edit/'+item.TAX_SCHEME_DETAIL_ID]"><i nz-icon type="edit" theme="outline"></i>
+                    Edit Tax</button>
+                  <button nz-popconfirm nzTitle="Are you sure to delete this template ?" (nzOnConfirm)="deleteTaxScheme(item.TAX_SCHEME_DETAIL_ID)"  nz-button class="mr-1" nzSize="small"><i nz-icon type="delete" theme="outline"></i>
+                    {{"REMOVE" | translate }}</button>
+                </td>
+              </tr>
+              <tr [nzExpand]="mapOfExpandData[item.TAX_SCHEME_DETAIL_ID]">
+                  <!-- <tr > -->
+                <td class="text-center"></td>
+                <div class="row">
+                  <td colspan="3">English Description : {{item.EN_DESCRIPTION}}</td>
+                </div>
+                <div class="row">
+                  <td colspan="3">Arabic Description : {{item.AR_DESCRIPTION}}</td>
+                </div>
+              </tr>
+            </ng-template>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>

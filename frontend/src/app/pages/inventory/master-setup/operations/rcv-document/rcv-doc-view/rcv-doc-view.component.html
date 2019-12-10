@@ -1,0 +1,24 @@
+<nz-skeleton [nzLoading]="loading" [nzActive]="true" [nzParagraph]="{ rows:10 }">
+  <nz-descriptions nzBordered [nzSize]="'default'">
+    <nz-descriptions-item [nzTitle]="'STORE_NAME' | translate">
+      {{rcvDocumentData.STORE_EN_NAME}}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'INVENTORY_PERIOD' | translate">{{rcvDocumentData.INVENTORY_PERIODS_EN_NAME}}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'DOCUMENT_DATE' | translate">{{rcvDocumentData.DOCUMENT_DATE | date}}</nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'DOCUMENT_NO' | translate">{{rcvDocumentData.DOCUMENT_NO}}</nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'NOTES' | translate">{{rcvDocumentData.NOTES}}</nz-descriptions-item>
+  </nz-descriptions>
+</nz-skeleton>
+<div style="margin-bottom: 2em;margin-top: 5em;">
+  <app-rcv-document-items-table [readOnly]="'true'" [rcvDocumentItems]="rcvDocumentItems">
+  </app-rcv-document-items-table>
+</div>
+<div class="footer-button">
+  <button style="margin-right: 8px;" [disabled]="isRejectLoading" [nzLoading]="isAcceptLoading" nz-button
+    nzType="primary" (click)="whenApproveClicked()"><i nz-icon nzType="check-circle" nzTheme="fill"></i>
+    {{"APPROVE" | translate}}</button>
+  <button [disabled]="isAcceptLoading" [nzLoading]="isRejectLoading" nz-button nzType="danger"
+    (click)="whenRejectClicked()"><i nz-icon nzType="close-circle" nzTheme="fill"></i> {{"REJECT" | translate}}
+  </button>
+</div>

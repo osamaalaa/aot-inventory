@@ -1,0 +1,11 @@
+<nz-descriptions [nzTitle]="'JOB_ORDER_INFO' | translate" nzBordered [nzSize]="'default'" *ngIf="jobOrderData && data">[nzTitle]="'Inventory Period' | translate"
+  <nz-descriptions-item [nzTitle]="'JOB_ORDER_CODE' | translate">
+    {{jobOrderData.CODE}}
+  </nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'JOB_ORDER_DESCRIPTION' | translate">{{jobOrderData.JOB_ORDER_DESC}}</nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'PROJECT_NAME_(PRIMARY)' | translate">{{jobOrderData.PRIMARY_NAME}}</nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'PROJECT_NAME_(SECONDARY)' | translate">{{jobOrderData.SECONDARY_NAME}}</nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'ASSET' | translate">{{jobOrderData.ASSET_NAME}}</nz-descriptions-item>
+  <nz-descriptions-item [nzTitle]="'INVENTORY_PERIOD' | translate">{{data.INVENTORY_PERIODS_EN_NAME}}</nz-descriptions-item>
+</nz-descriptions>
+

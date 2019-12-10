@@ -1,0 +1,43 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="form" role="form">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"AVAILABLE_CURRENT_BAL_STOCK_TAKING" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input maxlength="25" nz-input name="STOCKTAKING_CURRENT_BALANCE" type="text" id="STOCKTAKING_CURRENT_BALANCE" placeholder="{{'AVAILABLE_CURRENT_BAL_STOCK_TAKING'| translate }}"
+                formControlName="STOCKTAKING_CURRENT_BALANCE">
+              <!-- <div *ngFor="let validation of validation_messages.STOCKTAKING_CURRENT_BALANCE">
+                <nz-form-explain class="red-color"
+                  *ngIf="STOCKTAKING_CURRENT_BALANCE.hasError(validation.type) && (STOCKTAKING_CURRENT_BALANCE.dirty || STOCKTAKING_CURRENT_BALANCE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div> -->
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"AVAILABLE_AVLB_BAL_STOCK_TAKING" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input maxlength="25" nz-input name="STOCKTAKING_QTY_ON_HAND" type="text" id="STOCKTAKING_QTY_ON_HAND" placeholder="{{'AVAILABLE_AVLB_BAL_STOCK_TAKING'| translate }}"
+                formControlName="STOCKTAKING_QTY_ON_HAND">
+              <!-- <div *ngFor="let validation of validation_messages.STOCKTAKING_QTY_ON_HAND">
+                <nz-form-explain class="red-color"
+                  *ngIf="STOCKTAKING_QTY_ON_HAND.hasError(validation.type) && (STOCKTAKING_QTY_ON_HAND.dirty || STOCKTAKING_QTY_ON_HAND.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div> -->
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="footer-button">
+  <button type="button" (click)="cancel()" class="ant-btn" style="margin-right: 8px;"><span>{{"CANCEL" | translate }}</span></button>
+  <button type="submit" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>{{"SAVE" | translate }}</span></button>
+</div>
+

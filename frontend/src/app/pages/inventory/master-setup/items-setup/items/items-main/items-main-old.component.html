@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-xl-6 col-lg-12">
+    <!-- <div class="card cui-profile-header" [ngStyle]="{'background-image': 'url(' + background + ')'}">
+      <div class="card-body text-center">
+        <br>
+        <br>
+        <nz-button-group>
+
+          <nz-upload [nzBeforeUpload]="beforeUpload" nzListType="picture-card" [(nzFileList)]="fileList"
+            [nzShowButton]="fileList.length < 3" [nzShowUploadList]="showUploadList" [nzCustomRequest]="uploadImage">
+            <i nz-icon nzType="plus"></i>
+            <div class="ant-upload-text">{{"UPLOAD" | translate }}</div>
+          </nz-upload>
+          <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+            (nzOnCancel)="previewVisible = false">
+            <ng-template #modalContent>
+              <img [src]="previewImage" />
+            </ng-template>
+          </nz-modal>
+        </nz-button-group>
+        <br>
+      </div>
+    </div> -->
+    <app-item-main-form></app-item-main-form>
+    <app-item-image-upload></app-item-image-upload>
+    <div class="card">
+      <div class="card-header">
+        <div class="utils__title">
+          <strong>{{"MONTHLY_UTILIZATION" | translate }}</strong>
+        </div>
+        <div class="utils__titleDescription">
+          Item Utilization Figures over months
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-12" *ngFor="let p of yearlyst">
+            <cui-progress-group name="{{p.MONTH}}" description="{{p.MONTH}}" progress="{{p.Number_Of_Transactions_PER}}" status="active"></cui-progress-group>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="utils__title">
+          <strong>{{"WEEK_REVENUE_STATISTICS,_BILLIONS" | translate }}</strong>
+        </div>
+        <cui-donut type="primary" name="Nuts"></cui-donut>
+        <cui-donut type="success" name="Apples"></cui-donut>
+        <cui-donut color="yellow" name="Peaches"></cui-donut>
+      </div>
+      <div class="card-body">
+        <x-chartist class="ct-chart height-300" [data]="weekChartData" type="Line" [options]="weekChartOptions">
+        </x-chartist>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-6 col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="mb-3 text-black">
+          <strong>{{"ACTIONS" | translate }}</strong>
+        </h5>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="cui-profile-actions">
+              <button [routerLink]="['aliases']" nz-button style="width: 100%; display: block">{{"ALIAS" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <button [routerLink]="['details']" nz-button style="width: 100%; display: block">{{"DETAILS" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <button [routerLink]="['item-components']" nz-button style="width: 100%; display: block">{{"COMPONENTS" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <!-- <button [routerLink]="['item-balance-units']" nz-button style="width: 100%; display: block">{{"BALANCE_UNITS" | translate }}</button> -->
+              <button [routerLink]="['item-units']" nz-button style="width: 100%; display: block">{{"UNITS" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <button [routerLink]="['item-suppliers']" nz-button style="width: 100%; display: block">{{"SUPPLIERS" | translate }} <i class="anticon anticon-right-circle"></i></button>
+              <button [routerLink]="['item-balances']" nz-button style="width: 100%; display: block">{{"BALANCE" | translate }} <i class="anticon anticon-right-circle"></i></button>
+
+              <button [routerLink]="['item-substitutions']" nz-button style="width: 100%; display: block">{{"SUBSTITUTIONS" | translate }} <i class="anticon anticon-right-circle"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="utils__title">
+          <strong>{{"ITEM_INFO" | translate }}</strong>
+        </div>
+        <div class="utils__titleDescription">
+          Provide some details about Item & utilization ..
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <cui-slider-card title="BALANCE" value="{{itemBalance}}" title2="BALANCE" value2="{{itemBalance}}"></cui-slider-card>
+          </div>
+          <div class="col-lg-6">
+            <cui-slider-card title="BALANCE" value="{{itemBalance}}" title2="BALANCE" value2="{{itemBalance}}"></cui-slider-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="utils__title">
+          <strong>{{"ITEM_STATISTICS" | translate }}</strong>
+        </div>
+        <div class="utils__titleDescription">
+          Statistics about the Item ..
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <cui-info-card form="stats" icon="database" type="primary"></cui-info-card>
+            <cui-info-card form="stats" icon="users" type="empty"></cui-info-card>
+          </div>
+          <div class="col-lg-6">
+            <cui-info-card form="stats" icon="bullhorn" type="success"></cui-info-card>
+            <cui-info-card form="stats" icon="price-tags" type="empty"></cui-info-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

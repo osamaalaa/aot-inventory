@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header">
+      <div class="utils__title">
+          <strong>{{"STORE" | translate }}</strong>
+      </div>
+  </div>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="partition">
+                  <div class="partitionHead">
+                      <span class="partitionName">{{"SEARCH" | translate }}</span>
+                  </div>
+                  <div class="input-group">
+                      <nz-input-group [nzSuffix]="suffixIconSearch">
+                          <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                              [(ngModel)]="searchText">
+                      </nz-input-group>
+                      <ng-template #suffixIconSearch>
+                          <i nz-icon type="search"></i>
+                      </ng-template>
+                  </div>
+                  <br />
+              </div>
+              <nz-table nzBordered #itemsDataTable [nzData]="storesModelService.displayData"
+                  class="utils__scrollTable" nzShowSizeChanger nzShowTotal [nzLoading]="isDataLoading">
+                  <thead (nzSortChange)="sortData($event)" nzSingleSort>
+                      <tr>
+                          <!-- <th rowspan="2" class="text-center" nzShowCheckbox></th> -->
+                          <th rowspan="2" nzShowSort nzSortKey="STORES_ID" class="text-center" nzLeft="0px">Store Id
+                          </th>
+                          <th rowspan="2" class="text-center" nzShowSort nzSortKey="EN_NAME">{{"STORE_NAME" | translate }}</th>
+                          <th rowspan="2" class="text-center" nzShowSort nzSortKey="PARENT_STORE_EN_NAME">{{"PARENT_STORE" | translate }}</th>
+                          <th rowspan="2" nzSortKey="UNITS_NAME" class="text-center">{{"UNITS_NAME" | translate }}</th>
+                          <th rowspan="2" class="text-center">{{"ACTIONS" | translate }}</th>
+                      </tr>
+                      
+                  </thead>
+                  <tbody>
+                      <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+                          <tr>
+                              <!-- <td nzShowCheckbox (nzCheckedChange)="refreshStatus()"></td> -->
+                              <td class="text-center">{{item.STORES_ID}}</td>
+                              <td *ngIf="lang == 'en'" class="text-center">{{item.EN_NAME}}</td>
+                              <td *ngIf="lang == 'ar'" class="text-center">{{item.AR_NAME}}</td>
+                              <td class="text-center">{{item.PARENT_STORE_EN_NAME}}</td>
+                              <td class="text-center">{{item.UNITS_NAME}}</td>
+                              <td class="text-center">
+                                  <button nz-button class="mr-1" nzSize="small" [routerLink]="[item.STORES_ID]"><i
+                                          nz-icon nzType="eye" nzTheme="outline"></i>{{"VIEW" | translate }}</button>
+                              </td>
+                          </tr>
+                      </ng-template>
+                  </tbody>
+              </nz-table>
+          </div>
+      </div>
+  </div>
+</div>
+

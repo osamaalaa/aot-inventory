@@ -1,0 +1,70 @@
+<form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"UNIT" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+          <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_UNIT' | translate }}"
+            formControlName="UNITS_ID">
+            <nz-option *ngFor="let item of unitList" [nzValue]="item.LOOKUP_DETAIL_ID" 
+
+                [nzLabel]="lang == 'ar' ? item.PRIMARY_NAME : item.SECONDARY_NAME">
+
+
+            </nz-option>
+          </nz-select>
+          <div *ngFor="let validation of validation_messages.UNITS_ID">
+            <nz-form-explain class="red-color"
+              *ngIf="UNITS_ID.hasError(validation.type) && (UNITS_ID.dirty || UNITS_ID.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"UNIT_FACTOR" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+          <nz-input-number class="width-100" formControlName="UNIT_FACTOR" nzPlaceHolder="{{'UNIT_FACTOR' | translate }}" [nzStep]="1">
+          </nz-input-number>
+          <div *ngFor="let validation of validation_messages.UNIT_FACTOR">
+            <nz-form-explain class="red-color"
+              *ngIf="UNIT_FACTOR.hasError(validation.type) && (UNIT_FACTOR.dirty || UNIT_FACTOR.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"DEFAULT_UNIT_QUANTITY" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+          <nz-input-number class="width-100" formControlName="DEFAULT_UNIT" nzPlaceHolder="{{'DEFAULT_UNIT_QUANTITY' | translate }}"
+            [nzStep]="1">
+          </nz-input-number>
+          <div *ngFor="let validation of validation_messages.DEFAULT_UNIT">
+            <nz-form-explain class="red-color"
+              *ngIf="DEFAULT_UNIT.hasError(validation.type) && (DEFAULT_UNIT.dirty || DEFAULT_UNIT.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div class="col-lg-12">
+      <div class="form-actions">
+        <button type="submit" nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+        <button nz-button type="button" (click)="cancel()">{{"CANCEL" | translate }}</button>
+      </div>
+    </div>
+</form>
+<!-- <div class="footer-button">
+  <button type="button" (click)="cancel()" class="ant-btn" style="margin-right: 8px;"><span>{{"CANCEL" | translate }}</span></button>
+  <button type="submit" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>{{"SAVE" | translate }}</span></button>
+</div> -->
+

@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-header">
+      <div class="utils__title">
+        <div><strong>{{"ITEM_SUPPLIER" | translate }}</strong></div>
+      </div>
+    </div>
+    <div class="card-body">
+     <app-item-supplier-form [formData]="itemSupplierFormData" [ITEMS_ID]="ITEMS_ID" (onSubmit)="updateItemSupplier($event)" (onCancel)="navigateToList()"></app-item-supplier-form>
+    </div>
+  </div>
+  

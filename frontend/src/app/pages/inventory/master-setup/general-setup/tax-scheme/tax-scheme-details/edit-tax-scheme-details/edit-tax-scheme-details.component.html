@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div><strong>{{"TAX_SCHEME_DETAILS_EDIT" | translate }}</strong>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+   <app-tax-scheme-details-form  [TAX_SCHEME_ID]="TAX_SCHEME_ID" (onSubmit)="updateTaxTemplate($event)" (onCancel)="navigateToList()"  [formData]="taxSchemeData"></app-tax-scheme-details-form >
+  </div>
+</div>

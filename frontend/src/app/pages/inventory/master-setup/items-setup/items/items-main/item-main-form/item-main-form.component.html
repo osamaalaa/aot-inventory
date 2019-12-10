@@ -1,0 +1,306 @@
+<nz-card [nzLoading]="isDataLoading || isfetchingLookup">
+  <form nz-form nzLayout="'vertical'" [formGroup]="form" (ngSubmit)="submitForm()" role="form">
+    <div nz-row nzGutter="16" nzJustify="bottom">
+      <div nz-col nzSpan="8">
+        <div nz-row>
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"ITEM_CODE" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <input maxlength="250" nz-input name="ITEM_CODE" type="text" id="ITEM_CODE" placeholder="{{'ITEM_CODE'| translate }}"
+                formControlName="ITEM_CODE">
+              <div *ngFor="let validation of validation_messages.ITEM_CODE">
+                <nz-form-explain class="red-color"
+                  *ngIf="ITEM_CODE.hasError(validation.type) && (ITEM_CODE.dirty || ITEM_CODE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-row>
+            <nz-card class="image-default" nzHoverable style="widows: 190px;" [nzCover]="coverTemplate">
+              </nz-card>
+              <ng-template #coverTemplate>
+                  <nz-empty *ngIf="!image"  [nzNotFoundContent]="'No Image'"></nz-empty>
+                  <ng-template #noImage>
+                      <i nz-icon nzType="file-image" nzTheme="outline"></i>
+                  </ng-template>
+                <img alt="example" *ngIf="image" [src]="image" />
+              </ng-template>
+          <!-- <nz-card  style="width:240px" [nzBordered]="false">
+              <img style="width: 100%;height:100%" alt="example" [src]="fileList.rows[0].FILE_PATH" />
+          </nz-card>
+          <ng-template #coverTemplate>
+            <img alt="example" [src]="fileList.rows[0].FILE_PATH" />
+          </ng-template> -->
+        </div>
+      </div>
+      <div nz-col nzSpan="6">
+
+      </div>
+      <div nz-col nzSpan="10">
+        <div nz-row>
+          <div nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="20">{{"STATUS" | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="4" nzErrorTip="Please input your username!">
+                <cui-switch formControlName="STATUS"></cui-switch>
+              </nz-form-control>
+            </nz-form-item>
+            <!-- <nz-form-item>
+             <nz-form-label  nzRequired nzFor="email">{{"STATUS" | translate }}</nz-form-label> 
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+              
+            </nz-form-control>
+          </nz-form-item> -->
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="20">{{"AVAILABLE_FOR_SALE" | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="4">
+                <cui-switch formControlName="FOR_SALE"></cui-switch>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col>
+            <nz-form-item>
+              <!-- <nz-form-label nzFor="ITEMS_TEMPLATE_ID">{{"TEMPLATE" | translate }}<span class="red-color">*</span></nz-form-label> -->
+              <nz-form-control>
+                <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                  nzPlaceHolder="{{'CHOOSE_TEMPLATE' | translate }}" formControlName="ITEMS_TEMPLATE_ID">
+                  <nz-option *ngFor="let temp of templateList" [nzLabel]="temp.EN_NAME"
+                    [nzValue]="temp.ITEMS_TEMPLATE_ID">
+                  </nz-option>
+                </nz-select>
+                <div *ngFor="let validation of validation_messages.ITEMS_TEMPLATE_ID">
+                  <nz-form-explain class="red-color"
+                    *ngIf="ITEMS_TEMPLATE_ID.hasError(validation.type) && (ITEMS_TEMPLATE_ID.dirty || ITEMS_TEMPLATE_ID.touched)">
+                    {{validation.message | translatecui}}
+                  </nz-form-explain>
+                </div>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col>
+            <nz-form-item>
+              <!-- <nz-form-label nzFor="ALIASES_TYPE_ID">{{"ALIAS_TYPE" | translate }}<span class="red-color">*</span></nz-form-label> -->
+              <nz-form-control>
+                <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                  nzPlaceHolder="{{'CHOOSE_ALIAS_TYPE' | translate }}" formControlName="ALIASES_TYPE_ID">
+                  <nz-option *ngFor="let kind of kinds" [nzValue]="kind.LOOKUP_DETAIL_ID" [nzLabel]="kind.PRIMARY_NAME">
+                  </nz-option>
+                </nz-select>
+                <div *ngFor="let validation of validation_messages.ALIASES_TYPE_ID">
+                  <nz-form-explain class="red-color"
+                    *ngIf="ALIASES_TYPE_ID.hasError(validation.type) && (ALIASES_TYPE_ID.dirty || ALIASES_TYPE_ID.touched)">
+                    {{validation.message | translatecui}}
+                  </nz-form-explain>
+                </div>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"ARABIC_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <input nzTooltipTitle="Arabic Name" nz-tooltip nzTooltipPlacement="leftTop" maxlength="250" nz-input
+              name="AR_NAME" type="text" id="AR_NAME" placeholder="{{'ARABIC_NAME'| translate }}" formControlName="AR_NAME">
+            <div *ngFor="let validation of validation_messages.AR_NAME">
+              <nz-form-explain class="red-color"
+                *ngIf="AR_NAME.hasError(validation.type) && (AR_NAME.dirty || AR_NAME.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"ENGLISH_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <input maxlength="250" nz-input name="EN_NAME" type="text" id="EN_NAME" placeholder="{{'ENGLISH_NAME'| translate }}"
+              formControlName="EN_NAME">
+            <div *ngFor="let validation of validation_messages.EN_NAME">
+              <nz-form-explain class="red-color"
+                *ngIf="EN_NAME.hasError(validation.type) && (EN_NAME.dirty || EN_NAME.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="ITEMS_GROUP_ID">{{"GROUP" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-tree-select [nzNodes]="groups" nzShowSearch nzPlaceHolder="{{'SELECT_GROUP' | translate }}"
+              formControlName="ITEMS_GROUP_ID">
+            </nz-tree-select>
+            <div *ngFor="let validation of validation_messages.ITEMS_GROUP_ID">
+              <nz-form-explain class="red-color"
+                *ngIf="ITEMS_GROUP_ID.hasError(validation.type) && (ITEMS_GROUP_ID.dirty || ITEMS_GROUP_ID.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="ITEM_KIND">{{"KIND" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_KIND' | translate }}"
+              formControlName="ITEM_KIND">
+              <nz-option *ngFor="let kind of kinds" [nzValue]="kind.LOOKUP_DETAIL_ID" [nzLabel]="kind.PRIMARY_NAME">
+              </nz-option>
+            </nz-select>
+            <div *ngFor="let validation of validation_messages.ITEM_KIND">
+              <nz-form-explain class="red-color"
+                *ngIf="ITEM_KIND.hasError(validation.type) && (ITEM_KIND.dirty || ITEM_KIND.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="ITEM_CLASS">{{"CLASS" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_CLASS' | translate }}"
+              formControlName="ITEM_CLASS">
+              <nz-option *ngFor="let class of classes" [nzValue]="class.LOOKUP_DETAIL_ID"
+                [nzLabel]="class.PRIMARY_NAME">
+              </nz-option>
+            </nz-select>
+            <div *ngFor="let validation of validation_messages.ITEM_CLASS">
+              <nz-form-explain class="red-color"
+                *ngIf="ITEM_CLASS.hasError(validation.type) && (ITEM_CLASS.dirty || ITEM_CLASS.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="ITEM_CLASS">{{"NATURE" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_NATURE' | translate }}"
+              formControlName="ITEM_NATURE">
+              <nz-option *ngFor="let nature of natures" [nzValue]="nature.LOOKUP_DETAIL_ID"
+                [nzLabel]="nature.PRIMARY_NAME"></nz-option>
+            </nz-select>
+            <div *ngFor="let validation of validation_messages.ITEM_NATURE">
+              <nz-form-explain class="red-color"
+                *ngIf="ITEM_NATURE.hasError(validation.type) && (ITEM_NATURE.dirty || ITEM_NATURE.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="ITEM_CLASS">{{"BALANCE_NATURE" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+              nzPlaceHolder="{{'CHOOSE_BALANCE_NATURE' | translate }}" formControlName="BALANCE_NATURE">
+              <nz-option *ngFor="let nature of bnatures" [nzValue]="nature.LOOKUP_DETAIL_ID"
+                [nzLabel]="nature.PRIMARY_NAME"></nz-option>
+            </nz-select>
+            <div *ngFor="let validation of validation_messages.BALANCE_NATURE">
+              <nz-form-explain class="red-color"
+                *ngIf="BALANCE_NATURE.hasError(validation.type) && (BALANCE_NATURE.dirty || BALANCE_NATURE.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"TAX_SCHEME" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_TAX' | translate }}"
+              formControlName="TAX_SCHEME_ID">
+              <nz-option *ngFor="let tax of taxList" [nzValue]="tax.TAX_SCHEME_ID" [nzLabel]="tax.EN_DESCRIPTION">
+              </nz-option>
+            </nz-select>
+            <div *ngFor="let validation of validation_messages.TAX_SCHEME_ID">
+              <nz-form-explain class="red-color"
+                *ngIf="TAX_SCHEME_ID.hasError(validation.type) && (TAX_SCHEME_ID.dirty || TAX_SCHEME_ID.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"SHORTAGE_POLICY" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+              nzPlaceHolder="{{'CHOOSE_SHORTAGE_POLICY' | translate }}" formControlName="SHORTAGE_POLICY_ID">
+              <nz-option *ngFor="let shortagePolicy of shortagePolicyList" [nzValue]="shortagePolicy.SHORTAGE_POLICY_ID"
+                [nzLabel]="shortagePolicy.EN_NAME">
+              </nz-option>
+            </nz-select>
+            <div *ngFor="let validation of validation_messages.SHORTAGE_POLICY_ID">
+              <nz-form-explain class="red-color"
+                *ngIf="SHORTAGE_POLICY_ID.hasError(validation.type) && (SHORTAGE_POLICY_ID.dirty || SHORTAGE_POLICY_ID.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"SLOW_MOVING_POLICY" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+              nzPlaceHolder="{{'CHOOSE_SLOW_MOVING_POLICY' | translate }}" formControlName="SLOW_POLICY_ID">
+              <nz-option *ngFor="let slowMovingPolicy of slowMovingPolicyList"
+                [nzValue]="slowMovingPolicy.SLOW_POLICY_ID" [nzLabel]="slowMovingPolicy.EN_NAME"></nz-option>
+            </nz-select>
+            <div *ngFor="let validation of validation_messages.SLOW_POLICY_ID">
+              <nz-form-explain class="red-color"
+                *ngIf="SLOW_POLICY_ID.hasError(validation.type) && (SLOW_POLICY_ID.dirty || SLOW_POLICY_ID.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-col nzSpan="24">
+      <div class="form-actions">
+        <button [nzLoading]="isSavingData" nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+      </div>
+    </div>
+  </form>
+</nz-card>
+

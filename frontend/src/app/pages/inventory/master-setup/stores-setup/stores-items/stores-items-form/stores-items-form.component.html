@@ -1,0 +1,58 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="storeItemsForm" (ngSubmit)="submitForm()" role="form">
+  <!-- <h4 class="text-black mb-3">
+    <strong>{{"MAIN_INFO" | translate }}</strong>
+  </h4> -->
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"ITEM" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_ITEM' | translate }}" formControlName="ITEMS_ID">
+                <nz-option *ngFor="let item of itemsList" [nzValue]="item.ITEMS_ID"
+                  [nzLabel]="lang == 'ar' ? item.AR_NAME : item.EN_NAME">
+
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.ITEMS_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="ITEMS_ID.hasError(validation.type) && (ITEMS_ID.dirty || ITEMS_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="STATUS">{{"STATUS" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select style="width: 100%; display: block;" nzPlaceHolder="{{'CHOOSE_STATUS' | translate }}"
+                formControlName="STATUS" nzAllowClear>
+                <nz-option *ngIf="lang == 'en'" nzValue="1" nzLabel="Enabled"></nz-option>
+                <nz-option *ngIf="lang == 'ar'" nzValue="1" nzLabel="مفعل"></nz-option>
+                <nz-option *ngIf="lang == 'en'" nzValue="2" nzLabel="Disabled"></nz-option>
+                <nz-option *ngIf="lang == 'ar'" nzValue="2" nzLabel="غير مفعل"></nz-option>
+
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.STATUS">
+                <nz-form-explain class="red-color"
+                  *ngIf="STATUS.hasError(validation.type) && (STATUS.dirty || STATUS.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-actions">
+          <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+          <button nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

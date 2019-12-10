@@ -1,0 +1,79 @@
+<nz-table #editRowTable nzBordered [nzData]="operationMasterService.getItems()" [nzTitle]="header">
+   <thead>
+      <tr>
+         <th nzShowExpand></th>
+         <th nzWidth="30%">{{"ITEM_NAME" | translate }}</th>
+         <th>{{"UNIT" | translate }}</th>
+         <th>{{"UNIT_FACTOR" | translate }}</th>
+         <th>{{"DSP_QTY" | translate }}</th>
+         <th>{{"BASE_UNIT_QUANTITY" | translate }}</th>
+         <th>{{"ITEM_COST" | translate }}</th>
+         <th>{{"TOTAL_COST" | translate }}</th>
+         <th *ngIf="!readOnly">{{"ACTION" | translate }}</th>
+      </tr>
+   </thead>
+   <tbody>
+      <ng-template ngFor let-data [ngForOf]="editRowTable.data">
+         <tr class="editable-row">
+            <td nzShowExpand (nzExpandChange)="expandParentRow($event,data.DSP_DOCUMENT_ITEMS_ID)"
+               [(nzExpand)]="data.expand"></td>
+            <td *ngIf="lang == 'en'">{{ data.ITEM_EN_NAME }}</td>
+            <td *ngIf="lang == 'ar'">{{ data.ITEM_AR_NAME }}</td>
+            <td>
+               {{ data.UNIT_AR_NAME }}
+            </td>
+            <td>
+               {{ data.UNIT_FACTOR }}
+            </td>
+            <td>
+               {{ data.UNIT_QUANTITY }}
+            </td>
+            <td>
+               {{ data.BASE_UNIT_QUANTITY }}
+            </td>
+            <td>
+               {{ data.ITEM_COST }}
+            </td>
+            <td>
+               {{ data.TOTAL_COST }}
+            </td>
+            <td *ngIf="!readOnly">
+               <div class="editable-row-operations">
+                  <nz-button-group>
+                     <button nz-button (click)="updateItem(data)" nzType="primary"><i nz-icon nzType="edit"
+                           nzTheme="outline"></i></button>
+                     <!-- <button nz-popconfirm nzTitle="Are you sure to delete this Item ?"
+                        (nzOnConfirm)="deleteBalItem(data.DSP_DOCUMENT_ITEMS_ID)" nz-button nzType="danger"><i nz-icon
+                           nzType="delete" nzTheme="fill"></i></button> -->
+                  </nz-button-group>
+               </div>
+            </td>
+         <tr [nzExpand]="data.expand">
+            <td></td>
+            <td colspan="7">
+
+               <app-disp-doc-items-details-table [readOnly]="readOnly"
+                  (onEditClick)="updateDetail(data.DSP_DOCUMENT_ITEMS_ID,$event)"
+                  (onDeleteClick)="deleteDetails(data.DSP_DOCUMENT_ITEMS_ID,$event)"
+                  [dataList]="operationMasterService.cache[data.DSP_DOCUMENT_ITEMS_ID]">
+                  <button *ngIf="!readOnly" [nzSize]="'small'" (click)="addDetail(data.DSP_DOCUMENT_ITEMS_ID)"
+                     class="details-table-button pull-right" nz-button nzType="primary"><i nz-icon nzType="plus"
+                        nzTheme="outline"></i>{{"DETAILS" | translate }}</button>
+               </app-disp-doc-items-details-table>
+            </td>
+         </tr>
+      </ng-template>
+   </tbody>
+</nz-table>
+<ng-template #header>
+   <div class="row">
+      <div class="col-md-10">
+         <h4>{{"REQUEST_ITEM_RECEIVE" | translate }}</h4>
+      </div>
+      <div class="col-md-2 ">
+         <!-- <button *ngIf="!readOnly" class="pull-right" [nzSize]="'small'" (click)="addItem()" nz-button
+            nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>{{"ITEMS" | translate }}</button> -->
+      </div>
+   </div>
+</ng-template>
+

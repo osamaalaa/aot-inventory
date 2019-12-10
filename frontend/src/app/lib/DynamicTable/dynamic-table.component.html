@@ -1,0 +1,38 @@
+<nz-table #dynamicTable [nzData]="model.displayTableData" [nzLoading]="isLoading" [nzBordered]="nzBordered"
+    [nzShowPagination]="nzShowPagination" [nzFrontPagination]="nzShowPagination" [nzSize]="nzSize" [nzTitle]="nzTitle"
+    [nzScroll]="nzScroll ? { y: '240px' } : null" [nzPageSize]="nzPageSize" [nzShowSizeChanger]="nzShowSizeChanger" [nzFooter]="nzFooter"> 
+    <thead (nzSortChange)="onSortChange($event)" nzSingleSort>
+        <tr>
+            <th [nzShowCheckbox]="nzShowCheckbox"
+                [(nzChecked)]="isAllDisplayDataChecked"
+                [nzIndeterminate]="isIndeterminate"
+                (nzCheckedChange)="checkAll($event)"></th>
+            <th *ngFor="let colDef of columnDefs" [nzShowSort]="colDef.sortable"
+                [nzSortKey]="lang == 'en' ? colDef.name.en_name : colDef.name.ar_name">
+                <span *ngIf="lang=='en'">{{colDef.label.en_name}}</span>
+                <span *ngIf="lang=='ar'">{{colDef.label.ar_name}}</span>
+            </th>
+            <th *ngIf="!disableAction">{{"ACTION" | translate }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of dynamicTable.data" style="cursor: pointer">
+            <td
+                [nzShowCheckbox]="nzShowCheckbox"
+                [(nzChecked)]="mapOfCheckedId[data[primaryKeyName]]"
+                (nzCheckedChange)="rowCheckboxClick()"
+            ></td>
+            <td *ngFor="let colDef of columnDefs" (click)="rowClick(data)">
+                <!-- <span > -->
+                    <cell-renderer-factory *ngIf="lang=='en'" [cellData]="data[colDef.name.en_name]" [type]="colDef.type"></cell-renderer-factory>
+                <!-- </span> -->
+                <!-- <span > -->
+                    <cell-renderer-factory *ngIf="lang=='ar'" [cellData]="data[colDef.name.ar_name]" [type]="colDef.type"></cell-renderer-factory>
+                <!-- </span> -->
+            </td>
+            <td *ngIf="!disableAction">
+                <ng-container *ngTemplateOutlet="actionTemRef;context:{data:data}"></ng-container>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

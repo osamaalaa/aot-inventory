@@ -1,0 +1,75 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="form"  role="form">
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzFor="ITEM_CLASS">{{"COST_OF_SALES_ACCOUNT" | translate }}</nz-form-label>
+        <nz-form-control>
+          <nz-tree-select  [nzNodes]="chartsOfAccountsData" nzShowSearch
+            nzPlaceHolder="{{'CHOOSE_COST_OF_SALES_ACCOUNT' | translate }}" formControlName="COST_OF_SALES_ACCOUNT">
+          </nz-tree-select>
+          <!-- <div *ngFor="let validation of validation_messages.COST_OF_SALES_ACCOUNT">
+            <nz-form-explain class="red-color"
+              *ngIf="COST_OF_SALES_ACCOUNT.hasError(validation.type) && (COST_OF_SALES_ACCOUNT.dirty || COST_OF_SALES_ACCOUNT.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzFor="SALES_ACCOUNT">{{"SALES_ACCOUNT" | translate }}</nz-form-label>
+        <nz-form-control>
+          <nz-tree-select  [nzNodes]="chartsOfAccountsData" nzShowSearch
+            nzPlaceHolder="{{'CHOOSE_SALES_ACCOUNT' | translate }}" formControlName="SALES_ACCOUNT">
+          </nz-tree-select>
+          <!-- <div *ngFor="let validation of validation_messages.SALES_ACCOUNT">
+            <nz-form-explain class="red-color"
+              *ngIf="SALES_ACCOUNT.hasError(validation.type) && (SALES_ACCOUNT.dirty || SALES_ACCOUNT.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzFor="ITEM_CLASS">{{"EXPENSE_ACCOUNT" | translate }}</nz-form-label>
+        <nz-form-control>
+          <nz-tree-select  [nzNodes]="chartsOfAccountsData" nzShowSearch
+            nzPlaceHolder="{{'CHOOSE_EXPENSE_ACCOUNT' | translate }}" formControlName="EXPENSE_ACCOUNT">
+          </nz-tree-select>
+          <!-- <div *ngFor="let validation of validation_messages.EXPENSE_ACCOUNT">
+            <nz-form-explain class="red-color"
+              *ngIf="EXPENSE_ACCOUNT.hasError(validation.type) && (EXPENSE_ACCOUNT.dirty || EXPENSE_ACCOUNT.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <nz-form-item>
+        <nz-form-label nzFor="ITEM_CLASS">{{"ENCUMBRANCE_ACCOUNT" | translate }}</nz-form-label>
+        <nz-form-control>
+          <nz-tree-select  [nzNodes]="chartsOfAccountsData" nzShowSearch
+            nzPlaceHolder="{{'CHOOSE_ENCUMBRANCE_ACCOUNT' | translate }}" formControlName="ENCUMBRANCE_ACCOUNT">
+          </nz-tree-select>
+          <!-- <div *ngFor="let validation of validation_messages.ENCUMBRANCE_ACCOUNT">
+            <nz-form-explain class="red-color"
+              *ngIf="ENCUMBRANCE_ACCOUNT.hasError(validation.type) && (ENCUMBRANCE_ACCOUNT.dirty || ENCUMBRANCE_ACCOUNT.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>
+

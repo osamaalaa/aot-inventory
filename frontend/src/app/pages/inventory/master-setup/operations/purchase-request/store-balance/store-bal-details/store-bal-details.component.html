@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong>{{purchaseOrderTempData.STORE_EN_NAME}}</strong>
+      <div class="pull-right">
+          <button *ngIf="storesItemsBalanceService.displayData.length > 0" [nzLoading]="finishPurchaseLoading" class="but-class" nz-button nzType="primary" [nzLoading]="savingForm" 
+            (click)="finishPurchase()">{{"FINISH_PURCHASE" | translate}}</button>
+        </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <!-- <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate }}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+        </div> -->
+        <!-- <nz-descriptions nzBordered [nzSize]="'default'">
+          <nz-descriptions-item [nzTitle]="'STORE_NAME' | translate">
+            {{formData.STORE_EN_NAME}}
+          </nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'INVENTORY_PERIOD' | translate">{{formData.INVENTORY_PERIODS_EN_NAME}}
+          </nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'DOCUMENT_DATE' | translate">{{formData.DOCUMENT_DATE | date}}</nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'DOCUMENT_NO' | translate">{{formData.DOCUMENT_NO}}</nz-descriptions-item>
+          <nz-descriptions-item [nzTitle]="'NOTES' | translate">{{formData.NOTES}}</nz-descriptions-item>
+        </nz-descriptions> -->
+        <nz-table nzBordered  #itemsDataTable
+          [nzData]="storesItemsBalanceService.displayData" class="utils__scrollTable" nzShowSizeChanger nzShowTotal
+          [nzLoading]="isDataLoading">
+          <thead (nzSortChange)="sortData($event)" nzSingleSort>
+            <tr>
+              <th [nzWidth]="'150px'" nzShowSort nzSortKey="ITEM_CODE" class="text-center" >{{"ITEM_CODE" | translate }}</th>
+              <th  class="text-center" nzSortKey="ITEM_EN_NAME"  nzSortKey="lang == 'en' ? ITEM_EN_NAME : ITEM_AR_NAME">{{"ITEM_NAME" | translate }}</th>
+              <th  class="text-center" >{{"UNITS_NAME" | translate }}</th>
+              <th   class="text-center">{{"CURRENT_QUANTITY" | translate }}</th>
+              <th  nzSortKey="DEFAULT_UNIT_QUANTITY" class="text-center">{{"CURRENT_DEFAULT_UNIT_QUANTITY" | translate }}</th>
+              <th   class="text-center">{{"PURCHASE_REQUEST_QUANTITY" | translate}}</th>
+              <th   class="text-center">{{"SELECTED" | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+              <tr>
+                <td class="text-center">{{item.ITEM_CODE}}</td>
+                <td *ngIf="lang == 'en'" class="text-center">{{item.ITEM_EN_NAME}}</td>
+                <td *ngIf="lang == 'ar'" class="text-center">{{item.ITEM_AR_NAME}}</td>
+                <td class="text-center">{{item.UNITS_NAME}}</td>
+                <td class="text-center">{{item.CURRENT_BALANCE}}</td>
+                <td class="text-center">{{item.DEFAULT_UNIT_QUANTITY}}</td>
+
+                <td class="text-center">
+                    <nz-input-number nz-row  *ngIf="item.SELECTED == 1" [(ngModel)]="item.PO_QUANTITY" [nzMin]="0"  [nzStep]="1"></nz-input-number>
+                  <small nz-row *ngIf="item.invalidQty" class="red-color">{{"Min Qty is 1" | translate}}</small>
+                  <span *ngIf="item.SELECTED == 0">{{item.PO_QUANTITY}}</span>
+                </td>
+                <td class="text-center">
+                  <cui-checkbox [(ngModel)]="item.SELECTED"></cui-checkbox>
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>
+

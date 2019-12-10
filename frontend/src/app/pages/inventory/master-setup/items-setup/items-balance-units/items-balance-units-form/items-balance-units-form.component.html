@@ -1,0 +1,484 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="itemBalanceUnitForm" (ngSubmit)="submitForm()" role="form">
+  <h4 class="text-black mb-3">
+    <strong>{{"MAIN_INFO" | translate }}</strong>
+  </h4>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="ITEMS_BALANCE_ID">{{"ITEM_BALANCE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_ITEM_BALANCE' | translate }}" formControlName="ITEMS_BALANCE_ID">
+                <nz-option *ngFor="let itemBalance of itemBalanceList" [nzValue]="itemBalance.ITEMS_BALANCE_ID"
+                  [nzLabel]="lang == 'en' ? itemBalance.ITEM_EN_NAME : itemBalance.ITEM_AR_NAME">
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.ITEMS_BALANCE_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="ITEMS_BALANCE_ID.hasError(validation.type) && (ITEMS_BALANCE_ID.dirty || ITEMS_BALANCE_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="UNITS_ID">{{"UNIT" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_UNIT' | translate }}" formControlName="UNITS_ID">
+                <nz-option *ngFor="let unit of unitList" [nzValue]="unit.LOOKUP_DETAIL_ID"
+                  [nzLabel]="lang == 'ar' ? unit.PRIMARY_NAME : unit.SECONDARY_NAME">
+
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.UNITS_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="UNITS_ID.hasError(validation.type) && (UNITS_ID.dirty || UNITS_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="STORES_ID">{{"STORE" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <!-- <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_STORE' | translate }}" formControlName="STORES_ID">
+                <nz-option *ngFor="let store of storeList" [nzValue]="store.STORES_ID" [nzLabel]="store.EN_NAME">
+                </nz-option>
+              </nz-select> -->
+              <nz-tree-select [nzNodes]="storeList" nzShowSearch nzPlaceHolder="{{'PLEASE_SELECT' | translate }}"
+                formControlName="STORES_ID">
+              </nz-tree-select>
+              <div *ngFor="let validation of validation_messages.STORES_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="STORES_ID.hasError(validation.type) && (STORES_ID.dirty || STORES_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="INV_OPEN_BALANCE_ITEMS_ID">{{"INVENTORY_OPEN_BALANCE_ITEM" | translate }}<span
+                class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'INVENTORY_OPEN_BALANCE_ITEM' | translate }}"
+                formControlName="INV_OPEN_BALANCE_ITEMS_ID">
+                <nz-option *ngFor="let item of openItemBalanceList" [nzValue]="item.INV_OPEN_BALANCE_ITEMS_ID"
+                  [nzLabel]="lang == 'ar' ? item.ITEM_EN_NAME : item.ITEM_AR_NAME">
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.INV_OPEN_BALANCE_ITEMS_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="INV_OPEN_BALANCE_ITEMS_ID.hasError(validation.type) && (INV_OPEN_BALANCE_ITEMS_ID.dirty || INV_OPEN_BALANCE_ITEMS_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="OPEN_BALANCE">{{"OPEN_BALANCE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="OPEN_BALANCE"
+                nzPlaceHolder="{{'OPEN_BALANCE' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.OPEN_BALANCE">
+                <nz-form-explain class="red-color"
+                  *ngIf="OPEN_BALANCE.hasError(validation.type) && (OPEN_BALANCE.dirty || OPEN_BALANCE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="title">{{"ITEM_COST" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="ITEM_COST"
+                nzPlaceHolder="{{'ITEM_COST' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.ITEM_COST">
+                <nz-form-explain class="red-color"
+                  *ngIf="ITEM_COST.hasError(validation.type) && (ITEM_COST.dirty || ITEM_COST.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="AVERAGE_COST">{{"AVERAGE_COST" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="AVERAGE_COST"
+                nzPlaceHolder="{{'AVERAGE_COST' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.AVERAGE_COST">
+                <nz-form-explain class="red-color"
+                  *ngIf="AVERAGE_COST.hasError(validation.type) && (AVERAGE_COST.dirty || AVERAGE_COST.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="CURRENT_BALANCE">{{"CURRENT_BALANCE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="CURRENT_BALANCE"
+                nzPlaceHolder="{{'CURRENT_BALANCE' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.CURRENT_BALANCE">
+                <nz-form-explain class="red-color"
+                  *ngIf="CURRENT_BALANCE.hasError(validation.type) && (CURRENT_BALANCE.dirty || CURRENT_BALANCE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_ON_HAND">{{"QUANTITY_ON_HAND" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_ON_HAND"
+                nzPlaceHolder="{{'QUANTITY_ON_HAND' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_ON_HAND">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_ON_HAND.hasError(validation.type) && (QTY_ON_HAND.dirty || QTY_ON_HAND.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_RESERVED">{{"QUANTITY_RESERVED" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_RESERVED"
+                nzPlaceHolder="{{'QUANTITY_RESERVED' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_RESERVED">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_RESERVED.hasError(validation.type) && (QTY_RESERVED.dirty || QTY_RESERVED.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_TRANSFER_TO">{{"QUANTITY_TRANSFER_TO" | translate }}<span
+                class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_TRANSFER_TO"
+                nzPlaceHolder="{{'QUANTITY_TRANSFER_TO' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_TRANSFER_TO">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_TRANSFER_TO.hasError(validation.type) && (QTY_TRANSFER_TO.dirty || QTY_TRANSFER_TO.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_TRANSFER_FROM">{{"QUANTITY_TRANSFER_FROM" | translate }}<span
+                class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_TRANSFER_FROM"
+                nzPlaceHolder="{{'QUANTITY_TRANSFER_FROM' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_TRANSFER_FROM">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_TRANSFER_FROM.hasError(validation.type) && (QTY_TRANSFER_FROM.dirty || QTY_TRANSFER_FROM.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="OTY_DISPOSED">{{"QUANTITY_DISPOSED" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="OTY_DISPOSED"
+                nzPlaceHolder="{{'QUANTITY_DISPOSED' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.OTY_DISPOSED">
+                <nz-form-explain class="red-color"
+                  *ngIf="OTY_DISPOSED.hasError(validation.type) && (OTY_DISPOSED.dirty || OTY_DISPOSED.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_ON_POR">{{"QUANTITY_ON_POR" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_ON_POR"
+                nzPlaceHolder="{{'QUANTITY_ON_POR' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_ON_POR">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_ON_POR.hasError(validation.type) && (QTY_ON_POR.dirty || QTY_ON_POR.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_ON_SOR">{{"QUANTITY_ON_SOR" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_ON_SOR"
+                nzPlaceHolder="{{'QUANTITY_ON_SOR' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_ON_SOR">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_ON_SOR.hasError(validation.type) && (QTY_ON_SOR.dirty || QTY_ON_SOR.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_ON_SO">{{"QUANTITY_ON_SO" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_ON_SO"
+                nzPlaceHolder="{{'QUANTITY_ON_SO' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_ON_SO">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_ON_SO.hasError(validation.type) && (QTY_ON_SO.dirty || QTY_ON_SO.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_ON_PO">{{"QUANTITY_ON_PO" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_ON_PO"
+                nzPlaceHolder="{{'QUANTITY_ON_PO' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_ON_PO">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_ON_PO.hasError(validation.type) && (QTY_ON_PO.dirty || QTY_ON_PO.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_REQUESTED">{{"QUANTITY_REQUESTED" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_REQUESTED"
+                nzPlaceHolder="{{'QUANTITY_REQUESTED' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_REQUESTED">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_REQUESTED.hasError(validation.type) && (QTY_REQUESTED.dirty || QTY_REQUESTED.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_SO_CONSIGMENT">{{"QUANTITY_SO_CONSIGMENT" | translate }}<span
+                class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_SO_CONSIGMENT"
+                nzPlaceHolder="{{'QUANTITY_SO_CONSIGMENT' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_SO_CONSIGMENT">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_SO_CONSIGMENT.hasError(validation.type) && (QTY_SO_CONSIGMENT.dirty || QTY_SO_CONSIGMENT.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_PO_CONSIGMENT">{{"QUANTITY_PO_CONSIGMENT" | translate }}<span
+                class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_PO_CONSIGMENT"
+                nzPlaceHolder="{{'QUANTITY_PO_CONSIGMENT' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_PO_CONSIGMENT">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_PO_CONSIGMENT.hasError(validation.type) && (QTY_PO_CONSIGMENT.dirty || QTY_PO_CONSIGMENT.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QTY_ADDED">{{"QUANTITY_ADDED" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QTY_ADDED"
+                nzPlaceHolder="{{'QUANTITY_ADDED' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.QTY_ADDED">
+                <nz-form-explain class="red-color"
+                  *ngIf="QTY_ADDED.hasError(validation.type) && (QTY_ADDED.dirty || QTY_ADDED.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="CONFIRMED">{{"CONFIRMED" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="CONFIRMED"
+                nzPlaceHolder="{{'CONFIRMED' | translate }}" [nzMin]="0" [nzStep]="0.1">
+              </nz-input-number>
+
+              <div *ngFor="let validation of validation_messages.CONFIRMED">
+                <nz-form-explain class="red-color"
+                  *ngIf="CONFIRMED.hasError(validation.type) && (CONFIRMED.dirty || CONFIRMED.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="LAST_SOLD">{{"LAST_SOLD" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <cui-datepicker nzFormat="dd-MMM-yyyy" nzPlaceHolder="{{'LAST_SOLD' | translate }}"
+                formControlName="LAST_SOLD">
+              </cui-datepicker>
+              <div *ngFor="let validation of validation_messages.LAST_SOLD">
+                <nz-form-explain class="red-color"
+                  *ngIf="LAST_SOLD.hasError(validation.type) && (LAST_SOLD.dirty || LAST_SOLD.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="LAST_RECIEVED">{{"LAST_RECEIVED" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <cui-datepicker nzFormat="dd-MMM-yyyy" nzPlaceHolder="{{'LAST_RECEIVED' | translate }}"
+                formControlName="LAST_RECIEVED">
+              </cui-datepicker>
+              <div *ngFor="let validation of validation_messages.LAST_RECIEVED">
+                <nz-form-explain class="red-color"
+                  *ngIf="LAST_RECIEVED.hasError(validation.type) && (LAST_RECIEVED.dirty || LAST_RECIEVED.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="form-actions">
+          <button type="submit" nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+          <button type="button" nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

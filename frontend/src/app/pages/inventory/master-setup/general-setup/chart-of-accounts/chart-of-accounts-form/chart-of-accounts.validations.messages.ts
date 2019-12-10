@@ -1,0 +1,21 @@
+export const CHART_OF_ACCOUNTS_VALIDATION_MESSAGES = {
+  SUBSIDIARY_ID: [{ type: 'required', message:{en:'Subsidary is a required Field !',ar:'الدعم هو حقل مطلوب!'} }],
+  ACCOUNT_CODE: [{ type: 'required', message:{en:'Account code is a required Field !',ar:'رمز الحساب هو حقل مطلوب!'} }],
+  AR_NAME: [{ type: 'required', message:{en:'Arabic Name is a required Field !',ar:'الاسم باللغة العربية هو حقل مطلوب!'} },],
+  EN_NAME: [{ type: 'required', message:{en:'English Name is a required Field !',ar:'الاسم الانجليزي هو حقل مطلوب!'} }],
+  AR_DESCRIPTION: [{ type: 'required', message:{en:'Arabic Description is a required Field !',ar:'الوصف باللغة العربية هو حقل مطلوب!'} }],
+  EN_DESCRIPTION: [{ type: 'required', message:{en:'English Description is a required Field !',ar:'الوصف باللغة الإنجليزية هو حقل مطلوب!'} }],
+  SUB_JOURNALS_COMPULSION: [{ type: 'required', message:{en:'Sub Journals compulsion is a required Field !',ar:'المجلات الفرعية الإكراه هو حقل مطلوب!'} }],
+  SUB_JOURNALS_ID: [{ type: 'required', message:{en:'Sub Journals Id is a required Field !',ar:'معرف المجلات الفرعية هو حقل مطلوب!'} }],
+  COST_CENTER_COMPULSION: [{ type: 'required', message:{en:'Cost Center compulsion to is a required Field !',ar:'إكراه مركز التكلفة هو حقل مطلوب!'} }],
+  COST_CENTER_PATTERNS_ID: [{ type: 'required', message:{en:'Cost Center Pattern is a required Field !',ar:'نمط مركز التكلفة هو حقل مطلوب!'} }],
+  ACCOUNT_TYPE: [{ type: 'required', message:{en:'Account Type is a required Field !',ar:'نوع الحساب هو حقل مطلوب!'} }],
+  ACCOUNT_NATURE: [{ type: 'required', message:{en:'Account Nature is a required Field !',ar:'طبيعة الحساب هو حقل مطلوب!'} }],
+  GENERAL_CHART_OF_ACCOUNT_ID: [{ type: 'required', message:{en:'General Chart of Account is a required Field !',ar:'المخطط العام للحساب هو حقل مطلوب!'} }],
+  PARENT_ACCOUNTS_ID: [{ type: 'required', message:{en:'Parent Accounts Id is a required Field !',ar:'رقم تعريف حسابات الوالدين هو حقل مطلوب!'} }],
+  TREE_LEVEL: [{ type: 'required', message:{en:'Tree Level is a required Field !',ar:'مستوى الشجرة حقل مطلوب!'} }],
+  TREE_PARENT_CODE: [{ type: 'required', message:{en:'Tree Parent Code is a required Field !',ar:'رمز أصل الشجرة هو حقل مطلوب!'} }],
+  FULL_ACCOUNT_CODE: [{ type: 'required', message:{en:'Full Account Code is a required Field !',ar:'رمز الحساب الكامل هو حقل مطلوب !'} }],
+  STATUS: [{ type: 'required', message:{en:'Status is a required Field !',ar:'الحالة حقل مطلوب !'} }],
+}
+

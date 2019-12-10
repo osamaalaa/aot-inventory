@@ -1,0 +1,184 @@
+  <form nz-form nzLayout="'vertical'" [formGroup]="form" role="form">
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"FIXED_DAYS_SUPPLY" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="FIXED_DAYS_SUPPLY" nzPlaceHolder="{{'FIXED_DAYS_SUPPLY' | translate }}"
+              [nzMin]="0" [nzStep]="1"></nz-input-number>
+            <!-- <div *ngFor="let validation of validation_messages.FIXED_DAYS_SUPPLY">
+              <nz-form-explain class="red-color"
+                *ngIf="FIXED_DAYS_SUPPLY.hasError(validation.type) && (FIXED_DAYS_SUPPLY.dirty || FIXED_DAYS_SUPPLY.touched)">
+               {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"MINIMUM_ORDER_QUANTITY" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="MINIMUM_ORDER_QUANTITY"
+              nzPlaceHolder="{{'MINIMUM_ORDER_QUANTITY' | translate }}" [nzMin]="0" [nzMax]="MAXIMUM_ORDER_QUANTITY.value" [nzStep]="1">
+            </nz-input-number>
+
+            <!-- <div *ngFor="let validation of validation_messages.MINIMUM_ORDER_QUANTITY">
+              <nz-form-explain class="red-color"
+                *ngIf="MINIMUM_ORDER_QUANTITY.hasError(validation.type) && (MINIMUM_ORDER_QUANTITY.dirty || MINIMUM_ORDER_QUANTITY.touched)">
+               {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"FIXED_ORDER_QUANTITY" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="FIXED_ORDER_QUANTITY"
+              nzPlaceHolder="{{'FIXED_ORDER_QUANTITY' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+
+            <!-- <div *ngFor="let validation of validation_messages.FIXED_ORDER_QUANTITY">
+              <nz-form-explain class="red-color"
+                *ngIf="FIXED_ORDER_QUANTITY.hasError(validation.type) && (FIXED_ORDER_QUANTITY.dirty || FIXED_ORDER_QUANTITY.touched)">
+               {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"MAXIMUM_ORDER_QUANTITY" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="MAXIMUM_ORDER_QUANTITY"
+              nzPlaceHolder="{{'MAXIMUM_ORDER_QUANTITY' | translate }}" [nzMin]="MINIMUM_ORDER_QUANTITY.value" [nzStep]="1">
+            </nz-input-number>
+
+            <!-- <div *ngFor="let validation of validation_messages.MAXIMUM_ORDER_QUANTITY">
+              <nz-form-explain class="red-color"
+                *ngIf="MAXIMUM_ORDER_QUANTITY.hasError(validation.type) && (MAXIMUM_ORDER_QUANTITY.dirty || MAXIMUM_ORDER_QUANTITY.touched)">
+               {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"ORDER_COST" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="ORDER_COST" nzPlaceHolder="{{'ORDER_COST' | translate }}" [nzMin]="0"
+              [nzStep]="1"></nz-input-number>
+
+            <!-- <div *ngFor="let validation of validation_messages.ORDER_COST">
+              <nz-form-explain class="red-color"
+                *ngIf="ORDER_COST.hasError(validation.type) && (ORDER_COST.dirty || ORDER_COST.touched)">
+               {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Purchasing" formControlName="PURCHASING_ENABLED_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Customer Order" formControlName="CUSTOMER_ORDER_ENABLED_FLAG">
+          </cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Orderable on web" formControlName="ORDERABLE_ON_WEB_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="RFQ Required" formControlName="RFQ_REQUIRED_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Internal Order" formControlName="INTERNAL_ORDER_ENABLED_FLAG">
+          </cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Invoice" formControlName="INVOICE_ENABLED_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Shippable" formControlName="SHIPPABLE_ENABLED_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Invoiceable" formControlName="INVOICEABLE_ITEM_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Inspection" formControlName="INSPECTION_REQUIRED_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Costing" formControlName="COSTING_ENABLED_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Returnable" formControlName="RETURNABLE_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Receipt Required" formControlName="RECEIPT_REQUIRED_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Allow Substitute Receipt" formControlName="ALLOW_SUBSTITUTE_RECEIPTS_FLAG">
+          </cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Allow Unordered Receipt" formControlName="ALLOW_UNORDERED_RECEIPTS_FLAG">
+          </cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Allow Express Delivery" formControlName="ALLOW_EXPRESS_DELIVERY_FLAG">
+          </cui-checkbox>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+

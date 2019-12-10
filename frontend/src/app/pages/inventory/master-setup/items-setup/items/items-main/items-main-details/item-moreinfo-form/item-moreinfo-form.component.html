@@ -1,0 +1,128 @@
+  <form nz-form nzLayout="'vertical'" [formGroup]="form"  role="form">
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"MAX_WARRANTY_AMOUNT" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="MAX_WARRANTY_AMOUNT" nzPlaceHolder="{{'MAX_WARRANTY_AMOUNT' | translate }}"
+              [nzMin]="0" [nzStep]="1"></nz-input-number>
+            <!-- <div *ngFor="let validation of validation_messages.MAX_WARRANTY_AMOUNT">
+              <nz-form-explain class="red-color"
+                *ngIf="MAX_WARRANTY_AMOUNT.hasError(validation.type) && (MAX_WARRANTY_AMOUNT.dirty || MAX_WARRANTY_AMOUNT.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="WARRANTY_VENDOR_ID">{{"WARRANTY_VENDOR" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-select  style="width: 100%; display: block;"
+              nzPlaceHolder="{{'CHOOSE_WARRANTY_VENDOR' | translate }}" formControlName="WARRANTY_VENDOR_ID">
+              <nz-option *ngFor="let temp of data" [nzLabel]="temp.EN_NAME" [nzValue]="temp.WARRANTY_VENDOR_ID">
+              </nz-option>
+            </nz-select>
+            <!-- <div *ngFor="let validation of validation_messages.WARRANTY_VENDOR_ID">
+              <nz-form-explain class="red-color"
+                *ngIf="WARRANTY_VENDOR_ID.hasError(validation.type) && (WARRANTY_VENDOR_ID.dirty || WARRANTY_VENDOR_ID.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"ACCEPTABLE_RATE_INCREASE" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="ACCEPTABLE_RATE_INCREASE"
+              nzPlaceHolder="{{'ACCEPTABLE_RATE_INCREASE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+
+            <!-- <div *ngFor="let validation of validation_messages.ACCEPTABLE_RATE_INCREASE">
+              <nz-form-explain class="red-color"
+                *ngIf="ACCEPTABLE_RATE_INCREASE.hasError(validation.type) && (ACCEPTABLE_RATE_INCREASE.dirty || ACCEPTABLE_RATE_INCREASE.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="ASSET_CATEGORY_ID">{{"ASSET_CATEGORY" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-select  style="width: 100%; display: block;"
+              nzPlaceHolder="{{'CHOOSE_ASSET_CATEGORY' | translate }}" formControlName="ASSET_CATEGORY_ID">
+              <nz-option *ngFor="let temp of data" [nzLabel]="temp.EN_NAME" [nzValue]="temp.ASSET_CATEGORY_ID">
+              </nz-option>
+            </nz-select>
+            <!-- <div *ngFor="let validation of validation_messages.ASSET_CATEGORY_ID">
+              <nz-form-explain class="red-color"
+                *ngIf="ASSET_CATEGORY_ID.hasError(validation.type) && (ASSET_CATEGORY_ID.dirty || ASSET_CATEGORY_ID.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+
+      </div>
+    </div>
+    <div nz-row nzGutter="16">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"ACCEPTABLE_RATE_DECREASE" | translate }}</nz-form-label>
+          <nz-form-control>
+            <nz-input-number class="width-100" formControlName="ACCEPTABLE_RATE_DECREASE"
+              nzPlaceHolder="{{'ACCEPTABLE_RATE_DECREASE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+
+            <!-- <div *ngFor="let validation of validation_messages.ACCEPTABLE_RATE_DECREASE">
+              <nz-form-explain class="red-color"
+                *ngIf="ACCEPTABLE_RATE_DECREASE.hasError(validation.type) && (ACCEPTABLE_RATE_DECREASE.dirty || ACCEPTABLE_RATE_DECREASE.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div> -->
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Vendor Warranty" formControlName="VENDOR_WARRANTY_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Outside Operation" formControlName="OUTSIDE_OPERATION_FLAG">
+          </cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Electronic" formControlName="ELECTRONIC_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Preventive Maintainance" formControlName="PREVENTIVE_MAINTENANCE_FLAG"></cui-checkbox>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item>
+          <cui-checkbox label="Vehicle Item" formControlName="VEHICLE_ITEM_FLAG">
+          </cui-checkbox>
+        </nz-form-item>
+      </div>
+
+    </div>
+  </form>
+

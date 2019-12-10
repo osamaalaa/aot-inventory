@@ -1,0 +1,33 @@
+<nz-skeleton [nzLoading]="loading" [nzActive]="true" [nzParagraph]="{ rows:10 }">
+
+  <nz-descriptions nzBordered [nzSize]="'default'">
+    <nz-descriptions-item [nzTitle]="'STORE_NAME' | translate">
+      {{invStocktakingdata.STORE_EN_NAME}}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'INVENTORY_PERIOD' | translate">{{invStocktakingdata.INVENTORY_PERIODS_EN_NAME}}
+    </nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'DOCUMENT_DATE' | translate">{{invStocktakingdata.DOCUMENT_DATE | date}}</nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'DOCUMENT_NO' | translate">{{invStocktakingdata.DOCUMENT_NO}}</nz-descriptions-item>
+    <nz-descriptions-item [nzTitle]="'NOTES' | translate">{{invStocktakingdata.NOTES}}</nz-descriptions-item>
+  </nz-descriptions>
+</nz-skeleton>
+<div style="margin-bottom: 2em;margin-top: 5em;">
+  <!-- <div nz-row [nzGutter]="5" *ngIf="INV_STOCKTAKING_ID">
+    <div nz-col [nzSpan]="12">
+        <app-inv-stocktaking-items-table [readOnly]="'true'" [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID"></app-inv-stocktaking-items-table>
+    </div>
+    <div nz-col [nzSpan]="12">
+      <app-inv-stocktaking-committee-table [readOnly]="'true'" [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID"></app-inv-stocktaking-committee-table>
+    </div>
+  </div> -->
+  <app-inv-stocktaking-bal-u-table [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID" [readOnly]="'true'"></app-inv-stocktaking-bal-u-table>
+</div>
+<div class="footer-button">
+    <button style="margin-right: 8px;" [disabled]="isRejectLoading" [nzLoading]="isAcceptLoading" nz-button nzType="primary"
+    (click)="whenApproveClicked()"><i nz-icon nzType="check-circle" nzTheme="fill"></i>
+    {{"APPROVE" | translate}}</button>
+  <button  [disabled]="isAcceptLoading" [nzLoading]="isRejectLoading" nz-button nzType="danger"
+    (click)="whenRejectClicked()"><i nz-icon nzType="close-circle" nzTheme="fill"></i> {{"REJECT" | translate}}
+  </button>
+</div>
+

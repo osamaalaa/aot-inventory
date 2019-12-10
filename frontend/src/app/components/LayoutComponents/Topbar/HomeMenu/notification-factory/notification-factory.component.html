@@ -1,0 +1,69 @@
+<app-open-balance-notification *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.OPEN_BALANCE"
+  [notificationData]="notificationData">
+
+</app-open-balance-notification>
+<app-rcv-document-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.RCV_DOC">
+
+</app-rcv-document-notification>
+<app-inv-transfer-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.INV_TRANSFER">
+
+</app-inv-transfer-notification>
+<app-inv-transfer-notification [notificationData]="notificationData" [isCustodyTransfer]="true"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.CUSTODY_TRANSFER">
+
+</app-inv-transfer-notification>
+<app-req-document-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.REQ_DOCUMENT">
+
+</app-req-document-notification>
+<app-dsp-document-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.DISPENCE">
+
+</app-dsp-document-notification>
+<app-item-receive-request [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.ITEM_RECEIVE_REQUEST">
+
+</app-item-receive-request>
+<app-rcv-temp-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.RCV_TEMPORARY">
+
+</app-rcv-temp-notification>
+<app-rcv-insp-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.RCV_INSPECTION">
+
+</app-rcv-insp-notification>
+<app-inv-transfer-r-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.INV_TRANSFER_R">
+
+</app-inv-transfer-r-notification>
+<app-inv-transfer-r-notification [notificationData]="notificationData" [isCustodyTransfer]="true"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.CUSTODY_TRANSFER_R">
+
+</app-inv-transfer-r-notification>
+<app-inv-stocking-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.INV_STOCKTAKING">
+
+</app-inv-stocking-notification>
+<app-jo-req-document-notification [notificationData]="notificationData"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.JO_REQ_DOCUMENT">
+
+</app-jo-req-document-notification>
+
+<app-req-document-notification [notificationData]="notificationData" [isItemReturnRequest]="true"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.ITEM_RETURN_REQUEST">
+
+</app-req-document-notification>
+<app-req-document-notification [notificationData]="notificationData" [isItemLostRequest]="true"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.ITEM_LOSE_REQUEST">
+
+</app-req-document-notification>
+<app-req-document-notification [notificationData]="notificationData" [isEmployeeCustodyRequest]="true"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.EMPLOYEE_CUSTODY_REQUEST">
+
+</app-req-document-notification>
+<app-req-document-notification [notificationData]="notificationData" [isRequestItems]="true"
+  *ngIf="notificationData.REQ_TYPE_ID==REQ_TYPE.ITEM_REQUEST">
+
+</app-req-document-notification>

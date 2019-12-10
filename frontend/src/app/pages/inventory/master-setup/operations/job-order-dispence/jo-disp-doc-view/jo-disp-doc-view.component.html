@@ -1,0 +1,20 @@
+<nz-skeleton [nzLoading]="loading" [nzActive]="true" [nzParagraph]="{ rows:10 }">
+  <div style=" margin-bottom: 24px;">
+    <app-job-order-view *ngIf="jobOrderId && dispData" [jobOrderId]="jobOrderId" [data]="dispData">
+    </app-job-order-view>
+
+  </div>
+<div style="margin-bottom: 2em;margin-top: 5em;">
+  <app-jo-disp-doc-items-table [readOnly]="'true'" [dispenceItems]="dispenceItems" [DOCUMENT_ID]="DOCUMENT_ID">
+  </app-jo-disp-doc-items-table>
+</div>
+</nz-skeleton>
+<div class="footer-button">
+    <button style="margin-right: 8px;" [disabled]="isRejectLoading" [nzLoading]="isAcceptLoading" nz-button nzType="primary"
+    (click)="whenApproveClicked()"><i nz-icon nzType="check-circle" nzTheme="fill"></i>
+    Approve</button>
+  <button  [disabled]="isAcceptLoading" [nzLoading]="isRejectLoading" nz-button nzType="danger"
+    (click)="whenRejectClicked()"><i nz-icon nzType="close-circle" nzTheme="fill"></i> {{"REJECT" | translate}}
+  </button>
+</div>
+

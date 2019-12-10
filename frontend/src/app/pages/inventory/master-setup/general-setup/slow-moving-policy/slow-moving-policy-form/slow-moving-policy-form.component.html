@@ -1,0 +1,195 @@
+
+
+
+<form nz-form nzLayout="'vertical'" [formGroup]="slowmovingpolicygroupForm" (ngSubmit)="submitForm()" role="form">
+  <div class="row">
+
+    <div class="col-lg-6">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"SLOW_MOVING_POLICY_TYPE" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+
+            <nz-input-number class="width-100" formControlName="SLOW_MOVING_POLICY_TYPE" nzPlaceHolder="{{'SLOW_MOVING_POLICY_TYPE' | translate }}" [nzMin]="0"  [nzStep]="1"></nz-input-number>
+
+          <div *ngFor="let validation of validation_messages.SLOW_MOVING_POLICY_TYPE">
+            <nz-form-explain class="red-color"
+              *ngIf="SLOW_MOVING_POLICY_TYPE.hasError(validation.type) && (SLOW_MOVING_POLICY_TYPE.dirty || SLOW_MOVING_POLICY_TYPE.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+
+
+
+
+    <div class="col-lg-6">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"SLOW_MOVING_MINIMUM_VALUE" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+
+            <nz-input-number class="width-100" formControlName="SLOW_MOVING_MINIMUM_VALUE" nzPlaceHolder="{{'SLOW_MOVING_MINIMUM_VALUE' | translate }}" [nzMin]="0"  [nzStep]="1"></nz-input-number>
+
+          <div *ngFor="let validation of validation_messages.SLOW_MOVING_MINIMUM_VALUE">
+            <nz-form-explain class="red-color"
+              *ngIf="SLOW_MOVING_MINIMUM_VALUE.hasError(validation.type) && (SLOW_MOVING_MINIMUM_VALUE.dirty || SLOW_MOVING_MINIMUM_VALUE.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    </div>
+
+
+
+
+
+
+<div class="row">
+    <div class="col-lg-6">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"SLOW_MOVING_POLICY_DAYS" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+
+            <nz-input-number class="width-100" formControlName="SLOW_MOVING_POLICY_DAYS" nzPlaceHolder="{{'SLOW_MOVING_POLICY_DAYS' | translate }}" [nzMin]="0"  [nzStep]="1"></nz-input-number>
+
+          <div *ngFor="let validation of validation_messages.SLOW_MOVING_POLICY_DAYS">
+            <nz-form-explain class="red-color"
+              *ngIf="SLOW_MOVING_POLICY_DAYS.hasError(validation.type) && (SLOW_MOVING_POLICY_DAYS.dirty || SLOW_MOVING_POLICY_DAYS.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+
+
+
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"ENGLISH_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                  <input nz-input name="EN_NAME" type="text" id="EN_NAME" placeholder="{{'ENGLISH_NAME'| translate }}" formControlName="EN_NAME">
+                  <div *ngFor="let validation of validation_messages.EN_NAME">
+                    <nz-form-explain class="red-color"
+                      *ngIf="EN_NAME.hasError(validation.type) && (EN_NAME.dirty || EN_NAME.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+
+
+
+    <div class="col-lg-6">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"ARABIC_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+          <input nz-input name="AR_NAME" type="text" id="AR_NAME" placeholder="{{'ARABIC_NAME'| translate }}" formControlName="AR_NAME">
+          <div *ngFor="let validation of validation_messages.AR_NAME">
+            <nz-form-explain class="red-color"
+              *ngIf="AR_NAME.hasError(validation.type) && (AR_NAME.dirty || AR_NAME.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+
+
+    <div class="col-lg-6">
+      <nz-form-item>
+        <nz-form-label nzFor="title">{{"ARABIC_DESCRIPTION" | translate }}<span class="red-color">*</span></nz-form-label>
+        <nz-form-control>
+          <input nz-input name="AR_DESCRIPTION" type="text" id="AR_DESCRIPTION" placeholder="{{'ARABIC_DESCRIPTION'| translate }}" formControlName="AR_DESCRIPTION">
+          <div *ngFor="let validation of validation_messages.AR_DESCRIPTION">
+            <nz-form-explain class="red-color"
+              *ngIf="AR_DESCRIPTION.hasError(validation.type) && (AR_DESCRIPTION.dirty || AR_DESCRIPTION.touched)">
+              {{validation.message | translatecui}}
+            </nz-form-explain>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+
+
+  <!--  <div class="col-lg-6">
+         <nz-form-item>
+          <nz-form-label nzFor="title">{{"ENGLISH_NAME" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <input nz-input name="EN_NAME" type="text" id="EN_NAME" placeholder="{{'ENGLISH_NAME'| translate }}" formControlName="EN_NAME">
+            <div *ngFor="let validation of validation_messages.EN_NAME">
+              <nz-form-explain class="red-color"
+                *ngIf="EN_NAME.hasError(validation.type) && (EN_NAME.dirty || EN_NAME.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>-->
+
+
+</div>
+
+
+
+
+<div class="row">
+
+    <div class="col-lg-6">
+        <nz-form-item>
+          <nz-form-label nzFor="title">{{"ENGLISH_DESCRIPTION" | translate }}<span class="red-color">*</span></nz-form-label>
+          <nz-form-control>
+            <input nz-input name="EN_DESCRIPTION" type="text" id="EN_DESCRIPTION" placeholder="{{'ENGLISH_DESCRIPTION'| translate }}" formControlName="EN_DESCRIPTION">
+            <div *ngFor="let validation of validation_messages.EN_DESCRIPTION">
+              <nz-form-explain class="red-color"
+                *ngIf="EN_DESCRIPTION.hasError(validation.type) && (EN_DESCRIPTION.dirty || EN_DESCRIPTION.touched)">
+                {{validation.message | translatecui}}
+              </nz-form-explain>
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="col-lg-12">
+    <div class="form-actions">
+      <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+      <button (click)="cancel()" nz-button routerLink="/setup/slow-moving-policy/">{{"CANCEL" | translate }}</button>
+    </div>
+
+  </div>
+</form>
+
+

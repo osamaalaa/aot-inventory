@@ -1,0 +1,121 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="itemComponentsForm" (ngSubmit)="submitForm()" role="form">
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="row">
+        <div class="col-lg-6">
+
+
+          <nz-form-item>
+            <nz-form-label nzFor="UNITS_ID">{{"UNITS" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select nzShowSearch [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'CHOOSE_UNITS' | translate }}" formControlName="UNITS_ID">
+                <nz-option *ngFor="let ItemCompo of itemComponentsTypeList" [nzValue]="ItemCompo.LOOKUP_DETAIL_ID"
+                  [nzLabel]="lang == 'ar' ? ItemCompo.SECONDARY_NAME : ItemCompo.PRIMARY_NAME">
+
+                </nz-option>
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.UNITS_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="UNITS_ID.hasError(validation.type) && (UNITS_ID.dirty || UNITS_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="COMPONENTS_ITEMS_ID">{{"COMPONENENTS_ITEM" | translate }}<span
+                class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-select nzShowSearch [nzLoading]="isfetchingLookup" style="width: 100%; display: block;"
+                nzPlaceHolder="{{'COMPONENTS_ITEMS' | translate }}" formControlName="COMPONENTS_ITEMS_ID">
+                <nz-option *ngFor="let ItemCompo of itemsList" [nzValue]="ItemCompo.ITEMS_ID"
+                  [nzLabel]="lang == 'en' ? ItemCompo.EN_NAME : ItemCompo.AR_NAME">
+                </nz-option>
+
+              </nz-select>
+              <div *ngFor="let validation of validation_messages.COMPONENTS_ITEMS_ID">
+                <nz-form-explain class="red-color"
+                  *ngIf="COMPONENTS_ITEMS_ID.hasError(validation.type) && (COMPONENTS_ITEMS_ID.dirty || COMPONENTS_ITEMS_ID.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="ITEM_PRICE">{{"ITEM_PRICE" | translate }}<span class="red-color">*</span>
+            </nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="ITEM_PRICE"
+                nzPlaceHolder="{{'ITEMPRICE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+              <div *ngFor="let validation of validation_messages.ITEM_PRICE">
+                <nz-form-explain class="red-color"
+                  *ngIf="ITEM_PRICE.hasError(validation.type) && (ITEM_PRICE.dirty || ITEM_PRICE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="COST_PERCENTAGE">{{"COST_PERCENTAGE" | translate }}<span
+                class="badge badge-danger font-size-8">{{"%" | translate }}</span></nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="COST_PERCENTAGE"
+                nzPlaceHolder="{{'COSTPERCENTAGE' | translate }}" [nzMin]="0" [nzStep]="1" [nzMax]="100"
+                [nzFormatter]="formatterPercent" [nzParser]="parserPercent"></nz-input-number>
+              <div *ngFor="let validation of validation_messages.COST_PERCENTAGE">
+                <nz-form-explain class="red-color"
+                  *ngIf="COST_PERCENTAGE.hasError(validation.type) && (COST_PERCENTAGE.dirty || COST_PERCENTAGE.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="QUANTITY">{{"QUANTITY" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+              <nz-input-number class="width-100" formControlName="QUANTITY" nzPlaceHolder="{{'QUANTITY' | translate }}"
+                [nzMin]="0" [nzStep]="1"></nz-input-number>
+              <div *ngFor="let validation of validation_messages.QUANTITY">
+                <nz-form-explain class="red-color"
+                  *ngIf="QUANTITY.hasError(validation.type) && (QUANTITY.dirty || QUANTITY.touched)">
+                  {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+          </nz-form-item>
+
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-actions">
+            <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+            <button nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- <div class="footer-button">
+    <button type="button" (click)="cancel()" class="ant-btn" style="margin-right: 8px;"><span>{{"CANCEL" | translate }}</span></button>
+    <button type="submit" (click)="submitForm()" class="ant-btn ant-btn-primary"><span>{{"SAVE" | translate }}</span></button>
+  </div> -->

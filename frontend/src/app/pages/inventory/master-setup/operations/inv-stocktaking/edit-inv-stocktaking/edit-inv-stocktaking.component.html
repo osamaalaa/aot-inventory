@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"PYSICAL_INV_DOCUMENT" | translate }}</strong>
+        <div class="pull-right">
+          <button [nzLoading]="savingForm" [disabled]="workFlowLoading" *ngIf="!workFlowInitiateDone" class="but-class" nz-button nzType="primary" (click)="submitForm()">{{"SAVE" | translate }}</button>
+          <button [disabled]="savingForm" [nzLoading]="workFlowLoading" *ngIf="INV_STOCKTAKING_ID && !workFlowInitiateDone" class="but-class" nz-button nzType="primary" (click)="onSaveAndSubmit()">{{"SUBMIT_REQ" | translate }}</button>
+          <button [disabled]="workFlowLoading || savingForm" nz-button nzType="primary"  [routerLink]="['..']">{{"PHYSICAL_INVENTORY_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <app-inv-stocktaking-form #formComp [formData]="formData" [readOnly]="workFlowInitiateDone">
+    </app-inv-stocktaking-form>
+
+
+    <div nz-row [nzGutter]="5" *ngIf="INV_STOCKTAKING_ID">
+      <div nz-col [nzSpan]="12">
+          <app-inv-stocktaking-items-table [readOnly]="workFlowInitiateDone" [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID"></app-inv-stocktaking-items-table>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <app-inv-stocktaking-committee-table  [readOnly]="workFlowInitiateDone"   [INV_STOCKTAKING_ID]="INV_STOCKTAKING_ID"></app-inv-stocktaking-committee-table>
+      </div>
+    </div>
+
+ 
+  </div>
+</div>

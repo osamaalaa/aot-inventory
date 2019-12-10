@@ -1,0 +1,110 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+     <div> <strong>{{"STORES_ITEM_GROUP_NO_DATA" | translate }}</strong>
+      <button class="float-right" nzType="primary" nz-button [routerLink]="['..']">{{"STORES_MAIN" | translate }}</button>
+    </div>
+    </div>
+    <div class="utils__titleDescription">
+      {{"STORES_ITEM_GROUP_NO_DATA" | translate }}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate }}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+          <div class="cui-product-details-controls pull-right">
+            <!-- <nz-dropdown>
+              <a nz-dropdown>
+                Actions <i nz-icon type="down"></i>
+              </a>
+              <ul nz-menu nzSelectable>
+                <li nz-menu-item [routerLink]="['add']">
+                  <i nz-icon [type]="'edit'"></i> New Stores Item Group No Components
+                </li>
+              </ul>
+            </nz-dropdown> -->
+            <button [routerLink]="['add']" nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="plus" nzTheme="outline"></i></button>
+
+          </div>
+        </div>
+        <!-- <nz-table nzBordered  -->
+        <nz-table nzBordered #itemsDataTable [nzData]="storesItemsGroupNoModelService.displayData"
+          class="utils__scrollTable" nzShowSizeChanger nzShowTotal [nzLoading]="isDataLoading">
+          <thead (nzSortChange)="sortData($event)" nzSingleSort>
+            <tr>
+              <!-- <th  class="text-center" nzShowCheckbox></th> -->
+              <th  nzShowSort nzSortKey="STORES_ITEMS_GROUP_NO_ID" class="text-center" nzLeft="0px">Store Items
+                Group No
+              </th>
+              <!-- <th  class="text-center">{{"STORE_ITEMS" | translate }}</th> -->
+              <th  class="text-center" nzShowSort nzSortKey="ITEM_GROUP_EN_NAME">{{"ITEM_GROUP_NAME" | translate }}</th>
+              <th  class="text-center" nzShowSort nzSortKey="STATUS">{{"STATUS" | translate }}</th>
+              <th  class="text-center">{{"ACTIONS" | translate }}</th>
+            </tr>
+            <!-- <tr>
+              <th class="text-center" nzShowSort nzSortKey="STORE_EN_NAME">{{"ENGLISH" | translate }}</th>
+              <th class="text-center" nzShowSort nzSortKey="STORE_AR_NAME">{{"ARABIC" | translate }}</th>
+              <th class="text-center" nzShowSort nzSortKey="ITEM_GROUP_EN_NAME">{{"ENGLISH" | translate }}</th>
+              <th class="text-center" nzShowSort nzSortKey="ITEM_GROUP_AR_NAME">{{"ARABIC" | translate }}</th>
+            </tr> -->
+          </thead>
+          <tbody>
+            <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+              <tr>
+
+                <!-- <td nzShowCheckbox (nzCheckedChange)="refreshStatus()"></td> -->
+
+                <td class="text-center">{{item.STORES_ITEMS_GROUP_NO_ID}}</td>
+
+
+
+                <td *ngIf="lang == 'en'" class="text-center">{{item.STORE_EN_NAME}}</td>
+                <td *ngIf="lang == 'ar'" class="text-center">{{item.STORE_AR_NAME}}</td>
+                <!-- <td class="text-center">{{item.STORE_AR_NAME}}</td> -->
+
+                <td *ngIf="lang == 'en'" class="text-center">{{item.ITEM_GROUP_EN_NAME}}</td>
+                <td *ngIf="lang == 'ar'" class="text-center">{{item.ITEM_GROUP_AR_NAME}}</td>
+                <!-- <td class="text-center">{{item.ITEM_GROUP_AR_NAME}}</td> -->
+
+
+                <td class="text-center">
+                  <span *ngIf="item.STATUS == 1" class="badge badge-primary font-size-12">
+                    Enabled
+                  </span>
+                  <span *ngIf="item.STATUS == 2" class="badge badge-danger font-size-12">
+                    Disabled
+
+                  </span>
+                </td>
+                <td class="text-center">
+                  <button nz-button class="mr-1" nzSize="small" [routerLink]="[item.STORES_ITEMS_GROUP_NO_ID]"><i nz-icon
+                      type="edit" theme="outline"></i>{{"EDIT" | translate }}</button>
+                  <button nz-popconfirm nzTitle="Are you sure to delete this Stores Items Group No Components ?"
+                    (nzOnConfirm)="deleteStoresItemGroupNoComponents(item.STORES_ITEMS_GROUP_NO_ID)" nz-button class="mr-1"
+                    nzSize="small"><i nz-icon type="delete" theme="outline"></i>
+                    {{"REMOVE" | translate }}</button>
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

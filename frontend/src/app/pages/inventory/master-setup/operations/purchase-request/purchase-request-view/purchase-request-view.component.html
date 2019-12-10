@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong>{{"PURCHASE_REQUESTS" | translate }}</strong>
+    </div>
+    <div class="utils__titleDescription">
+      {{"PURCHASE_REQUESTS" | translate }}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate }}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+          <div class="cui-product-details-controls pull-right">
+          </div>
+        </div>
+        <nz-table nzBordered  #itemsDataTable
+          [nzData]="purchaseRequestModelService.displayData" class="utils__scrollTable" nzShowSizeChanger nzShowTotal
+          [nzLoading]="isDataLoading">
+          <thead (nzSortChange)="sortData($event)" nzSingleSort>
+            <tr>
+              <th  class="text-center" nzShowSort nzSortKey="DOCUMENT_ID">{{"SEQUENCE" | translate }}</th>
+              <th  class="text-center" nzShowSort nzSortKey="STORE_EN_NAME">{{"STORE_NAME" | translate }}</th>
+              <!-- <th  class="text-center" nzSortKey="DOCUMENT_AR_NAME">{{"DOCUMENT_NAME" | translate }}</th> -->
+              <th  class="text-center" >{{"DOCUMENT_DATE" | translate }}</th>
+              <th  class="text-center" >{{"REQUEST_DATE" | translate }}</th>
+              <th  class="text-center" >{{"ACTION" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+              <tr>
+                <td  class="text-center">{{item.DOCUMENT_ID}}</td>
+                <td *ngIf="lang == 'en'" class="text-center">{{item.STORE_EN_NAME}}</td>
+                <td *ngIf="lang == 'ar'" class="text-center">{{item.STORE_AR_NAME}}</td>
+                <!-- <td *ngIf="lang == 'en'" class="text-center">{{item.DOCUMENT_EN_NAME}}</td>
+                <td *ngIf="lang == 'ar'" class="text-center">{{item.DOCUMENT_AR_NAME}}</td> -->
+                <td class="text-center">{{item.DOCUMENT_DATE | date}}</td>
+                <td class="text-center">{{item.REQ_DATE | date}}</td>
+                <td class="text-center">
+                  <button nz-button class="mr-1" nzSize="small"
+                   (click)="onClick(item.DOCUMENT_ID)"
+                  ><i nz-icon nzType="eye" nzTheme="outline"></i>
+                    {{"VIEW" | translate}}</button>
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>
+

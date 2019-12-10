@@ -1,0 +1,25 @@
+<nz-table nzBordered  #itemsDataTable
+[nzData]="data" class="utils__scrollTable" nzShowSizeChanger nzShowTotal
+[nzLoading]="isDataLoading">
+<thead  nzSingleSort>
+  <tr>
+    <th  class="text-center" nzSortKey="STORE_EN_NAME">{{"ITEM_NAME" | translate }}</th>
+    <th  class="text-center" nzSortKey="DOCUMENT_AR_NAME">{{"UNITS_NAME" | translate }}</th>
+    <th  class="text-center" >{{"UNIT_FACTOR" | translate }}</th>
+    <th  class="text-center" >{{"UNIT_QUANTITY" | translate }}</th>
+  </tr>
+
+</thead>
+<tbody>
+  <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+    <tr>
+      <td *ngIf="lang == 'en'" class="text-center">{{item.ITEMS_EN_NAME}}</td>
+      <td *ngIf="lang == 'ar'" class="text-center">{{item.ITEMS_AR_NAME}}</td>
+      <td *ngIf="lang == 'en'" class="text-center">{{item.UNIT_EN_NAME}}</td>
+      <td *ngIf="lang == 'ar'" class="text-center">{{item.UNIT_AR_NAME}}</td>
+      <td class="text-center">{{item.UNIT_FACTOR}}</td>
+      <td class="text-center">{{item.UNIT_QUANTITY}}</td>
+    </tr>
+  </ng-template>
+</tbody>
+</nz-table>

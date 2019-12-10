@@ -1,0 +1,518 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div><strong>{{"ITEM_DETAIL" | translate }}</strong></div>
+    </div>
+  </div>
+  <div class="card-body">
+    <form nz-form nzLayout="'vertical'" [formGroup]="itemDetailsForm" (ngSubmit)="onSubmit()" role="form">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- <h4 class="text-black mb-3">
+            <strong>{{"MAIN_INFO" | translate }}</strong>
+          </h4> -->
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"SHIPPING_ENABLED" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'SHIPPING_ENABLED' | translate }}" formControlName="SHIPPABLE_ENABLED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"PURCHASING_ENABLED" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'PURCHASING_ENABLED' | translate }}" formControlName="PURCHASING_ENABLED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <!-- <h4 class="text-black mt-2 mb-3">
+                  <strong>{{"NATURE" | translate }}</strong>
+                </h4> -->
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"CUSTOMER_ORDER" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'CUSTOMER_ORDER' | translate }}" formControlName="CUSTOMER_ORDER_ENABLED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!--  <nz-form-label nzFor="title">{{"INTERNAL_ORDER" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'INTERNAL_ORDER' | translate }}" formControlName="INTERNAL_ORDER_ENABLED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"INVOICABLE_ITEM" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'INVOICABLE_ITEM' | translate }}" formControlName="INVOICEABLE_ITEM_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"RETURNABLE" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'RETURNABLE' | translate }}" formControlName="RETURNABLE_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!--<nz-form-label nzFor="title">{{"INSPECTION_REQUIRED" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'INSPECTION_REQUIRED' | translate }}"
+                    formControlName="INSPECTION_REQUIRED_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"RECEIPT_REQUIRED" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'RECEIPT_REQUIRED' | translate }}" formControlName="RECEIPT_REQUIRED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"RFQ_REQUIRED" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'RFQ_REQUIRED' | translate }}" formControlName="RFQ_REQUIRED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"ALLOW_SUBSTITUTE_RECEIPT" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'ALLOW_SUBSTITUTE_RECEIPT' | translate }}"
+                    formControlName="ALLOW_SUBSTITUTE_RECEIPTS_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!-- <nz-form-label nzFor="title">{{"ALLOW_SUBSTITUTE_RECEIPT" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'ALLOW_UNORDERED_RECEIPTS' | translate }}"
+                    formControlName="ALLOW_UNORDERED_RECEIPTS_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!--<nz-form-label nzFor="title">{{"ALLOW_EXPRESS_DELIVERY" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'ALLOW_EXPRESS_DELIVERYr' | translate }}"
+                    formControlName="ALLOW_EXPRESS_DELIVERY_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!--<nz-form-label nzFor="title">{{"INVOICE_ENABLED" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'INVOICE_ENABLED' | translate }}" formControlName="INVOICE_ENABLED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <!--<nz-form-label nzFor="title">{{"COSTING_ENABLED" | translate }}</nz-form-label>-->
+                <nz-form-control>
+                  <cui-checkbox label="{{'COSTING_ENABLED' | translate }}" formControlName="COSTING_ENABLED_FLAG">
+                  </cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- <nz-form-item>
+                <nz-form-control>
+                  <cui-checkbox label="on web" formControlName="ORDERABLE_ON_WEB_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item> -->
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="ITEM_CLASS">{{"COST_OF_SALES_ACCOUNT" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                    <nz-tree-select   [nzNodes]="chartsOfAccountsData" nzShowSearch
+                    nzPlaceHolder="{{'CHOOSE_COST_OF_SALES_ACCOUNT' | translate }}" formControlName="COST_OF_SALES_ACCOUNT">
+                  </nz-tree-select>
+                  <div *ngFor="let validation of validation_messages.COST_OF_SALES_ACCOUNT">
+                    <nz-form-explain class="red-color"
+                      *ngIf="COST_OF_SALES_ACCOUNT.hasError(validation.type) && (COST_OF_SALES_ACCOUNT.dirty || COST_OF_SALES_ACCOUNT.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="SALES_ACCOUNT">{{"SALES_ACCOUNT" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                    <nz-tree-select   [nzNodes]="chartsOfAccountsData" nzShowSearch
+                    nzPlaceHolder="{{'CHOOSE_SALES_ACCOUNT' | translate }}" formControlName="SALES_ACCOUNT">
+                  </nz-tree-select>
+                  <div *ngFor="let validation of validation_messages.SALES_ACCOUNT">
+                    <nz-form-explain class="red-color"
+                      *ngIf="SALES_ACCOUNT.hasError(validation.type) && (SALES_ACCOUNT.dirty || SALES_ACCOUNT.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div> -->
+          <!-- <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="ITEM_CLASS">{{"EXPENSE_ACCOUNT" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                    <nz-tree-select   [nzNodes]="chartsOfAccountsData" nzShowSearch
+                    nzPlaceHolder="{{'CHOOSE_EXPENSE_ACCOUNT' | translate }}" formControlName="EXPENSE_ACCOUNT">
+                  </nz-tree-select>
+                  <div *ngFor="let validation of validation_messages.EXPENSE_ACCOUNT">
+                    <nz-form-explain class="red-color"
+                      *ngIf="EXPENSE_ACCOUNT.hasError(validation.type) && (EXPENSE_ACCOUNT.dirty || EXPENSE_ACCOUNT.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="ITEM_CLASS">{{"ENCUMBRANCE_ACCOUNT" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                    <nz-tree-select   [nzNodes]="chartsOfAccountsData" nzShowSearch
+                    nzPlaceHolder="{{'CHOOSE_ENCUMBRANCE_ACCOUNT' | translate }}" formControlName="ENCUMBRANCE_ACCOUNT">
+                  </nz-tree-select>
+                  <div *ngFor="let validation of validation_messages.ENCUMBRANCE_ACCOUNT">
+                    <nz-form-explain class="red-color"
+                      *ngIf="ENCUMBRANCE_ACCOUNT.hasError(validation.type) && (ENCUMBRANCE_ACCOUNT.dirty || ENCUMBRANCE_ACCOUNT.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"ACCEPTABLE_RATE_INCREASE" | translate }}<span class="red-color">*</span>
+                </nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="ACCEPTABLE_RATE_INCREASE"
+                    nzPlaceHolder="{{'RATE_INCRESE' | translate }}" [nzFormatter]="formatterPercent" [nzMin]="0"
+                    [nzStep]="1" [nzMax]="100">
+                  </nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.ACCEPTABLE_RATE_INCREASE">
+                    <nz-form-explain class="red-color"
+                      *ngIf="ACCEPTABLE_RATE_INCREASE.hasError(validation.type) && (ACCEPTABLE_RATE_INCREASE.dirty || ACCEPTABLE_RATE_INCREASE.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"ACCEPTABLE_RATE_DECREASE" | translate }}<span class="red-color">*</span>
+                </nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="ACCEPTABLE_RATE_DECREASE"
+                    nzPlaceHolder="{{'RATE_DECREASE' | translate }}" [nzFormatter]="formatterPercent" [nzMin]="0"
+                    [nzStep]="1" [nzMax]="100">
+                  </nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.ACCEPTABLE_RATE_DECREASE">
+                    <nz-form-explain class="red-color"
+                      *ngIf="ACCEPTABLE_RATE_DECREASE.hasError(validation.type) && (ACCEPTABLE_RATE_DECREASE.dirty || ACCEPTABLE_RATE_DECREASE.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- <nz-form-item>
+                <nz-form-label nzFor="title">{{"ORDER_COST" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="ORDER_COST" nzPlaceHolder="{{'ORDER_COST' | translate }}" [nzMin]="0"
+                    [nzStep]="1"></nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.ORDER_COST">
+                    <nz-form-explain class="red-color"
+                      *ngIf="ORDER_COST.hasError(validation.type) && (ORDER_COST.dirty || ORDER_COST.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item> -->
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"LIST_PRICE" | translate }}<span class="red-color">*</span>
+                </nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="ORDER_COST"
+                    nzPlaceHolder="{{'LIST_PRICE' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.ORDER_COST">
+                    <nz-form-explain class="red-color"
+                      *ngIf="ORDER_COST.hasError(validation.type) && (ORDER_COST.dirty || ORDER_COST.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="ASSET_CATEGORY_ID">{{"ASSET_CATEGORY" | translate }}<span
+                    class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                  <nz-tree-select [nzNodes]="groups" nzShowSearch nzPlaceHolder="{{'PLEASE_SELECT' | translate }}"
+                    formControlName="ASSET_CATEGORY_ID">
+                  </nz-tree-select>
+                  <div *ngFor="let validation of validation_messages.ASSET_CATEGORY_ID">
+                    <nz-form-explain class="red-color"
+                      *ngIf="ASSET_CATEGORY_ID.hasError(validation.type) && (ASSET_CATEGORY_ID.dirty || ASSET_CATEGORY_ID.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+
+          <!-- <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"FIXED_ORDER_QUANTITY" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="FIXED_ORDER_QUANTITY"
+                    nzPlaceHolder="{{'FIXED_ORDER_QUANTITY' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.FIXED_ORDER_QUANTITY">
+                    <nz-form-explain class="red-color"
+                      *ngIf="FIXED_ORDER_QUANTITY.hasError(validation.type) && (FIXED_ORDER_QUANTITY.dirty || FIXED_ORDER_QUANTITY.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"FIXED_DAYS_SUPPLY" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="FIXED_DAYS_SUPPLY"
+                    nzPlaceHolder="{{'FIXED_DAYS_SUPPLY' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+                  <div *ngFor="let validation of validation_messages.FIXED_DAYS_SUPPLY">
+                    <nz-form-explain class="red-color"
+                      *ngIf="FIXED_DAYS_SUPPLY.hasError(validation.type) && (FIXED_DAYS_SUPPLY.dirty || FIXED_DAYS_SUPPLY.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div> -->
+
+
+          <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"MINIMUM_ORDER_QUANTITY" | translate }}<span class="red-color">*</span>
+                </nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="MINIMUM_ORDER_QUANTITY"
+                    nzPlaceHolder="{{'MINIMUM_ORDER_QUANTITY' | translate }}" [nzMin]="0"
+                    [nzMax]="MAXIMUM_ORDER_QUANTITY.value" [nzStep]="1"></nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.MINIMUM_ORDER_QUANTITY">
+                    <nz-form-explain class="red-color"
+                      *ngIf="MINIMUM_ORDER_QUANTITY.hasError(validation.type) && (MINIMUM_ORDER_QUANTITY.dirty || MINIMUM_ORDER_QUANTITY.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="title">{{"MAXIMUM_ORDER_QUANTITY" | translate }}<span class="red-color">*</span>
+                </nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="MAXIMUM_ORDER_QUANTITY"
+                    nzPlaceHolder="{{'MAXIMUM_ORDER_QUANTITY' | translate }}" [nzMin]="MINIMUM_ORDER_QUANTITY.value"
+                    [nzStep]="1"></nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.MAXIMUM_ORDER_QUANTITY">
+                    <nz-form-explain class="red-color"
+                      *ngIf="MAXIMUM_ORDER_QUANTITY.hasError(validation.type) && (MAXIMUM_ORDER_QUANTITY.dirty || MAXIMUM_ORDER_QUANTITY.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-control>
+                  <cui-checkbox label="Vendor Waranty" formControlName="VENDOR_WARRANTY_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-control>
+                  <cui-checkbox label="Preventive Maintainance" formControlName="PREVENTIVE_MAINTENANCE_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div> -->
+
+
+          <div class="row">
+
+            <div class="col-lg-6">
+              <!-- <nz-form-item>
+                <nz-form-label nzFor="title">{{"MAXIMUM_WARANTY_AMOUNT" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="MAX_WARRANTY_AMOUNT"
+                    nzPlaceHolder="{{'MAXIMUM_ORDER_QUANTITY' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+                  <div *ngFor="let validation of validation_messages.MAX_WARRANTY_AMOUNT">
+                    <nz-form-explain class="red-color"
+                      *ngIf="MAX_WARRANTY_AMOUNT.hasError(validation.type) && (MAX_WARRANTY_AMOUNT.dirty || MAX_WARRANTY_AMOUNT.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item> -->
+            </div>
+            <div class="col-lg-6">
+              <!-- <nz-form-item>
+                  <nz-form-label nzFor="title">{{"WARRANTY_VENDOR_ID" | translate }}<span class="red-color">*</span></nz-form-label>
+                  <nz-form-control>
+                    <nz-input-number class="width-100" formControlName="WARRANTY_VENDOR_ID"
+                      nzPlaceHolder="{{'WARANTY_VENDOR_ID' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+  
+                    <div *ngFor="let validation of validation_messages.WARRANTY_VENDOR_ID">
+                      <nz-form-explain class="red-color"
+                        *ngIf="WARRANTY_VENDOR_ID.hasError(validation.type) && (WARRANTY_VENDOR_ID.dirty || WARRANTY_VENDOR_ID.touched)">
+                        {{validation.message | translatecui}}
+                      </nz-form-explain>
+                    </div>
+                  </nz-form-control>
+                </nz-form-item> -->
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-control>
+                  <cui-checkbox label="operation flag" formControlName="OUTSIDE_OPERATION_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-control>
+                  <cui-checkbox label="item flag" formControlName="VEHICLE_ITEM_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div> -->
+          <div class="row">
+            <!-- <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-control>
+                  <cui-checkbox label="Electronic flag" formControlName="ELECTRONIC_FLAG"></cui-checkbox>
+                </nz-form-control>
+              </nz-form-item>
+            </div> -->
+            <div class="col-lg-6">
+
+              <!-- <nz-form-item>
+                <nz-form-label nzFor="title">{{"ASSET_CATEGORY" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                  <nz-input-number class="width-100" formControlName="ASSET_CATEGORY_ID"
+                    nzPlaceHolder="{{'ASSET_CATEGORY_ID' | translate }}" [nzMin]="0" [nzStep]="1"></nz-input-number>
+
+                  <div *ngFor="let validation of validation_messages.ASSET_CATEGORY_ID">
+                    <nz-form-explain class="red-color"
+                      *ngIf="ASSET_CATEGORY_ID.hasError(validation.type) && (ASSET_CATEGORY_ID.dirty || ASSET_CATEGORY_ID.touched)">
+                      {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item> -->
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="form-actions">
+              <button type="submit" nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+              <button type="button" nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <!-- TODO: Remove this column if required -->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

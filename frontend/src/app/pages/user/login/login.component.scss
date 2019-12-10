@@ -1,0 +1,93 @@
+@import 'src/assets/styles/mixins.scss';
+.login {
+  background-size: cover;
+  background-color: $gray-lighten-more;
+  background-position: center center;
+}
+
+.title {
+  margin: 0 auto;
+  max-width: rem(820);
+  text-align: center;
+  padding-left: rem(20);
+  padding-right: rem(20);
+  h1 {
+    font-weight: 900;
+    margin-bottom: rem(30);
+  }
+}
+
+.block {
+  padding: rem(0) rem(30) rem(80);
+  width: 100%;
+  align-self: center;
+  position: relative;
+  z-index: 2;
+  @media (max-width: $md-max-width) {
+    padding: rem(20);
+  }
+}
+
+.inner {
+  // min-width: rem(300);
+  // max-width: rem(500);
+  //margin: 0 auto;
+  max-width: 400px;
+  margin: inherit !important;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.55)!important;
+  position: relative;
+  // @media (max-width: $md-max-width) {
+  //   padding: rem(10) rem(30) rem(10);
+  // }
+}
+
+.form {
+  position: relative;
+  z-index: 2;
+  color: $white;
+  h4 {
+    padding: rem(5)rem(30);
+    background-color: #000;
+    font-size: 16px;
+  }
+  .ant-form {
+    padding: rem(0) rem(30) rem(20);
+  }
+  .ant-form-item {
+    padding-bottom: 0;
+  }
+  .ant-input {
+    height: 40px;
+  }
+   ::ng-deep {
+    .ant-form-item-label>label {
+      color: #fff;
+    }
+  }
+  .ant-checkbox-wrapper {
+    color: $white;
+  }
+  .form-actions {
+    margin-bottom: 0;
+    .ant-btn {
+      font-size: 16px;
+      background-color: #2A604E;
+      border-color: #2A604E;
+      height: 40px;
+      &:hover {
+        background-color: rgba(42, 96, 78, .6);
+        border-color: rgba(42, 96, 78, .6);
+      }
+    }
+  }
+}
+
+.register-link {
+  @media (max-width: $md-max-width) {
+    width: 100%;
+    display: block;
+    margin-top: rem(10);
+  }
+}

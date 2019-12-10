@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong>{{"JOB_ORDER" | translate }}</strong>
+    </div>
+    <div class="utils__titleDescription">
+      {{"JOB_ORDER" | translate }}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="partition">
+          <div class="partitionHead">
+            <span class="partitionName">{{"SEARCH" | translate }}</span>
+          </div>
+          <div class="input-group">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+              <input type="text" nz-input placeholder="{{'INPUT_SEARCH_TEXT'| translate }}" (change)="searchItems()"
+                [(ngModel)]="searchText">
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+              <i nz-icon type="search"></i>
+            </ng-template>
+          </div>
+          <br />
+        </div>
+        <nz-table nzBordered #itemsDataTable [nzData]="jobOrderModelService.displayData" class="utils__scrollTable"
+          nzShowSizeChanger nzShowTotal [nzLoading]="isDataLoading">
+          <thead (nzSortChange)="sortData($event)" nzSingleSort>
+            <tr>
+              <th [nzWidth]="'150px'" nzShowSort nzSortKey="JOB_ORDER_ID" class="text-center">{{"JOB_ORDER_ID" | translate }}</th>
+              <th class="text-center" nzSortKey="CODE">{{"CODE" | translate }}</th>
+              <th class="text-center">{{"DESCRIPTION" | translate }}</th>
+              <th class="text-center">{{"PRIMARY_NAME" | translate }}</th>
+              <th class="text-center">{{"ASSET_NAME" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+              <tr>
+                <td class="text-center">{{item.JOB_ORDER_ID | translatenumber}}</td>
+                <td class="text-center">{{item.CODE}}</td>
+                <td class="text-center">{{item.JOB_ORDER_DESC}}</td>
+                <!-- <td class="text-center">{{item.QTY_ON_HAND}}</td> -->
+                <td class="text-center">{{item.PRIMARY_NAME}}</td>
+                <td class="text-center">{{item.ASSET_NAME}}</td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>
+

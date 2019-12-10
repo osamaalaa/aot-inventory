@@ -1,0 +1,48 @@
+<form nz-form nzLayout="'vertical'" [formGroup]="TaxSchemeForm" (ngSubmit)="submitForm()" role="form">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-lg-6">
+          <nz-form-item>
+            <nz-form-label nzFor="EN_DESCRIPTION">{{"ENGLISH_DESCRIPTION" | translate }}<span class="red-color">*</span></nz-form-label>
+            <nz-form-control>
+                <textarea maxlength="250" rows="3" nz-input id="EN_DESCRIPTION" formControlName="EN_DESCRIPTION"
+                placeholder="{{'ENGLISH_DESCRIPTION'| translate }}"></textarea>
+              <div *ngFor="let validation of validation_messages.EN_DESCRIPTION">
+                <nz-form-explain class="red-color"
+                  *ngIf="EN_DESCRIPTION.hasError(validation.type) && (EN_DESCRIPTION.dirty || EN_DESCRIPTION.touched)">
+                 {{validation.message | translatecui}}
+                </nz-form-explain>
+              </div>
+            </nz-form-control>
+            
+          </nz-form-item>
+        </div>
+            <div class="col-lg-6">
+              <nz-form-item>
+                <nz-form-label nzFor="AR_DESCRIPTION">{{"ARABIC_DESCRIPTION" | translate }}<span class="red-color">*</span></nz-form-label>
+                <nz-form-control>
+                    <textarea maxlength="250" rows="3" nz-input id="AR_DESCRIPTION" formControlName="AR_DESCRIPTION"
+                    placeholder="{{'ARABIC_DESCRIPTION'| translate }}"></textarea>
+                  <div *ngFor="let validation of validation_messages.AR_DESCRIPTION">
+                    <nz-form-explain class="red-color"
+                      *ngIf="AR_DESCRIPTION.hasError(validation.type) && (AR_DESCRIPTION.dirty || AR_DESCRIPTION.touched)">
+                     {{validation.message | translatecui}}
+                    </nz-form-explain>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+      </div>
+      <div class="row">
+      <div class="col-lg-12">
+        <div class="form-actions">
+          <button nz-button nzType="primary" class="mr-2">{{"SAVE_ITEM" | translate }}</button>
+          <button nz-button (click)="cancel()">{{"CANCEL" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+

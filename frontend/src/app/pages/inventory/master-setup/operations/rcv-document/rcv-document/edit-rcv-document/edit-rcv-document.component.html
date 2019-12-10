@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"EDIT_RCV_DOCUMENT" | translate }}</strong>
+        <div class="pull-right">
+          <button class="but-class" nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="!readOnly"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button>
+          <button class="but-class" nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="operationMasterService.getItems().length > 0 && !readOnly && !rcvDocumentData.WF_REQUEST_ID">{{"SUBMIT_REQ" | translate }}</button>
+            <button nz-button nzType="primary" [routerLink]="['..']">{{"LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <app-rcv-document-form #formComp [readOnly]="readOnly" [formData]="rcvDocumentData">
+    </app-rcv-document-form>
+    <div>
+      <app-rcv-document-items-table [readOnly]="readOnly" [rcvDocumentItems]="rcvDocumentItems"  [DOCUMENT_ID]="DOCUMENT_ID">
+      </app-rcv-document-items-table>
+    </div>
+  </div>
+
+</div>
+
+
+
+

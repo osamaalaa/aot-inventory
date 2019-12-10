@@ -1,0 +1,22 @@
+<div class="col-xl-12">
+    <div class="card card--fullHeight overflow-hidden">
+      <div class="card-header">
+        <div class="utils__title utils__title--flat">
+          <strong class="text-uppercase font-size-16">{{"OPERATIONS" | translate }}</strong>
+        </div>
+      </div>
+      <div class="card-body">
+        <cui-short-item-info *ngFor="let item of list" [img]="item.img" [name]="item.key | translate" [note]="item.key | translate"
+          [actionTemplate]="actionTemplate" class="cui-short-item-info-container">
+          <ng-template #actionTemplate>
+  
+            <a [routerLink]="item.url" class="btn btn-sm btn-outline-default">
+                {{"Enter" | translate}}
+            </a>
+            <br />
+          </ng-template>
+        </cui-short-item-info>
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,38 @@
+<!-- <div>
+    <img src="/assets/images/header-it5_ar.jpg" alt="" style="width: 100%">
+</div> -->
+<!-- 
+<div class="breadcrumbs">
+  <div class="path">
+    <a href routerLink="/dashboard/beta" class="text-muted">{{"HOME" | translate }}</a>
+    <ng-container *ngFor="let item of breadcrumbs; let last = last;">
+      <span *ngIf="!last">
+        <span class="arrow text-muted"></span>
+      <span class="text-muted">{{ item.translateKeys | translate }}</span>
+      </span>
+      <span *ngIf="last">
+        <span class="arrow"></span>
+      <strong>{{ item.translateKeys | translate }}</strong>
+      </span>
+    </ng-container>
+  </div>
+</div> -->
+
+<div class="breadcrumbs">
+  <div class="path">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a href routerLink="/dashboard/beta" class="text-muted"><i nz-icon nzType="home"></i></a>
+      </nz-breadcrumb-item>
+      <!-- <a href routerLink="/dashboard/beta" class="text-muted">{{"HOME" | translate }}</a> -->
+      <ng-container *ngFor="let item of breadcrumbs; let last = last;">
+        <nz-breadcrumb-item *ngIf="!last">
+          <span class="text-muted">{{ item.translateKeys | translate }}</span>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item *ngIf="last">
+          <strong>{{ item.translateKeys | translate }}</strong>
+        </nz-breadcrumb-item>
+      </ng-container>
+    </nz-breadcrumb>
+  </div>
+</div>

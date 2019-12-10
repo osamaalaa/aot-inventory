@@ -1,0 +1,181 @@
+{
+    "progressCardsData": [{
+        "title": "Total Profit",
+        "note": "Profit",
+        "currentValue": "$18M",
+        "percent": "78",
+        "dataColor": "#007bff"
+    }],
+    "setupData": [{
+            "img": "assets/images/avatars/item_setup.png",
+            "name": "ITEM_SETUP",
+            "key": "ITEM_SETUP",
+            "note": "Setup item info, units, controls etc .. ",
+            "url": "/inv/setup/items-setup"
+        },
+        {
+            "img": "assets/images/avatars/store_setup.png",
+            "name": "Store Setup",
+            "key": "STORE_SETUP",
+            "note": "Store Setup, ware Houses, Locations etc ..",
+            "url": "/inv/setup/stores"
+        },
+
+
+        {
+            "img": "assets/images/avatars/supplier_setup.png",
+            "name": "Supplier",
+            "key": "SUPPLIERS_SETUP",
+            "note": "Supplier Setup, ware Houses, Locations etc ..",
+            "url": "/inv/setup/supplier"
+        },
+
+        {
+            "img": "assets/images/avatars/org_setup.png",
+            "name": "Organization Setup",
+            "key": "ORGANIZATION_SETUP",
+            "note": "Organization, Internal, External, boundaries etc ..",
+            "url": "/inv/setup/organization"
+        },
+        {
+            "img": "assets/images/avatars/demand_setup.png",
+            "name": "Demand ",
+            "key": "DEMAND",
+            "note": "Demand",
+            "url": "/inv/demand"
+        }
+    ],
+    "inboundBandwidthData": {
+        "series": [
+            [
+                232,
+                111,
+                138,
+                144,
+                118,
+                210,
+                236
+            ]
+        ]
+    },
+    "outboundBandwidthData": {
+        "series": [
+            [
+                3,
+                14,
+                37,
+                26,
+                48,
+                8,
+                63,
+                21,
+                24,
+                52
+            ]
+        ]
+    },
+    "topPhotosGraphData": {
+        "series": [
+            [
+                51,
+                8,
+                50,
+                45,
+                95,
+                90,
+                43,
+                13,
+                37,
+                82
+            ]
+        ]
+    },
+    "topPhotosData": [{
+            "img": "assets/images/photos/1.jpeg",
+            "name": "Serene mountains",
+            "note": "Author: Anna Strong",
+            "actionData": "+1000$",
+            "actionDataColor": "#dc3545 "
+        },
+        {
+            "img": "assets/images/photos/2.jpeg",
+            "name": "The beauty of the lilies",
+            "note": "Author: William Vargas",
+            "actionData": "+750$",
+            "actionDataColor": "#ffc107"
+        },
+        {
+            "img": "assets/images/photos/3.jpeg",
+            "name": "At full power",
+            "note": "Author: John Faries",
+            "actionData": "+500$",
+            "actionDataColor": "#acb7bf"
+        }
+    ],
+    "financeStatsData": [{
+            "name": "IPO Margin",
+            "note": "Awerage IPO Margin",
+            "actionData": "+36%",
+            "actionDataColor": "#28a745"
+        },
+        {
+            "name": "Payments",
+            "note": "Yearly Expenses",
+            "actionData": "-235$",
+            "actionDataColor": "#dc3545"
+        },
+        {
+            "name": "Logistics",
+            "note": "Overall Regional Logistics",
+            "actionData": "+37%",
+            "actionDataColor": "#ffc107"
+        },
+        {
+            "name": "Expenses",
+            "note": "Balance",
+            "actionData": "+1623$",
+            "actionDataColor": "#007bff"
+        }
+    ],
+    "supportCasesTableData": [{
+            "key": "1",
+            "type": "EPS",
+            "amount": "+12,42%"
+        },
+        {
+            "key": "2",
+            "type": "PDO",
+            "amount": "21,700"
+        },
+        {
+            "key": "3",
+            "type": "OPL Status",
+            "amount": "Negative"
+        },
+        {
+            "key": "4",
+            "type": "Priority",
+            "amount": "+235,200"
+        },
+        {
+            "key": "5",
+            "type": "Net Prifit",
+            "amount": "$19,235,516"
+        }
+    ],
+    "supportCasesPieData": {
+        "series": [{
+                "name": "Ready",
+                "value": 65
+            },
+            {
+                "name": "In progress",
+                "value": 25
+            },
+            {
+                "name": "Defected",
+                "value": 10
+            }
+        ]
+    }
+}

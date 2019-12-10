@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <div>
+        <strong>{{"INV_OPEN_BALANCE_SETUP" | translate }}</strong>
+        <div class="pull-right">
+          <button nz-button nzType="primary" [nzLoading]="savingForm" *ngIf="!readOnly"
+            (click)="submitForm(masterForm)">{{"SAVE" | translate }}</button>
+          <button nz-button nzType="primary" [nzLoading]="workFlowLoading" (click)="onSaveAndSubmit()"
+            *ngIf="operationMasterService.getItems().length > 0 && !readOnly && !invOpenBalanceData.WF_REQUEST_ID">{{"SUBMIT_REQ" | translate }}</button>
+            <button nz-button nzType="primary" [routerLink]="['..']">{{"OPEN_BAL_LIST" | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <app-open-balance-form #formComp [readOnly]="readOnly" [formData]="invOpenBalanceData">
+    </app-open-balance-form>
+    <div>
+      <app-open-bal-items-table [readOnly]="readOnly" [openBalanceItems]="openBalanceItems"
+        [INV_OPEN_BALANCE_ID]="INV_OPEN_BALANCE_ID">
+      </app-open-bal-items-table>
+    </div>
+  </div>
+
+</div>
+

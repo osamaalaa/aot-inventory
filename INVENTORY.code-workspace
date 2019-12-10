@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "backend"
+		},
+		{
+			"path": "frontend"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"npm-scripts.showStartNotification": false
+	}
+}

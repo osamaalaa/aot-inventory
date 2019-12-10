@@ -1,0 +1,23 @@
+<nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'" (nzVisibleChange)="dropdownClosed($event)">
+  <a nz-dropdown class="dropdown">
+    <nz-badge [nzCount]="notificationList.length" [nzOverflowCount]="99">
+      <!-- <i class="icmn-envelop"></i> -->
+      <i> <img src="assets/images/email.svg" alt="Notification"></i>
+    </nz-badge>
+  </a>
+
+  <ul nz-menu class="activity notification" *ngIf="!isFetchingData && notificationList.length > 0">
+    <li nz-menu-item class="item" *ngFor="let notificationData of notificationList">
+      <app-notification-factory [notificationData]="notificationData"></app-notification-factory>
+    </li>
+  </ul>
+  <ul nz-menu class="activity notification" *ngIf="!isFetchingData && notificationList.length == 0">
+    <nz-empty></nz-empty>
+
+  </ul>
+  <ul nz-menu class="activity notification" *ngIf="isFetchingData">
+    <nz-skeleton [nzLoading]="isFetchingData" [nzActive]="true"></nz-skeleton>
+  </ul>
+
+
+</nz-dropdown>

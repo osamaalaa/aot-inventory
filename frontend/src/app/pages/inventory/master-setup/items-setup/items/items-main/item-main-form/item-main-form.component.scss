@@ -1,0 +1,7 @@
+nz-card{
+    margin-bottom: 3em;
+  }
+
+:host /deep/ .image-default .ant-card-body{
+  display: none
+}

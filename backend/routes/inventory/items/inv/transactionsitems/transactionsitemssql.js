@@ -1,0 +1,153 @@
+let statements = {
+    insertTransactionItems: {
+        statement: `
+        INSERT INTO inv_transactions_items (
+                                      inv_transactions_items_id,
+                                      inv_transactions_id,
+                                      items_id,
+                                      units_id,
+                                      unit_factor,
+                                      unit_quantity,
+                                      default_unit_quantity,
+                                      calc_type,
+                                      item_cost,
+                                      total_cost,
+                                      current_balance,
+                                      qty_on_hand,
+                                      qty_reserved,
+                                      qty_transfer_to,
+                                      qty_transfer_from,
+                                      oty_disposed,
+                                      qty_on_por,
+                                      qty_on_sor,
+                                      qty_on_so,
+                                      qty_on_po,
+                                      qty_requested,
+                                      qty_so_consigment,
+                                      qty_po_consigment,
+                                      created_by,
+                                      creation_date
+                                  ) VALUES (
+                                        INV_TRANSACTIONS_ITEMS_SEQ.NEXTVAL,
+                                        :INV_TRANSACTIONS_ID,
+                                        :ITEMS_ID,
+                                        :UNITS_ID,
+                                        :UNIT_FACTOR,
+                                        :UNIT_QUANTITY,
+                                        :UNIT_FACTOR * :UNIT_QUANTITY ,
+                                        1,
+                                        :ITEM_COST,
+                                        :TOTAL_COST,
+                                        :CURRENT_BALANCE,
+                                        :QTY_ON_HAND,
+                                        :QTY_RESERVED,
+                                        :QTY_TRANSFER_TO,
+                                        :QTY_TRANSFER_FROM,
+                                        :OTY_DISPOSED,
+                                        :QTY_ON_POR,
+                                        :QTY_ON_SOR,
+                                        :QTY_ON_SO,
+                                        :QTY_ON_PO,
+                                        :QTY_REQUESTED,
+                                        :QTY_SO_CONSIGMENT,
+                                        :QTY_PO_CONSIGMENT,
+                                        :CREATED_BY,
+                                        sysdate
+                                  )
+
+                   RETURN INV_TRANSACTIONS_ITEMS_ID, INV_TRANSACTIONS_ID  ,ITEMS_ID ,  UNITS_ID , DEFAULT_UNIT_QUANTITY INTO  :R_INV_TRANSACTIONS_ITEMS_ID ,:R_INV_TRANSACTIONS_ID, :R_ITEMS_ID , :R_UNITS_ID , :R_DEFAULT_UNIT_QUANTITY`,
+        returns: ["R_INV_TRANSACTIONS_ITEMS_ID", "R_INV_TRANSACTIONS_ID" , "R_ITEMS_ID", "R_UNITS_ID", "R_DEFAULT_UNIT_QUANTITY" , "R_INV_TRANSACTIONS_ITEMS_ID"],
+        bindings: [],
+        qstring: "",
+        requireCommit: true
+    },
+    getTransactionItems:{
+        statment:`SELECT
+                          inv_transactions_items_id,
+                          inv_transactions_id,
+                          items_id,
+                          (SELECT AR_NAME  FROM INVENTORY.ITEMS M WHERE M.ITEMS_ID = I.ITEMS_ID) ITEM_AR_NAME,
+                          (SELECT EN_NAME  FROM INVENTORY.ITEMS M WHERE M.ITEMS_ID = I.ITEMS_ID) ITEM_EN_NAME,
+                          units_id,
+                          (SELECT nvl(L.PRIMARY_NAME, L.SECONDARY_NAME)  FROM HR.LOOKUP_DETAILS L Where LOOKUP_ID = 125 AND STATUS = 1 and L.LOOKUP_DETAIL_ID = I.UNITS_ID) UNITS_NAME,
+                          unit_factor,
+                          unit_quantity,
+                          default_unit_quantity,
+                          calc_type,
+                          item_cost,
+                          total_cost,
+                          current_balance,
+                          qty_on_hand,
+                          qty_reserved,
+                          qty_transfer_to,
+                          qty_transfer_from,
+                          oty_disposed,
+                          qty_on_por,
+                          qty_on_sor,
+                          qty_on_so,
+                          qty_on_po,
+                          qty_requested,
+                          qty_so_consigment,
+                          qty_po_consigment,
+                          created_by,
+                          creation_date,
+                          deleted,
+                          deleted_by,
+                          deleted_date,
+                          modified_by,
+                          modified_date
+                      FROM
+                          inv_transactions_items I
+                          WHERE DELETED = 0`,
+            bindings: [],
+            qstring: "",
+            requireCommit: false
+        },
+    getOneTransactionItems:{
+        statment:`SELECT
+                          inv_transactions_items_id,
+                          inv_transactions_id,
+                          items_id,
+                          (SELECT AR_NAME  FROM INVENTORY.ITEMS M WHERE M.ITEMS_ID = I.ITEMS_ID) ITEM_AR_NAME,
+                          (SELECT EN_NAME  FROM INVENTORY.ITEMS M WHERE M.ITEMS_ID = I.ITEMS_ID) ITEM_EN_NAME,
+                          units_id,
+                          (SELECT nvl(L.PRIMARY_NAME, L.SECONDARY_NAME)  FROM HR.LOOKUP_DETAILS L Where LOOKUP_ID = 125 AND STATUS = 1 and L.LOOKUP_DETAIL_ID = I.UNITS_ID) UNITS_NAME,
+                          unit_factor,
+                          unit_quantity,
+                          default_unit_quantity,
+                          calc_type,
+                          item_cost,
+                          total_cost,
+                          current_balance,
+                          qty_on_hand,
+                          qty_reserved,
+                          qty_transfer_to,
+                          qty_transfer_from,
+                          oty_disposed,
+                          qty_on_por,
+                          qty_on_sor,
+                          qty_on_so,
+                          qty_on_po,
+                          qty_requested,
+                          qty_so_consigment,
+                          qty_po_consigment,
+                          created_by,
+                          creation_date,
+                          deleted,
+                          deleted_by,
+                          deleted_date,
+                          modified_by,
+                          modified_date
+                      FROM
+                          inv_transactions_items I
+                          WHERE DELETED = 0
+                          AND inv_transactions_items_id=:INV_TRANSACTIONS_ITEMS_ID`,
+            bindings: [],
+            qstring: "",
+            requireCommit: false
+        }
+};
+
+
+
+module.exports = statements;

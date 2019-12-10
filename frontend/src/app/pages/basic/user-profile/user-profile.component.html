@@ -1,0 +1,129 @@
+<div class="cui-profile">
+  <div class="row">
+    <div class="col-xl-4">
+
+      <div class="card cui-profile-header" [ngStyle]="{'background-image': 'url(' + background + ')'}">
+          <nz-spin [nzSpinning]="spinning">
+        <div class="card-body text-center">
+            <div *ngIf="!spinning">
+                <cui-avatar [src]="img_url" [size]="110" [bordered]="true" borderColor="#fff" ></cui-avatar>
+            </div>
+          <br>
+          <br>
+          <nz-button-group>
+            <button nz-button style="width: 150px;" (click)="changePic()">{{"UPDATE" | translate }}</button>
+          </nz-button-group>
+          <br>
+          <p class="text-white mt-2">Last activity {{lastActivity}}</p>
+          <p class="text-white mt-2">
+            <cui-donut type="success" [name]="status"></cui-donut>
+          </p>
+        </div>
+      </nz-spin>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="mb-3 text-black">
+            <strong>{{"INFORMATION" | translate }}</strong>
+          </h5>
+          <dl class="row">
+            <dt class="col-xl-4">{{"NAME:" | translate }}</dt>
+            <dd class="col-xl-8">
+              <a class="utils__link--underlined">{{EN_NAME}}</a>
+
+            </dd>
+            <dt class="col-xl-4">{{"POSITION:" | translate }}</dt>
+            <dd class="col-xl-8">
+                <span class="badge badge-primary font-size-12">
+                    {{POSITION_NAME}}
+                  </span>
+            </dd>
+            <dt class="col-xl-4">{{"GENDER:" | translate }}</dt>
+            <dd class="col-xl-8">{{GENDER}}</dd>
+            <dt class="col-xl-4">{{"MOBILE:" | translate }}</dt>
+            <dd class="col-xl-8">{{MOBILE}}</dd>
+            <dt class="col-xl-4">{{"EMAIL:" | translate }}</dt>
+            <dd class="col-xl-8">{{EMPLOYEE_EMAIL}}</dd>
+            <dt class="col-xl-4">{{"EXTRA:" | translate }}</dt>
+            <dd class="col-xl-8">
+              <span class="badge badge-default mr-1">
+                H: {{HIRE_DATE | date}}
+              </span>
+              <span class="badge badge-default mr-1">
+                B: {{DATE_OF_BIRTH | date}}
+              </span>
+              <span class="badge badge-default mr-1">
+                WH: {{WORK_HOURS}}
+              </span>
+            </dd>
+            <dt class="col-xl-4">{{"DEPARTMENT:" | translate }}</dt>
+            <dd class="col-xl-8">{{DEPARTMENT_EN_NAME}}</dd>
+            <dt class="col-xl-4">{{"MANAGER:" | translate }}</dt>
+            <dd class="col-xl-8">{{MANAGER_EN_NAME}}</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="mb-3 text-black">
+            <strong>{{"STATISTICS" | translate }}</strong>
+          </h5>
+            <div class="mb-1">{{"PRODUCTIVITY" | translate }}</div>
+            <nz-progress [nzPercent]="50" nzStatus="active"></nz-progress>
+            <div class="mb-1">{{"PROFILE_STRENGTH" | translate }}</div>
+            <nz-progress [nzPercent]="80" nzStatus="active" nzStrokeColor="red"></nz-progress>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-xl-8">
+      <div class="card card-body mb4">
+        <div>
+          <h2>
+            <span class="text-black mr-2">
+              <strong>{{EN_NAME}}</strong>
+            </span>
+            <small class="text-muted">@{{userName}}</small>
+          </h2>
+          <p class="mb-1">{{POSITION_NAME}}</p>
+        </div>
+        <div class="cui-profile-social-counts">
+          <div class="text-center mr-3">
+            <h2>{{followersCount}}</h2>
+            <p class="mb-0">{{"FOLLOWERS" | translate }}</p>
+          </div>
+          <div class="text-center">
+            <h2>{{postsCount}}</h2>
+            <p class="mb-0">{{"POSTS" | translate }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <nz-tabset>
+              <nz-tab [nzTitle]="chatTabTemplate">
+                  <ng-template #chatTabTemplate>
+                    <i class="icmn-bubbles mr-1"></i> {{'Messages' | translate }}
+                  </ng-template>
+                  <cui-chat></cui-chat>
+                </nz-tab>
+            <nz-tab [nzTitle]="wallTabTemplate">
+              <ng-template #wallTabTemplate>
+                <i class="icmn-menu mr-1"></i> {{'Wall' | translate}}
+              </ng-template>
+
+            </nz-tab>
+
+            <nz-tab [nzTitle]="settingsTabTemplate">
+              <ng-template #settingsTabTemplate>
+                <i class="icmn-cog mr-1"></i> {{'Settings' | translate}}
+              </ng-template>
+
+            </nz-tab>
+          </nz-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

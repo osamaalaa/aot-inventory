@@ -1,0 +1,50 @@
+
+<nz-table nzBordered #itemsDataTable [nzData]="notificationList" class="utils__scrollTable"
+  nzShowSizeChanger nzShowTotal [nzLoading]="isFetchingData">
+  <thead >
+    <tr>
+      <th nzShowSort nzSortKey="REQUEST_ID" class="text-center" nzLeft="0px">{{"REQUESTS" | translate }}</th>
+      <th class="text-center">{{"ACTIONS" | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-item [ngForOf]="itemsDataTable.data">
+      <tr>
+        <td class="text-center">
+          <a *ngIf="item.REQ_TYPE_ID==72" (click)="openBalanceComponent(item.INV_OPEN_BALANCE_ID)">
+            <span >Open Balance-{{item.REQUEST_ID | translatenumber}}</span>
+          
+            
+          </a>
+          <a *ngIf="item.REQ_TYPE_ID==73" (click)="openRcvDocument(item.DOCUMENT_ID)">          
+            <span >Receving Document-{{item.REQUEST_ID | translatenumber}}</span>
+          </a>
+          <a *ngIf="item.REQ_TYPE_ID==78" (click)="openDspDocument(item.DSP_DOCUMENT_ID)">          
+            <span >Job Order Issue-{{item.REQUEST_ID | translatenumber}}</span>
+          </a>
+          <a *ngIf="item.REQ_TYPE_ID==77" (click)="openReqDocument(item.REQ_DOCUMENT_ID)">          
+            <span >Job Order Request-{{item.REQUEST_ID | translatenumber}}</span>
+          </a>
+        </td>
+        <td class="text-center">
+          <nz-button-group *ngIf="item.REQ_TYPE_ID==72">
+            <button nz-button nzType="primary" [nzLoading]="item.acceptLoading" (click)="whenApproveClicked(item)"><i nz-icon nzType="check-circle" nzTheme="fill"  ></i>{{"APPROVE" | translate }}</button>
+            <button nz-button nzType="danger" [nzLoading]="item.rejectLoading"  (click)="whenRejectClicked(item)"><i nz-icon nzType="close-circle" nzTheme="fill" ></i>{{"REJECT" | translate }}</button>
+          </nz-button-group>
+          <nz-button-group *ngIf="item.REQ_TYPE_ID==73">
+            <button [disabled]="item.rejectLoading" nz-button nzType="primary" [nzLoading]="item.acceptLoading" (click)="rcvApprove(item)"><i nz-icon nzType="check-circle" nzTheme="fill"  ></i>{{"APPROVE" | translate }}</button>
+            <button [disabled]="item.acceptLoading" nz-button nzType="danger" [nzLoading]="item.rejectLoading"  (click)="rcvReject(item)"><i nz-icon nzType="close-circle" nzTheme="fill" ></i>{{"REJECT" | translate }}</button>
+          </nz-button-group>
+          <nz-button-group *ngIf="item.REQ_TYPE_ID==77">
+            <button [disabled]="item.rejectLoading" nz-button nzType="primary" [nzLoading]="item.acceptLoading" (click)="reqApprove(item)"><i nz-icon nzType="check-circle" nzTheme="fill"  ></i>{{"APPROVE" | translate }}</button>
+            <button [disabled]="item.acceptLoading" nz-button nzType="danger" [nzLoading]="item.rejectLoading"  (click)="reqReject(item)"><i nz-icon nzType="close-circle" nzTheme="fill" ></i>{{"REJECT" | translate }}</button>
+          </nz-button-group>
+          <nz-button-group *ngIf="item.REQ_TYPE_ID==78">
+            <button [disabled]="item.rejectLoading" nz-button nzType="primary" [nzLoading]="item.acceptLoading" (click)="dspApprove(item)"><i nz-icon nzType="check-circle" nzTheme="fill"  ></i>{{"APPROVE" | translate }}</button>
+            <button [disabled]="item.acceptLoading" nz-button nzType="danger" [nzLoading]="item.rejectLoading"  (click)="dspReject(item)"><i nz-icon nzType="close-circle" nzTheme="fill" ></i>{{"REJECT" | translate }}</button>
+          </nz-button-group>
+        </td>
+      </tr>
+    </ng-template>
+  </tbody>
+</nz-table>

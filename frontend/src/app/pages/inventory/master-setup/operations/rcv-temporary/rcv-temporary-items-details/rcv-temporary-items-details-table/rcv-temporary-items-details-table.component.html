@@ -1,0 +1,40 @@
+<nz-table #detailsTable [nzData]="dataList" nzSize="small" [nzShowPagination]="false" >
+  <thead>
+    <tr>
+      <th>{{"ARRANGEMENT_NO" | translate }}</th>
+      <th>{{"UNIT_QUANTITY" | translate }}</th>
+      <th>{{"DEFAULT_UNIT_QUANTITY" | translate }}</th>
+      <th>{{"BASE_UNIT_QUANTITY" | translate }}</th>
+      <th *ngIf="!readOnly">{{"ACTION" | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of detailsTable.data">
+      <td>
+        {{ data.ARRANGEMENT_NO }}
+      </td>
+      <td>
+        {{ data.UNIT_QUANTITY }}
+      </td>
+      <td>
+        {{ data.DEFAULT_UNIT_QUANTITY }}
+      </td>
+      <td>
+        {{ data.BASE_UNIT_QUANTITY }}
+      </td>
+      <td> 
+        <div class="editable-row-operations">
+          <nz-button-group>
+              <!-- <button nz-button (click)="updateItem(data)" nzType="primary"><i nz-icon nzType="edit"
+                nzTheme="outline"></i>{{"EDIT" | translate }}</button> -->
+            <button  nz-button nzType="primary"><i nz-icon nzType="edit"
+                nzTheme="outline"></i>{{"EDIT" | translate}}</button>
+            <!-- <button  nz-button nzType="danger" nz-popconfirm
+              nzTitle="Are you sure to delete Rcv Document Items Detail ?" (nzOnConfirm)="onDeleteClick.emit(data.RCV_DOCUMENT_ITEMS_D_ID)"><i
+                nz-icon nzType="delete" nzTheme="fill"></i>{{"REMOVE" | translate}}</button> -->
+          </nz-button-group>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

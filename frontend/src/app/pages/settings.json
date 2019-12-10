@@ -1,0 +1,19 @@
+{
+  "lookups" : {
+    "itemKind": 189,
+    "itemClass": 190,
+    "itemNature": 191,
+    "bNature": 192,
+    "aliasType": 193,
+    "costmethod":194,
+    "unitList":125,
+    "units":125,
+    "Documentstaue":125,
+    "sourcetype":125
+  },
+  "status": {
+    "enabled": "1",
+    "disabled": "2"
+  }
+}
+ 

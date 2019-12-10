@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Inventory Documentation</title>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet"
+        href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+</head>
+
+<body>
+        <div id="stickyNavbarOverlay"></div>
+        <div class="top-navbar">
+            <div class="container">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                         
+                           
+                    
+                         
+                            <h1 class="navbar-item">Inventory Documentation</h1>
+                        
+                        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                     
+                    
+                    
+                </nav>
+            </div>
+        </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="help.html">Home</a></h2>
+                        <div class="category">
+                            <h3>Services</h3>
+                            <ul>
+                                <h3>chartofacc</h3>
+                                <li><a href="global.html#getChartOfAccounts">getChartOfAccounts</a></li>
+                                <li><a href="global.html#getoneChartOfAccounts">getoneChartOfAccounts</a></li>
+                                <li><a href="global.html#deleteChartOfAcc">deleteChartOfAcc</a></li>
+                                <li><a href="global.html#insertChartOfAcc">insertChartOfAcc</a></li>
+                                <li><a href="global.html#updateChartOfAccById">updateChartOfAccById</a></li>
+                                <h3>chartofaccsentity</h3>
+                                <li><a href="global.html#getChartOfAccountsEntity">getChartOfAccountsEntity</a></li>
+                                <li><a href="global.html#getOneCharOfAccountEntity">getOneCharOfAccountEntity</a></li>
+                                <h3>ddlog</h3>
+                                <li><a href="global.html#getddlLogs">getddlLogs</a></li>
+                                <li><a href="global.html#getddlByID">getddlByID</a></li>
+                                <li><a href="global.html#updateChartOfAccddlogById">updateChartOfAccddlogById</a></li>
+                                <h3>documenttypes</h3>
+                                <li><a href="global.html#getDocsTypes">getDocsTypes</a></li>
+                                <li><a href="global.html#getDocsByID">getDocsByID</a></li>
+                                <li><a href="global.html#updateDocumentTypesById">updateDocumentTypesById</a></li>
+                                <h3>dspdocument</h3>
+                                <li><a href="global.html#getDSPdocument">getDSPdocument</a></li>
+                                <li><a href="global.html#getOneDSPdocument">getOneDSPdocument</a></li>
+                                <li><a href="global.html#insertDSPdocument">insertDSPdocument</a></li>
+                                <li><a href="global.html#updateDSPdocument">updateDSPdocument</a></li>
+                                <li><a href="global.html#deleteDSPdocument">deleteDSPdocument</a></li>
+                                <h3>dspdocumentitems</h3>
+                                <li><a href="global.html#getDSPdocumentItems">getDSPdocumentItems</a></li>
+                                <li><a href="global.html#getOneDSPdocumentItems">getOneDSPdocumentItems</a></li>
+                                <li><a href="global.html#insertDSPdocumentItems">insertDSPdocumentItems</a></li>
+                                <li><a href="global.html#updateDSPdocumentItems">updateDSPdocumentItems</a></li>
+                                <li><a href="global.html#deleteDSPdocumentItems">deleteDSPdocumentItems</a></li>
+                                <h3>dspdocumentitemsd</h3>
+                                <li><a href="global.html#getDSPdocumentItemsd">getDSPdocumentItemsd</a></li>
+                                <li><a href="global.html#getOneDSPdocumentItemsd">getOneDSPdocumentItemsd</a></li>
+                                <li><a href="global.html#insertDSPdocumentItemsd">insertDSPdocumentItemsd</a></li>
+                                <li><a href="global.html#updateDSPdocumentItemsd">updateDSPdocumentItemsd</a></li>
+                                <li><a href="global.html#deleteDSPdocumentItemsd">deleteDSPdocumentItemsd</a></li>
+                                <h3>inventoryperiod</h3>
+                                <li><a href="global.html#getAllInventoryPeriod">getAllInventoryPeriod</a></li>
+                                <li><a href="global.html#getOneInventoryPeriod">getOneInventoryPeriod</a></li>
+                                <li><a href="global.html#insertInventoryPeriod">insertInventoryPeriod</a></li>
+                                <h3>invbalancerequest</h3>
+                                <li><a href="global.html#getAllInvBalanceRequest">getAllInvBalanceRequest</a></li>
+                                <li><a href="global.html#getOneInvBalanceRequest">getOneInvBalanceRequest</a></li>
+                                <li><a href="global.html#insertInvBalanceRequest">insertInvBalanceRequest</a></li>
+                                <h3>invbalancerequestitems</h3>
+                                <li><a href="global.html#getAllInvBalanceReqItems">getAllInvBalanceRequest</a></li>
+                                <li><a href="global.html#getOneInvBalanceReqItems">getOneInvBalanceReqItems</a></li>
+                                <li><a href="global.html#insertInvBalanceReqItems">insertInvBalanceReqItems</a></li>
+                                <h3>invstockcommitte</h3>
+                                <li><a href="global.html#getAllInvStockCommitte">getAllInvStockCommitte</a></li>
+                                <li><a href="global.html#getOneInvStockCommitte">getOneInvStockCommitte</a></li>
+                                <li><a href="global.html#insertInvStockCommitte">insertInvStockCommitte</a></li>
+                                <h3>invstockitems</h3>
+                                <li><a href="global.html#getAllInvStockItems">getAllInvStockItems</a></li>
+                                <li><a href="global.html#getOneInvStockItems">getOneInvStockItems</a></li>
+                                <li><a href="global.html#insertInvStockItems">insertInvStockItems</a></li>
+                                <h3>invstockstores</h3>
+                                <li><a href="global.html#getAllInvStockStores">getAllInvStockStores</a></li>
+                                <li><a href="global.html#getOneInvStockStores">getOneInvStockStores</a></li>
+                                <li><a href="global.html#insertInvStockStores">insertInvStockStores</a></li>
+                                <h3>openbalance</h3>
+                                <li><a href="global.html#getAllInvStockStores">getAllInvStockStores</a></li>
+                                <li><a href="global.html#getOneOpenBalanceByID">getOneOpenBalanceByID</a></li>
+                                <li><a href="global.html#insertOpenBalance">insertOpenBalance</a></li>
+                                <li><a href="global.html#updateOpenBalance">updateOpenBalance</a></li>
+                                <li><a href="global.html#deleteOpenBalance">deleteOpenBalance</a></li>
+                                <h3>openbalanceitems</h3>
+                                <li><a href="global.html#getOpenbalanceITems">getOpenbalanceITems</a></li>
+                                <li><a href="global.html#getOneOpenBalanceItemByID">getOneOpenBalanceItemByID</a></li>
+                                <li><a href="global.html#getOneOpenBalanceItemByUnitsId">getOneOpenBalanceItemByUnitsId</a></li>
+                                <li><a href="global.html#insertOpenBalanceItem">insertOpenBalanceItem</a></li>
+                                <li><a href="global.html#updateOpenBalanceItems">updateOpenBalanceItems</a></li>
+                                <li><a href="global.html#deleteOpenBalanceItems">deleteOpenBalanceItems</a></li>
+                                <h3>openbalanceitemsd</h3>
+                                <li><a href="global.html#getAllOpenBalanceItemsD">getAllOpenBalanceItemsD</a></li>
+                                <li><a href="global.html#getOneOpenBalanceItemsD">getOneOpenBalanceItemsD</a></li>
+                                <li><a href="global.html#insertOpenBalanceItemsD">insertOpenBalanceItemsD</a></li>
+                                <li><a href="global.html#deleteOpenBalanceItemsD">deleteOpenBalanceItemsD</a></li>
+                                <h3>stocktaking</h3>
+                                <li><a href="global.html#getStockTaking">getStockTaking</a></li>
+                                <li><a href="global.html#getOneStockTakingByID">getOneStockTakingByID</a></li>
+                                <li><a href="global.html#insertStockTaking">insertStockTaking</a></li>
+                                <h3>stocktakingbalance</h3>
+                                <li><a href="global.html#getStockTakingBalance">getStockTakingBalance</a></li>
+                                <li><a href="global.html#getOneStockTakingBalanceByID">getOneStockTakingBalanceByID</a></li>
+                                <li><a href="global.html#insertStockTakingBalance">insertStockTakingBalance</a></li>
+                                <h3>stocktakingbalanced</h3>
+                                <li><a href="global.html#getStockTakingBalanceD">getStockTakingBalanceD</a></li>
+                                <li><a href="global.html#getOneStockTakingBalanceDByID">getOneStockTakingBalanceDByID</a></li>
+                                <li><a href="global.html#insertStockTakingDBalance">insertStockTakingDBalance</a></li>
+                                <h3>stocktakingbalanceu</h3>
+                                <li><a href="global.html#getAllstocktakingBalanceU">getAllstocktakingBalanceU</a></li>
+                                <li><a href="global.html#getOnestocktakingBalanceU">getOnestocktakingBalanceU</a></li>
+                                <li><a href="global.html#insertstocktakingBalanceU">insertstocktakingBalanceU</a></li>
+                                <h3>transactions</h3>
+                                <li><a href="global.html#getTransactions">getTransactions</a></li>
+                                <li><a href="global.html#getTransactionByID">getTransactionByID</a></li>
+                                <li><a href="global.html#insertTransactions">insertTransactions</a></li>
+                                <li><a href="global.html#updateTransactions">updateTransactions</a></li>
+                                <h3>transactionitems</h3>
+                                <li><a href="global.html#getTransactionItems">getTransactionItems</a></li>
+                                <li><a href="global.html#getOneTransactionItems">getOneTransactionItems</a></li>
+                                <li><a href="global.html#insertTransactionItems">insertTransactionItems</a></li>
+                                <h3>transactionitemsd</h3>
+                                <li><a href="global.html#getAlltransactionsItemsD">getAlltransactionsItemsD</a></li>
+                                <li><a href="global.html#getOnetransactionsItemsD">getOnetransactionsItemsD</a></li>
+                                <li><a href="global.html#inserttransactionsItemsD">inserttransactionsItemsD</a></li>
+                                <li><a href="global.html#inserttransactionsItemsD">inserttransactionsItemsD</a></li>
+                                <h3>transfer</h3>
+                                <li><a href="global.html#getTransfer">getTransfer</a></li>
+                                <li><a href="global.html#getOneTransfer">getOneTransfer</a></li>
+                                <li><a href="global.html#UPDATETRANSFER">UPDATETRANSFER</a></li>
+                                <li><a href="global.html#deleteTRANSFER">deleteTRANSFER</a></li>
+                                <h3>transferitems</h3>
+                                <li><a href="global.html#getAlltransferItems">getAlltransferItems</a></li>
+                                <li><a href="global.html#getOnetransferItems">getOnetransferItems</a></li>
+                                <li><a href="global.html#inserttransferItems">inserttransferItems</a></li>
+                                <li><a href="global.html#updatetransferItemsById">updatetransferItemsById</a></li>
+                                <h3>transferitemsd</h3>
+                                <li><a href="global.html#getAlltransferItemsD">getAlltransferItemsD</a></li>
+                                <li><a href="global.html#getOnetransferItemsD">getOnetransferItemsD</a></li>
+                                <li><a href="global.html#inserttransferItemsD">inserttransferItemsD</a></li>
+                                <li><a href="global.html#updatetransferItemsDById">updatetransferItemsDById</a></li>
+                                <h3>invtransferr</h3>
+                                <li><a href="global.html#getAlltInvTransferR">getAlltInvTransferR</a></li>
+                                <li><a href="global.html#getOneInvTransferR">getOneInvTransferR</a></li>
+                                <li><a href="global.html#insertInvTransferR">insertInvTransferR</a></li>
+                                <li><a href="global.html#updateInvTransferR">updateInvTransferR</a></li>
+                                <h3>transferritems</h3>
+                                <li><a href="global.html#getAllTransferRItems">getAllTransferRItems</a></li>
+                                <li><a href="global.html#getOneTransferRItems">getOneTransferRItems</a></li>
+                                <li><a href="global.html#insertTransferRItems">insertTransferRItems</a></li>
+                                <h3>transferstores</h3>
+                                <li><a href="global.html#getAllTransferStores">getAllTransferStores</a></li>
+                                <h3>itembalance</h3>
+                                <li><a href="global.html#getAllItemBalance">getAllItemBalance</a></li>
+                                <li><a href="global.html#getOneItemBalance">getOneItemBalance</a></li>
+                                <h3>itemmodule</h3>
+                                <li><a href="global.html#getallitemTemplate">getallitemTemplate</a></li>
+                                <li><a href="global.html#getOneItemModule">getOneItemModule</a></li>
+                                <li><a href="global.html#insertnewitemModule">insertnewitemModule</a></li>
+                                <li><a href="global.html#updateItemModule">updateItemModule</a></li>
+                                <h3>items</h3>
+                                <li><a href="global.html#getallitems">getallitems</a></li>
+                                <li><a href="global.html#getoneitem">getoneitem</a></li>
+                                <li><a href="global.html#insertnewitem">insertnewitem</a></li>
+                                <li><a href="global.html#deleteItems">deleteItems</a></li>
+                                <li><a href="global.html#getLookUps">getLookUps</a></li>
+                                <h3>itemsaliases</h3>
+                                <li><a href="global.html#getallitemaliases">getallitemaliases</a></li>
+                                <li><a href="global.html#getoneitemaliase">getoneitemaliase</a></li>
+                                <li><a href="global.html#insertNewItemAliase">insertNewItemAliase</a></li>
+                                <li><a href="global.html#updateItemAliases">updateItemAliases</a></li>
+                                <h3>itemsbalancedetail</h3>
+                                <li><a href="global.html#getAllItemsBalanceDetail">getAllItemsBalanceDetail</a></li>
+                                <li><a href="global.html#getOneItemBalanceDetailByID">getOneItemBalanceDetailByID</a></li>
+                                <li><a href="global.html#insertItemBalanceDetail">insertItemBalanceDetail</a></li>
+                                <li><a href="global.html#deleteItemsBalanceDetail">deleteItemsBalanceDetail</a></li>
+                                <li><a href="global.html#updateItemBalanceDetail">updateItemBalanceDetail</a></li>
+                                <h3>itemsbalanceunits</h3>
+                                <li><a href="global.html#getAllItemsBalanceUnits">getAllItemsBalanceUnits</a></li>
+                                <li><a href="global.html#getOneItemBalanceUnitsByID">getOneItemBalanceUnitsByID</a></li>
+                                <li><a href="global.html#insertItemBalanceUnits">insertItemBalanceUnits</a></li>
+                                <li><a href="global.html#getItemBalanceUnitsByStoreID">getItemBalanceUnitsByStoreID</a></li>
+                                <h3>itemscomponents</h3>
+                                <li><a href="global.html#getallitemacomponents">getallitemacomponents</a></li>
+                                <li><a href="global.html#getoneitemcomponents">getoneitemcomponents</a></li>
+                                <li><a href="global.html#insertnewitemcomponents">insertnewitemcomponents</a></li>
+                                <li><a href="global.html#updateItemComponents">updateItemComponents</a></li>
+                                <h3>itemsdetails</h3>
+                                <li><a href="global.html#getallitemsDetails">getallitemsDetails</a></li>
+                                <li><a href="global.html#getoneitemDetails">getoneitemDetails</a></li>
+                                <li><a href="global.html#insertnewitemDetails">insertnewitemDetails</a></li>
+                                <li><a href="global.html#deleteItemsDetails">deleteItemsDetails</a></li>
+                                <h3>itemsgroup</h3>
+                                <li><a href="global.html#getallgroups">getallgroups</a></li>
+                                <li><a href="global.html#getoneitemsgroup">getoneitemsgroup</a></li>
+                                <li><a href="global.html#insertNewGroup">insertNewGroup</a></li>
+                                <li><a href="global.html#updateItemGroup">updateItemGroup</a></li>
+                                <h3>itemssubs</h3>
+                                <li><a href="global.html#getItemsSubs">getItemsSubs</a></li>
+                                <li><a href="global.html#getItemsSubsByID">getItemsSubsByID</a></li>
+                                <h3>itemstemplatedetails</h3>
+                                <li><a href="global.html#getAllitmTempDetails">getAllitmTempDetails</a></li>
+                                <li><a href="global.html#getOneitmTempDetails">getOneitmTempDetails</a></li>
+                                <li><a href="global.html#insertitmTempDetails">insertitmTempDetails</a></li>
+                                <h3>itemsunits</h3>
+                                <li><a href="global.html#getallitemUnits">getallitemUnits</a></li>
+                                <li><a href="global.html#getoneitemUnits">getoneitemUnits</a></li>
+                                <li><a href="global.html#insertnewitemUnits">insertnewitemUnits</a></li>
+                                <li><a href="global.html#deleteItemUnits">deleteItemUnits</a></li>
+                                <h3>itemssuppliers</h3>
+                                <li><a href="global.html#getAllitemSuppls">getAllitemSuppls</a></li>
+                                <li><a href="global.html#deleteitemSupplier">deleteitemSupplier</a></li>
+                                <li><a href="global.html#selectOneitemsupplier">selectOneitemsupplier</a></li>
+                                <h3>itemunitprices</h3>
+                                <li><a href="global.html#getAllItemUnitPrices">getAllItemUnitPrices</a></li>
+                                <li><a href="global.html#getOneItemUnitPrices">getOneItemUnitPrices</a></li>
+                                <li><a href="global.html#insertItemUnitPrices">insertItemUnitPrices</a></li>
+                                <li><a href="global.html#UPDATEITEMPRICES">UPDATEITEMPRICES</a></li>
+                                <h3>joborder</h3>
+                                <li><a href="global.html#getAllJobOrders">getAllJobOrders</a></li>
+                                <li><a href="global.html#getOneJobOrdersByID">getOneJobOrdersByID</a></li>
+                                <li><a href="global.html#getJobOrderByReqID">getJobOrderByReqID</a></li>
+                                <li><a href="global.html#updateJobOrder">updateJobOrder</a></li>
+                                <li><a href="global.html#createJobOrder">createJobOrder</a></li>
+                                <h3>shortagepolicy</h3>
+                                <li><a href="global.html#getShortagePolicy">getShortagePolicy</a></li>
+                                <li><a href="global.html#getShortagePolicyByID">getShortagePolicyByID</a></li>
+                                <li><a href="global.html#insertShortagePolicy">insertShortagePolicy</a></li>
+                                <li><a href="global.html#deleteShortagePolicy">deleteShortagePolicy</a></li>
+                                <li><a href="global.html#updateShortagePolicy">updateShortagePolicy</a></li>
+                                <h3>slowMovingPolicy</h3>
+                                <li><a href="global.html#getSmovingPolicy">getSmovingPolicy</a></li>
+                                <li><a href="global.html#getSmovingPolicyByID">getSmovingPolicyByID</a></li>
+                                <li><a href="global.html#insertSmovingPolicy">insertSmovingPolicy</a></li>
+                                <li><a href="global.html#deleteSmovingPolicy">deleteSmovingPolicy</a></li>
+                                <h3>reicv</h3>
+                                <li><a href="global.html#receiveReq">receiveReq</a></li>
+                                <h3>reqdocument</h3>
+                                <li><a href="global.html#getReqDocument">getReqDocument</a></li>
+                                <li><a href="global.html#getOneReqDocument">getOneReqDocument</a></li>
+                                <li><a href="global.html#insertReqDocument">insertReqDocument</a></li>
+                                <h3>reqdocumentitems</h3>
+                                <li><a href="global.html#getReqDocumentItems">getReqDocumentItems</a></li>
+                                <li><a href="global.html#getOneReqDocumentItems">getOneReqDocumentItems</a></li>
+                                <li><a href="global.html#insertReqDocumentItems">insertReqDocumentItems</a></li>
+                                <li><a href="global.html#UpdateReqDocumentItems">UpdateReqDocumentItems</a></li>
+                                <li><a href="global.html#deleteReqDocumentItems">deleteReqDocumentItems</a></li>
+                                <h3>reqdocumentitemsd</h3>
+                                <li><a href="global.html#getReqDocumentItemsD">getReqDocumentItemsD</a></li>
+                                <li><a href="global.html#getOneReqDocumentItemsD">getOneReqDocumentItemsD</a></li>
+                                <li><a href="global.html#insertReqDocumentItemsD">insertReqDocumentItemsD</a></li>
+                                <li><a href="global.html#UpdateReqDocumentItemsD">UpdateReqDocumentItemsD</a></li>
+                                <li><a href="global.html#deleteReqDocumentItemsD">deleteReqDocumentItemsD</a></li>
+                                <h3>requests</h3>
+                                <li><a href="global.html#getAllRequests">getAllRequests</a></li>
+                                <li><a href="global.html#getOneRequestByType">getOneRequestByType</a></li>
+                                <li><a href="global.html#deleteOneRequest">deleteOneRequest</a></li>
+                                <li><a href="global.html#getRequest">getRequest</a></li>
+                                <h3>rcvDocItemsD</h3>
+                                <li><a href="global.html#getAllrcvDoctItemsD">getAllrcvDoctItemsD</a></li>
+                                <li><a href="global.html#getOnercvDoctItemsD">getOnercvDoctItemsD</a></li>
+                                <li><a href="global.html#insertrcvDoctItemsD">insertrcvDoctItemsD</a></li>
+                                <h3>rcvdocument</h3>
+                                <li><a href="global.html#getAllRcvDocument">getAllRcvDocument</a></li>
+                                <li><a href="global.html#getOneRcvDocument">getOneRcvDocument</a></li>
+                                <li><a href="global.html#insertRcvDocument">insertRcvDocument</a></li>
+                                <h3>rcvdocumentitems</h3>
+                                <li><a href="global.html#getAllRcvDocumentITems">getAllRcvDocumentITems</a></li>
+                                <li><a href="global.html#getOneRcvDocumentITems">getOneRcvDocumentITems</a></li>
+                                <li><a href="global.html#insertNewRcvDocumentITems">insertNewRcvDocumentITems</a></li>
+                                <h3>rcvinspection</h3>
+                                <li><a href="global.html#getAllRcvInspection">getAllRcvInspection</a></li>
+                                <li><a href="global.html#getOneRcvInspection">getOneRcvInspection</a></li>
+                                <li><a href="global.html#insertNewRcvInspection">insertNewRcvInspection</a></li>
+                                <h3>rcvinspectioncomm</h3>
+                                <li><a href="global.html#getAllrcvInspectionComm">getAllrcvInspectionComm</a></li>
+                                <li><a href="global.html#getOnercvInspectionComm">getOnercvInspectionComm</a></li>
+                                <li><a href="global.html#insertrcvInspectionComm">insertrcvInspectionComm</a></li>
+                                <h3>rcvinspectionitems</h3>
+                                <li><a href="global.html#getAllrcvInspectionItems">getAllrcvInspectionItems</a></li>
+                                <li><a href="global.html#getOnercvInspectionItems">getOnercvInspectionItems</a></li>
+                                <li><a href="global.html#insertrcvInspectionItems">insertrcvInspectionItems</a></li>
+                                <h3>rcvinspectionitemsd</h3>
+                                <li><a href="global.html#getAllrcvInspectionItemsD">getAllrcvInspectionItemsD</a></li>
+                                <li><a href="global.html#getOnercvInspectionItemsD">getOnercvInspectionItemsD</a></li>
+                                <li><a href="global.html#insertrcvInspectionItemsD">insertrcvInspectionItemsD</a></li>
+                                <h3>rcvtempo</h3>
+                                <li><a href="global.html#getRcvTempo">getRcvTempo</a></li>
+                                <li><a href="global.html#getRcvTempobyID">getRcvTempobyID</a></li>
+                                <li><a href="global.html#insertRcvTempo">insertRcvTempo</a></li>
+                                <h3>rcvtempocommitte</h3>
+                                <li><a href="global.html#getAllrcvTempoCommitte">getAllrcvTempoCommitte</a></li>
+                                <li><a href="global.html#getOnercvTempoCommitte">getOnercvTempoCommitte</a></li>
+                                <li><a href="global.html#insertrcvTempoCommitte">insertrcvTempoCommitte</a></li>
+                                <h3>rcvtempoitems</h3>
+                                <li><a href="global.html#getTmpItems">getTmpItems</a></li>
+                                <li><a href="global.html#getTmpItembyID">getTmpItembyID</a></li>
+                                <li><a href="global.html#insertTmpItem">insertTmpItem</a></li>
+                                <h3>rcvtempoitemsd</h3>
+                                <li><a href="global.html#getAllrcvTmpoItemsD">getAllrcvTmpoItemsD</a></li>
+                                <li><a href="global.html#getOnercvTmpoItemsD">getOnercvTmpoItemsD</a></li>
+                                <li><a href="global.html#insertrcvTmpoItemsD">insertrcvTmpoItemsD</a></li>
+                                <h3>revdocumentcommitte</h3>
+                                <li><a href="global.html#getAllRevDocumentCommitte">getAllRevDocumentCommitte</a></li>
+                                <li><a href="global.html#getOneRevDocumentCommitte">getOneRevDocumentCommitte</a></li>
+                                <li><a href="global.html#insertNewRevDocumentCommitte">insertNewRevDocumentCommitte</a></li>
+                                <h3>security</h3>
+                                <li><a href="global.html#resetPassword">resetPassword</a></li>
+                                <li><a href="global.html#LoginAuth">LoginAuth</a></li>
+                                <h3>statistics</h3>
+                                <li><a href="global.html#getItemLastTranactionDate">getItemLastTranactionDate</a></li>
+                                <li><a href="global.html#getLastTransactionWarehouse">getLastTransactionWarehouse</a></li>
+                                <li><a href="global.html#getTotalBalance">getTotalBalance</a></li>
+                                <li><a href="global.html#getTopFiveSuppliers">getTopFiveSuppliers</a></li>
+                                <li><a href="global.html#getTotalNoOfTransactionInLastWeek">getTotalNoOfTransactionInLastWeek</a></li>
+                                <li><a href="global.html#getTotalNoOfTransactionInLastMonth">getTotalNoOfTransactionInLastMonth</a></li>
+                                <li><a href="global.html#getTotalNoOfTransactionInLastYear">getTotalNoOfTransactionInLastYear</a></li>
+                                <li><a href="global.html#getMonthlyTransactionsOfCurrentYear">getMonthlyTransactionsOfCurrentYear</a></li>
+                                <li><a href="global.html#getTransactionsNoInLastDay">getTransactionsNoInLastDay</a></li>
+                                <li><a href="global.html#getTransactionsNoInLastWeek">getTransactionsNoInLastWeek</a></li>
+                                <li><a href="global.html#getTransactionsNoInLastMonth">getTransactionsNoInLastMonth</a></li>
+                                <li><a href="global.html#getTopFiveItemsTransLastDay">getTopFiveItemsTransLastDay</a></li>
+                                <li><a href="global.html#getTopFiveItemsTransLastWeek">getTopFiveItemsTransLastWeek</a></li>
+                                <li><a href="global.html#getTopFiveItemsTransLastMonth">getTopFiveItemsTransLastMonth</a></li>
+                                <li><a href="global.html#getLastTransactionDateByUser">getLastTransactionDateByUser</a></li>
+                                <li><a href="global.html#getTopFiveUsersTransLastDay">getTopFiveUsersTransLastDay</a></li>
+                                <li><a href="global.html#getTopFiveUsersTransLastWeek">getTopFiveUsersTransLastWeek</a></li>
+                                <li><a href="global.html#getTopFiveUsersTransLastMonth">getTopFiveUsersTransLastMonth</a></li>
+                                <li><a href="global.html#getlastFiveTransactions">getlastFiveTransactions</a></li>
+                                <li><a href="global.html#getTopFiveStoreHouses">getTopFiveStoreHouses</a></li>
+                                <li><a href="global.html#getitemSuppliers">getitemSuppliers</a></li>
+                                <li><a href="global.html#getinvperiodsSById">getinvperiodsSById</a></li>
+                                <h3>storehouses</h3>
+                                <li><a href="global.html#selectAllstoreHouses">selectAllstoreHouses</a></li>
+                                <li><a href="global.html#selectOnestoreHouses">selectOnestoreHouses</a></li>
+                                <li><a href="global.html#insertnewStoreHouses">insertnewStoreHouses</a></li>
+                                <li><a href="global.html#deleteStoreHouses">deleteStoreHouses</a></li>
+                                <li><a href="global.html#updatestoreHouses">updatestoreHouses</a></li>
+                                <h3>stores</h3>
+                                <li><a href="global.html#selectAllstores">selectAllstores</a></li>
+                                <li><a href="global.html#selectOnestores">selectOnestores</a></li>
+                                <li><a href="global.html#insertnewStores">insertnewStores</a></li>
+                                <li><a href="global.html#deleteStores">deleteStores</a></li>
+                                <li><a href="global.html#updateStoresById">updateStoresById</a></li>
+                                <h3>storesdoctypes</h3>
+                                <li><a href="global.html#getAllstoresDocTypes">getAllstoresDocTypes</a></li>
+                                <li><a href="global.html#getOnestoresDocTypes">getOnestoresDocTypes</a></li>
+                                <li><a href="global.html#insertstoresDocTypes">insertstoresDocTypes</a></li>
+                                <li><a href="global.html#updateStoresDocById">updateStoresDocById</a></li>
+                                <h3>storesitems</h3>
+                                <li><a href="global.html#getStoresItems">getStoresItems</a></li>
+                                <li><a href="global.html#getStoreItemByID">getStoreItemByID</a></li>
+                                <li><a href="global.html#insertStoresItems">insertStoresItems</a></li>
+                                <li><a href="global.html#deleteStoreItem">deleteStoreItem</a></li>
+                                <h3>storesitemsgroup</h3>
+                                <li><a href="global.html#getStoresItemsGroup">getStoresItemsGroup</a></li>
+                                <li><a href="global.html#getStoreItemGroupByID">getStoreItemGroupByID</a></li>
+                                <li><a href="global.html#insertStoresItemsGroups">insertStoresItemsGroups</a></li>
+                                <h3>storesitemsgroupno</h3>
+                                <li><a href="global.html#getAllstoresItemsGroupNO">getAllstoresItemsGroupNO</a></li>
+                                <li><a href="global.html#getOnestoresItemsGroupNO">getOnestoresItemsGroupNO</a></li>
+                                <li><a href="global.html#insertstoresItemsGroupNO">insertstoresItemsGroupNO</a></li>
+                                <li><a href="global.html#updateStoresItemsGroupNO">updateStoresItemsGroupNO</a></li>
+                                <h3>storesitemsno</h3>
+                                <li><a href="global.html#getAllStoresItemsNO">getAllStoresItemsNO</a></li>
+                                <li><a href="global.html#getOneStoresItemsNO">getOneStoresItemsNO</a></li>
+                                <li><a href="global.html#insertStoresItemsNO">insertStoresItemsNO</a></li>
+                                <h3>storeslocation</h3>
+                                <li><a href="global.html#selectAllstoresLocation">selectAllstoresLocation</a></li>
+                                <li><a href="global.html#selectOnestoresLocation">selectOnestoresLocation</a></li>
+                                <li><a href="global.html#insertnewstoresLocation">insertnewstoresLocation</a></li>
+                                <li><a href="global.html#deletestoresLocation">deletestoresLocation</a></li>
+                                <h3>subsdiary</h3>
+                                <li><a href="global.html#getsubsDiary">getsubsDiary</a></li>
+                                <li><a href="global.html#getSubsDiaryByID">getSubsDiaryByID</a></li>
+                                <li><a href="global.html#insertSubidiary">insertSubidiary</a></li>
+                                <li><a href="global.html#deletesubsDiary">deletesubsDiary</a></li>
+                                <li><a href="global.html#updateSubsDiary">updateSubsDiary</a></li>
+                                <h3>suppliers</h3>
+                                <li><a href="global.html#getSuppliers">getSuppliers</a></li>
+                                <li><a href="global.html#getSupplierByID">getSupplierByID</a></li>
+                                <li><a href="global.html#insertSupplier">insertSupplier</a></li>
+                                <li><a href="global.html#updateSupplier">updateSupplier</a></li>
+                                <h3>taxscheme</h3>
+                                <li><a href="global.html#getTaxSchemes">getTaxSchemes</a></li>
+                                <li><a href="global.html#gettaxSchemeByID">gettaxSchemeByID</a></li>
+                                <li><a href="global.html#inserttaxScheme">inserttaxScheme</a></li>
+                                <li><a href="global.html#deletetaxScheme">deletetaxScheme</a></li>
+                                <li><a href="global.html#updateTaxScheme">updateTaxScheme</a></li>
+                                <h3>taxschemedetail</h3>
+                                <li><a href="global.html#getTaxSchemesDetails">getTaxSchemesDetails</a></li>
+                                <li><a href="global.html#gettaxSchemeDetailByID">gettaxSchemeDetailByID</a></li>
+                                <li><a href="global.html#inserttaxSchemeDetail">inserttaxSchemeDetail</a></li>
+                                <li><a href="global.html#deletetaxSchemeDetail">deletetaxSchemeDetail</a></li>
+                                <li><a href="global.html#updateTaxSchemeDetail">updateTaxSchemeDetail</a></li>
+                                <h3>transactiontypes</h3>
+                                <li><a href="global.html#getTransactions">getTransactions</a></li>
+                                <li><a href="global.html#getTransactionsByID">getTransactionsByID</a></li>
+                                <li><a href="global.html#insertTransaction">insertTransaction</a></li>
+                                <li><a href="global.html#deleteTransactions">deleteTransactions</a></li>
+                                <li><a href="global.html#updateTransactions">updateTransactions</a></li>
+                                <h3>zones</h3>
+                                <li><a href="global.html#getZones">getZones</a></li>
+                                <li><a href="global.html#getZoneByID">getZoneByID</a></li>
+                                <li><a href="global.html#insertZone">insertZone</a></li>
+                                <li><a href="global.html#deleteZone">deleteZone</a></li>
+                                <li><a href="global.html#updateZonesById">updateZonesById</a></li>
+    
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Title</p>
+                        <h1>Home</h1>
+                    </header>
+
+                    <h3>
+
+                        Inventory Application
+
+                    </h3>
+                    <h5> smart documentation from the back end side to easily discover, implement and
+                        integrate with inventory Nodejs Back End Services ..</h5>
+
+
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+            <div class="content has-text-centered">
+                <p>Documentation generated by back-end development team</p>
+            </div>
+        </footer>
+
+    <script> prettyPrint(); </script>
+    <script src="scripts/app.min.js"></script>
+    <script src="scripts/linenumber.js"> </script>
+</body>
+
+
+</html>

@@ -1,0 +1,162 @@
+let statements = {
+    selectAllpurDoc:{
+        statment:`
+        SELECT
+                DOCUMENT_ID,
+                DOCUMENT_TYPE_ID,
+                (SELECT AR_NAME  FROM DOCUMENT_TYPES DO WHERE DO.DOCUMENT_TYPE_ID = I.DOCUMENT_TYPE_ID) DOCUMENT_AR_NAME,
+                (SELECT EN_NAME  FROM DOCUMENT_TYPES DO WHERE DO.DOCUMENT_TYPE_ID = I.DOCUMENT_TYPE_ID) DOCUMENT_EN_NAME,
+                 DOCUMENT_DATE,
+                INVENTORY_PERIODS_ID,
+                 STORES_ID,
+                 (SELECT AR_NAME  FROM stores PS WHERE PS.stores_id = I.STORES_ID) STORE_AR_NAME,
+                (SELECT EN_NAME  FROM stores PS WHERE PS.stores_id = I.STORES_ID) STORE_EN_NAME,
+                  REQ_DATE,
+                DOCUMENT_NO,
+                BASE_DOCUMENT_ID,
+                 BASE_DOCUMENT_TYPE_ID,
+                SUBSIDIARY_ID,
+                (SELECT AR_NAME  FROM AOT_GEN.SUBSIDARIES S WHERE S.SUBSIDIARY_ID = I.SUBSIDIARY_ID) SUBSIDIARY_AR_NAME,
+                (SELECT EN_NAME  FROM AOT_GEN.SUBSIDARIES S WHERE S.SUBSIDIARY_ID = I.SUBSIDIARY_ID) SUBSIDIARY_EN_NAME,
+                JOURNALS_ID,
+                 SOURCE_TYPE,
+                DEPARTMENT_ID,
+                 EMPLOYEE_ID,
+                SUPPLIER_ID, 
+                DOCUMENT_STATUS,
+                (SELECT nvl(L.PRIMARY_NAME, L.SECONDARY_NAME) name FROM HR.LOOKUP_DETAILS L Where LOOKUP_ID = 176 AND L.USER_CODE = I.DOCUMENT_STATUS) STATUS_NAME,
+                 NOTES,
+                 CREATED_BY,
+                CREATION_DATE,
+                 VALDIATED_BY,
+                  VALDIATED_DATE,
+                CONFIRMED_BY,
+                 CONFIRMED_DATE,
+                  DELETED,
+                DELETED_BY,
+                 DELETED_DATE,
+                 MODIFIED_BY,
+                MODIFIED_DATE,
+                 WF_REQUEST_ID
+                FROM INVENTORY.PUR_ORD_DOC  I
+                WHERE DELETED = 0 `,
+            bindings: [],
+            qstring: "",
+            requireCommit: false
+        },
+        getOnePUDerDoc:{
+        statment:`
+        SELECT
+                DOCUMENT_ID,
+                DOCUMENT_TYPE_ID,
+                (SELECT AR_NAME  FROM DOCUMENT_TYPES DO WHERE DO.DOCUMENT_TYPE_ID = I.DOCUMENT_TYPE_ID) DOCUMENT_AR_NAME,
+                (SELECT EN_NAME  FROM DOCUMENT_TYPES DO WHERE DO.DOCUMENT_TYPE_ID = I.DOCUMENT_TYPE_ID) DOCUMENT_EN_NAME,
+                 DOCUMENT_DATE,
+                INVENTORY_PERIODS_ID,
+                 STORES_ID,
+                 (SELECT AR_NAME  FROM stores PS WHERE PS.stores_id = I.STORES_ID) STORE_AR_NAME,
+                (SELECT EN_NAME  FROM stores PS WHERE PS.stores_id = I.STORES_ID) STORE_EN_NAME,
+                  REQ_DATE,
+                DOCUMENT_NO,
+                BASE_DOCUMENT_ID,
+                 BASE_DOCUMENT_TYPE_ID,
+                SUBSIDIARY_ID,
+                (SELECT AR_NAME  FROM AOT_GEN.SUBSIDARIES S WHERE S.SUBSIDIARY_ID = I.SUBSIDIARY_ID) SUBSIDIARY_AR_NAME,
+                (SELECT EN_NAME  FROM AOT_GEN.SUBSIDARIES S WHERE S.SUBSIDIARY_ID = I.SUBSIDIARY_ID) SUBSIDIARY_EN_NAME,
+                JOURNALS_ID,
+                 SOURCE_TYPE,
+                DEPARTMENT_ID,
+                 EMPLOYEE_ID,
+                  SUPPLIER_ID,
+                DOCUMENT_STATUS,
+                (SELECT nvl(L.PRIMARY_NAME, L.SECONDARY_NAME) name FROM HR.LOOKUP_DETAILS L Where LOOKUP_ID = 176 AND L.USER_CODE = I.DOCUMENT_STATUS) STATUS_NAME,
+                 NOTES,
+                 CREATED_BY,
+                CREATION_DATE,
+                 VALDIATED_BY,
+                  VALDIATED_DATE,
+                CONFIRMED_BY,
+                 CONFIRMED_DATE,
+                  DELETED,
+                DELETED_BY,
+                 DELETED_DATE,
+                 MODIFIED_BY,
+                MODIFIED_DATE,
+                 WF_REQUEST_ID
+                FROM INVENTORY.PUR_ORD_DOC  I
+                WHERE DELETED = 0 AND DOCUMENT_ID = :DOCUMENT_ID`,
+            bindings: [],
+            qstring: "",
+            requireCommit: false
+        },
+        selectAllpurDocDetails:{
+            statment:`
+               SELECT
+                    PUR_ORD_DOC_ITEMS_ID,
+                    DOCUMENT_ID,
+                    ARRANGEMENT_NO,
+                    ITEMS_ID,
+                    (SELECT AR_NAME  FROM ITEMS T WHERE T.ITEMS_ID = I.ITEMS_ID) ITEMS_AR_NAME,
+                    (SELECT EN_NAME  FROM ITEMS T WHERE T.ITEMS_ID = I.ITEMS_ID) ITEMS_EN_NAME,
+                    UNITS_ID,
+                      (SELECT L.PRIMARY_NAME  FROM HR.LOOKUP_DETAILS L WHERE L.LOOKUP_ID = 125 AND L.STATUS = 1 and L.LOOKUP_DETAIL_ID = I.UNITS_ID ) UNIT_AR_NAME,
+                    (SELECT L.SECONDARY_NAME  FROM HR.LOOKUP_DETAILS L WHERE L.LOOKUP_ID = 125 AND L.STATUS = 1 and L.LOOKUP_DETAIL_ID = I.UNITS_ID ) UNIT_EN_NAME,
+                    UNIT_FACTOR,
+                    UNIT_QUANTITY,
+                    DEFAULT_UNIT_QUANTITY,
+                        BASE_UNIT_QUANTITY,
+                    ITEM_COST,
+                    TOTAL_COST,
+                    ITEM_PRICE,
+                    TOTAL_PRICE,
+                        NOTES,
+                        CREATED_BY,
+                    CREATION_DATE,
+                        DELETED,
+                        DELETED_BY,
+                    DELETED_DATE,
+                        MODIFIED_BY,
+                        MODIFIED_DATE
+                    FROM INVENTORY.PUR_ORD_DOC_ITEMS I
+                    WHERE DELETED = 0 `,
+                bindings: [],
+                qstring: "",
+                requireCommit: false
+            },
+            getOnePUDerDocDetails:{
+                statment:`
+                   SELECT
+                        PUR_ORD_DOC_ITEMS_ID,
+                        DOCUMENT_ID,
+
+                        ARRANGEMENT_NO,
+                        ITEMS_ID,
+                        (SELECT AR_NAME  FROM ITEMS T WHERE T.ITEMS_ID = I.ITEMS_ID) ITEMS_AR_NAME,
+                        (SELECT EN_NAME  FROM ITEMS T WHERE T.ITEMS_ID = I.ITEMS_ID) ITEMS_EN_NAME,
+                        UNITS_ID,
+                        UNIT_FACTOR,
+                        UNIT_QUANTITY,
+                        DEFAULT_UNIT_QUANTITY,
+                            BASE_UNIT_QUANTITY,
+                        ITEM_COST,
+                        TOTAL_COST,
+                        ITEM_PRICE,
+                        TOTAL_PRICE,
+                            NOTES,
+                            CREATED_BY,
+                        CREATION_DATE,
+                            DELETED,
+                            DELETED_BY,
+                        DELETED_DATE,
+                            MODIFIED_BY,
+                            MODIFIED_DATE
+                        FROM INVENTORY.PUR_ORD_DOC_ITEMS I
+                        WHERE DELETED = 0
+                            AND PUR_ORD_DOC_ITEMS_ID = :PUR_ORD_DOC_ITEMS_ID`,
+                    bindings: [],
+                    qstring: "",
+                    requireCommit: false
+                }
+};
+
+module.exports = statements;
